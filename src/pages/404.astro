@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+---
+<Base title="Page introuvable · L'ABC des réflexes" description="Cette page n'existe pas ou a changé d'adresse." path="/404" noindex>
+  <section>
+    <div class="wrap narrow">
+      <p class="kicker">Erreur 404</p>
+      <h1>Cette page n'existe pas ou a changé d'adresse</h1>
+      <p class="lead" style="margin:18px 0 28px">Tu trouveras sûrement ce que tu cherches depuis l'accueil ou dans le blog.</p>
+      <div class="btns"><a class="btn" href={url('/')}>Revenir à l'accueil</a><a class="btn ghost" href={url('/blog')}>Voir le blog</a></div>
+    </div>
+  </section>
+</Base>

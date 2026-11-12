@@ -1,0 +1,16 @@
+---
+import { url, PROD_URL } from '../lib/site';
+interface Props { vers: string; titre: string }
+const { vers, titre } = Astro.props;
+---
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>{titre}</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href={PROD_URL + vers}>
+<meta http-equiv="refresh" content={'0; url=' + url(vers)}>
+</head>
+<body><p>Cette page a changé d'adresse : <a href={url(vers)}>{titre}</a>.</p></body>
+</html>

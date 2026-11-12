@@ -1,0 +1,6 @@
+# Redirections permanentes des anciennes adresses Wix (lues par Netlify et Cloudflare Pages)
+/about-1                              /formations          301
+/politique-en-matière-de-cookies      /politique-cookies   301
+/blog/tags/*                          /blog                301
+/blog/categories/*                    /blog                301
+/blog/page/*                          /blog                301

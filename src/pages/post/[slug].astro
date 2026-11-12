@@ -1,0 +1,60 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { allPosts, postSlug, postPath, dateFr, excerpt, readingMinutes, url, RDV, PROD_URL, type Post } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  return posts.map((post, i) => ({
+    params: { slug: postSlug(post) },
+    props: { post, others: [1, 2, 3].map((k) => posts[(i + k) % posts.length]) },
+  }));
+}
+interface Props { post: Post; others: Post[] }
+const { post, others } = Astro.props;
+const { Content } = await render(post);
+const hasImage = /!\[[^\]]*\]\(/.test(post.body || '');
+const hasButton = /class="btn"/.test(post.body || '');
+const minutes = readingMinutes(post.body);
+const description = excerpt(post.data.description, 160) || post.data.title;
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description,
+  datePublished: post.data.date.toISOString().slice(0, 10),
+  inLanguage: 'fr',
+  image: post.data.cover ? PROD_URL + post.data.cover : undefined,
+  author: { '@type': 'Person', name: 'Sandy Stevens', url: PROD_URL + '/#sandy' },
+  publisher: { '@id': PROD_URL + '/#cabinet' },
+  mainEntityOfPage: PROD_URL + encodeURI(postPath(post)),
+  keywords: post.data.tags.join(', ') || undefined,
+};
+---
+<Base title={post.data.title + " · L'ABC des réflexes"} description={description} current="blog" path={postPath(post)} image={post.data.cover} type="article" jsonld={[article]}>
+  <article class="article">
+    <div class="wrap narrow">
+      <header>
+        <p class="kicker"><a href={url('/blog')} style="text-decoration:none">Le blog</a></p>
+        <h1>{post.data.title}</h1>
+        <div class="meta"><img src={url('/img/sandy.png')} alt=""><span><b style="color:var(--ink)">Sandy Stevens</b><br><time datetime={post.data.date.toISOString().slice(0, 10)}>{dateFr(post.data.date)}</time> · {minutes} min de lecture</span></div>
+      </header>
+      {!hasImage && post.data.cover && <img class="cover-img" src={url(post.data.cover)} alt="">}
+      <div class="prose"><Content /></div>
+      {!hasButton && (
+        <div class="end">
+          <h2>Besoin d'un accompagnement ?</h2>
+          <p>Je propose des bilans et un suivi personnalisé au cabinet d'Obernai. Le premier rendez-vous est un bilan de 90 minutes.</p>
+          <a class="btn" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous</a>
+        </div>
+      )}
+      {post.data.tags.length > 0 && <div class="chips" style="margin-top:32px">{post.data.tags.map((t) => <span class="chip">{t}</span>)}</div>}
+    </div>
+    <div class="wrap" style="margin-top:72px">
+      <h2 style="margin-bottom:28px">D'autres articles du blog</h2>
+      <div class="posts">{others.map((p) => <PostCard post={p} />)}</div>
+      <p style="margin-top:32px"><a class="more" href={url('/blog')}>Revenir à tous les articles</a></p>
+    </div>
+  </article>
+</Base>

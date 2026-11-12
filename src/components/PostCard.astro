@@ -1,0 +1,13 @@
+---
+import { url, postPath, dateFr, excerpt, type Post } from '../lib/site';
+interface Props { post: Post; big?: boolean }
+const { post, big = false } = Astro.props;
+---
+<a class:list={['post', { big }]} href={url(postPath(post))}>
+  {post.data.cover && <img src={url(post.data.cover)} alt="" loading="lazy">}
+  <div>
+    <time datetime={post.data.date.toISOString().slice(0, 10)}>{dateFr(post.data.date)}</time>
+    <h3>{post.data.title}</h3>
+    <p>{excerpt(post.data.description)}</p>
+  </div>
+</a>

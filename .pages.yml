@@ -1,0 +1,44 @@
+# Configuration de l'éditeur en ligne du blog (Pages CMS, https://app.pagescms.org)
+# Sandy s'y connecte avec son compte GitHub et retrouve la liste des articles.
+media:
+  input: public/img/blog
+  output: /img/blog
+content:
+  - name: blog
+    label: Articles du blog
+    type: collection
+    path: src/content/blog
+    filename: '{primary}.md'
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Titre de l'article
+        type: string
+        required: true
+      - name: date
+        label: Date de publication
+        type: date
+        required: true
+      - name: description
+        label: Résumé (deux lignes, affiché sur la carte de l'article et dans Google)
+        type: text
+      - name: cover
+        label: Image de couverture
+        type: image
+      - name: tags
+        label: Mots-clés
+        type: string
+        list: true
+      - name: ancienne_adresse
+        label: Ancienne adresse Wix (ne pas modifier)
+        type: string
+        hidden: true
+      - name: body
+        label: Texte de l'article
+        type: rich-text

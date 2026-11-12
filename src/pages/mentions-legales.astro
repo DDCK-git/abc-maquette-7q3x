@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { url, TEL_AFFICHE, EMAIL } from '../lib/site';
+---
+<Base title="Mentions légales · L'ABC des réflexes" description="Mentions légales du site de L'ABC des réflexes, cabinet de Sandy Stevens à Obernai." path="/mentions-legales" noindex>
+  <section>
+    <div class="wrap narrow prose">
+      <p class="kicker">Informations légales</p>
+      <h1>Mentions légales</h1>
+      <p class="todo">À compléter par Sandy avant la mise en ligne : les éléments entre crochets ne figurent ni sur l'ancien site ni sur la page de réservation.</p>
+      <h2>Éditrice du site</h2>
+      <p>L'ABC des réflexes, Sandy Stevens<br>1, place des Fines Herbes, 67210 Obernai<br>Téléphone : {TEL_AFFICHE}<br>E-mail : {EMAIL}<br>Statut et numéro SIRET : [à compléter]<br>Directrice de la publication : Sandy Stevens</p>
+      <h2>Hébergement</h2>
+      <p>[Nom, adresse et contact de l'hébergeur, à compléter au moment de la mise en ligne définitive]</p>
+      <h2>Nature de l'accompagnement</h2>
+      <p>Mon approche en réflexes ne se substitue pas à des traitements ou à des suivis médicaux. Il ne te sera jamais demandé d'interrompre un suivi en cours. Le cabinet n'établit pas de diagnostic médical et les séances complètent les suivis existants.</p>
+      <h2>Prise de rendez-vous</h2>
+      <p>La réservation en ligne se fait sur la plateforme Perfactive, qui applique ses propres conditions et sa propre politique de confidentialité.</p>
+      <h2>Propriété intellectuelle</h2>
+      <p>Les textes et les images de ce site appartiennent à L'ABC des réflexes, sauf mention contraire. Les visuels des modules de formation appartiennent à l'école Arc-en-Flex®.</p>
+      <p><a class="more" href={url('/politique-cookies')}>Lire la politique de cookies</a></p>
+    </div>
+  </section>
+</Base>

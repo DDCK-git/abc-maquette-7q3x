@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import { url, TEL, TEL_AFFICHE, EMAIL, PROD_URL } from '../lib/site';
+
+// Dates des cursus : [couleur, nom, libellé, date de fin (AAAA-MM-JJ)]. Une date passée s'affiche « terminé » toute seule.
+const alsace = [
+  ['rouge', 'Rouge', 'du 29 octobre au 1er novembre 2026', '2026-11-01'],
+  ['rouge', 'Rouge', 'du 7 au 10 décembre 2026', '2026-12-10'],
+  ['orange', 'Orange', 'du 4 au 7 mars 2027', '2027-03-07'],
+  ['jaune', 'Jaune', 'du 29 avril au 2 mai 2027', '2027-05-02'],
+  ['vert', 'Vert', 'du 3 au 6 juillet 2027', '2027-07-06'],
+  ['violet', 'Violet', 'du 27 au 29 août 2027', '2027-08-29'],
+];
+const belgique = [
+  ['rouge', 'Rouge', 'du 12 au 15 février 2027', '2027-02-15'],
+  ['rouge', 'Rouge', 'du 26 au 29 mars 2027', '2027-03-29'],
+  ['orange', 'Orange', 'du 21 au 24 mai 2027', '2027-05-24'],
+  ['jaune', 'Jaune', 'du 17 au 20 septembre 2027', '2027-09-20'],
+  ['vert', 'Vert', 'du 3 au 6 décembre 2027', '2027-12-06'],
+  ['violet', 'Violet', 'du 26 au 29 janvier 2028', '2028-01-29'],
+];
+const modules = [
+  ['rouge', 'Rouge', "J'intègre le mouvement dans ma vie"],
+  ['orange', 'Orange', "Je m'équilibre en toute situation"],
+  ['jaune', 'Jaune', 'Je me prépare à re-naître'],
+  ['vert', 'Vert', 'Je prends soin de ma ré-flexibilité'],
+  ['violet', 'Violet', 'Je deviens praticien spécialisé en Arc-en-flex'],
+  ['indigo', 'Indigo', 'Je dynamise les apprentissages'],
+];
+const today = new Date().toISOString().slice(0, 10);
+const past = (end: string) => end < today;
+const phone = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>';
+const course = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Parcours certifiant Arc-en-Flex® en réflexes archaïques',
+  description: "Cursus complet de certification praticien Arc-en-Flex®, du module de base jusqu'à la pratique professionnelle, en Alsace et en Belgique.",
+  provider: { '@id': PROD_URL + '/#cabinet' },
+  inLanguage: 'fr',
+};
+---
+<Base title="Formation en réflexes archaïques · Parcours certifiant Arc-en-Flex® en Alsace et en Belgique" description="Le cursus complet de certification praticien Arc-en-Flex® avec Sandy Stevens : modules, dates en Alsace (Obernai) et en Belgique, réservation." current="formations" path="/formations" image="/img/salle-formation.jpg" jsonld={[course]}>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="kicker">Formations · Alsace et Belgique</p>
+      <h1 style="max-width:900px">Je te forme aux réflexes archaïques avec le parcours certifiant Arc-en-Flex®</h1>
+      <p class="lead">Tu accompagnes des enfants, des adolescents ou des adultes, et certaines situations te résistent malgré tout ? Tu expliques, tu adaptes, mais rien ne tient vraiment dans le temps.</p>
+      <div class="btns" style="margin-top:28px"><a class="btn" href="#dates">Je réserve ma place</a><a class="btn ghost" href="#modules">Découvrir les modules</a></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid2" style="gap:56px;align-items:start">
+      <div class="stack">
+        <h2>Ce n'est pas un manque de volonté</h2>
+        <p class="lead">Tu passes juste à côté du système nerveux.</p>
+        <ul class="chev"><li>Agitation ou difficulté à rester en place</li><li>Difficultés d'apprentissage ou de concentration</li><li>Décalage entre compréhension et mise en action</li><li>Émotions qui débordent</li></ul>
+        <p>Je suis formatrice en réflexes archaïques et je propose le cursus complet de certification praticien Arc-en-Flex®, du module de base jusqu'à la pratique professionnelle. Cette formation permet de comprendre ce qui se joue réellement dans le corps et d'adapter son accompagnement avec plus de justesse.</p>
+      </div>
+      <div class="card" style="background:var(--aqua);border:none">
+        <h3>Ce que tu vas apprendre</h3>
+        <ul class="chev"><li>Comprendre le fonctionnement du système nerveux</li><li>Identifier les réflexes archaïques non intégrés</li><li>Faire des liens concrets avec les difficultés observées</li><li>Construire un accompagnement cohérent</li><li>Utiliser des outils concrets, avec du sens</li></ul>
+        <p style="color:var(--ink);font-weight:600">Tu ne fais plus « des exercices » : tu comprends ce que tu fais.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="white">
+    <div class="wrap split">
+      <img src={url('/img/salle-formation.jpg')} alt="La salle de formation avec ses tapis et ses coussins de toutes les couleurs" loading="lazy">
+      <div class="stack">
+        <p class="kicker" style="margin:0">Une formation ancrée dans le terrain</p>
+        <h2>J'ai été enseignante pendant 15 ans avant d'accompagner en cabinet</h2>
+        <p>Ce double regard me permet de proposer une formation concrète, directement applicable et reliée aux réalités du terrain. Elle s'adresse aux professionnels de l'éducation, de la santé, de l'accompagnement et du mouvement, mais aussi à toute personne qui souhaite approfondir sa compréhension du système nerveux.</p>
+        <div class="chips"><span class="chip">Éducation</span><span class="chip">Santé</span><span class="chip">Accompagnement</span><span class="chip">Mouvement</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aqua" id="dates">
+    <div class="wrap">
+      <div class="head"><p class="kicker">Prochaines formations</p><h2>Les groupes sont volontairement limités, alors pense à réserver ta place</h2></div>
+      <div class="grid2">
+        <div class="cal"><h3>Promotion 2026-2027 en Alsace</h3><p class="muted" style="font-size:15px;margin-bottom:10px">À Obernai, à proximité de Strasbourg</p>
+          <ul>{alsace.map(([c, n, d, end]) => <li class={past(end) ? 'past' : undefined}><i class={'dot m-' + c}></i><b>{n}</b><span>{d}</span>{past(end) && <em>terminé</em>}</li>)}</ul>
+        </div>
+        <div class="cal"><h3>Promotion 2027-2028 en Belgique</h3><p class="muted" style="font-size:15px;margin-bottom:10px">À proximité de Bruxelles</p>
+          <ul>{belgique.map(([c, n, d, end]) => <li class={past(end) ? 'past' : undefined}><i class={'dot m-' + c}></i><b>{n}</b><span>{d}</span>{past(end) && <em>terminé</em>}</li>)}</ul>
+        </div>
+      </div>
+      <div class="btns" style="margin-top:32px"><a class="btn" href={'mailto:' + EMAIL + '?subject=Je%20souhaite%20r%C3%A9server%20ma%20place%20en%20formation'}>Je réserve ma place</a><a class="btn ghost" href={'tel:' + TEL}><Fragment set:html={phone} />{TEL_AFFICHE}</a></div>
+    </div>
+  </section>
+
+  <section id="modules">
+    <div class="wrap">
+      <div class="head"><p class="kicker">Un parcours complet</p><h2>La formation avance module par module jusqu'à la certification</h2><p class="lead">L'objectif est de te rendre autonome, pertinent(e) et solide dans ta pratique.</p></div>
+      <div class="mods">
+        {modules.map(([c, n, t]) => (
+          <a class="mod" href={'https://www.arc-en-flex.fr/module-' + c + '/'} target="_blank" rel="noopener">
+            <img src={url('/img/module-' + c + '.jpg')} alt="" loading="lazy">
+            <div><span><i class={'dot m-' + c}></i>Module {n}</span><b>{t}</b></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

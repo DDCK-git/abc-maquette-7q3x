@@ -15,6 +15,8 @@ tags:
   - "professeur des écoles"
   - "crises devoirs"
   - "astuces devoirs"
+meta_description: "la façon dont l'enfant s'asseoit est en lien avec des réflexes archaïques non intégrés"
+meta_title: "Et si je te disais que la façon dont ton enfant s’assoit est due à des réflexes archaïques"
 ancienne_adresse: "et-si-je-te-disais-que-la-façon-dont-ton-enfant-s-assoit-n-est-pas-un-hasard"
 ---
 

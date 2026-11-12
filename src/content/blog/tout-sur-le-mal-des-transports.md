@@ -11,6 +11,8 @@ tags:
   - "mal des transports"
   - "réflexes archaïques obernai"
   - "réflexes primitifs"
+meta_description: "Se débarrasser du mal des transports à tout âge, c'est facile grâce à l'intégration des réflexes archaïques."
+meta_title: "Tout sur le mal des transports 🚗"
 ancienne_adresse: "tout-sur-le-mal-des-transports"
 ---
 

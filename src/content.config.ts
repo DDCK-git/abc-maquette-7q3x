@@ -11,6 +11,9 @@ const blog = defineCollection({
     description: z.string().optional().default(''),
     cover: z.string().optional(),
     tags: z.array(z.string()).optional().default([]),
+    // titre et description pour Google, s'ils diffèrent du titre et du résumé affichés
+    meta_title: z.string().optional(),
+    meta_description: z.string().optional(),
     // adresse de l'article sur l'ancien site Wix, conservée pour le référencement
     ancienne_adresse: z.string().optional(),
   }),

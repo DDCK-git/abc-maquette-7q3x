@@ -11,6 +11,7 @@ tags:
   - "sucer son pouce"
   - "tétine"
   - "réflexe de succion"
+meta_title: "Tout sur la tétine et/ou le pouce 👍"
 ancienne_adresse: "tout-sur-la-tétine-et-ou-le-pouce"
 ---
 

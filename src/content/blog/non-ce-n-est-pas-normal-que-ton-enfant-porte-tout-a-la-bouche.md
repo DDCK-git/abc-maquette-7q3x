@@ -4,6 +4,8 @@ date: 2026-07-12
 description: "Que ce soit les doigts, les cheveux, les vêtements ou des objets... porter des choses à la bouche après 3 ans révèle presque toujours la même chose : un besoin de stimulation proprioceptive pour apaiser le système nerveux, et des réflexes archaïques encore actifs (notamment autour de la sphère orale). Et si ce n’était pas un problème de comportement… mais un réflexe archaïque encore actif ? Le réflexe de Galant est souvent en cause chez les enfants qui ne tiennent pas en place."
 cover: /img/blog/couvertures/tetine.jpg
 tags: []
+meta_description: "Que ce soit les doigts, les cheveux, les vêtements ou des objets... porter des choses à la bouche après 3 ans révèle presque toujours la même chose : un besoin de stimulation proprioceptive pour apaiser le système nerveux, et des réflexes archaïques encore actifs (notamment autour de la sphère orale)."
+meta_title: "🙅‍♀️​ Non, ce n'est pas normal que ton enfant porte tout à la bouche 👄​"
 ancienne_adresse: "non-ce-n-est-pas-normal-que-ton-enfant-porte-tout-à-la-bouche"
 ---
 

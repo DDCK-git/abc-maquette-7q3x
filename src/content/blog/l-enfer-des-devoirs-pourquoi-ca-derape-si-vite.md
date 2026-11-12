@@ -15,6 +15,8 @@ tags:
   - "devoirs enfant"
   - "difficultés devoirs"
   - "TDAH enfant"
+meta_description: "Découvrez comment un simple timer visuel peut apaiser le moment des devoirs, réduire l’opposition, favoriser la concentration et diminuer le stress chez l’enfant."
+meta_title: "🎒 L’enfer des devoirs : pourquoi ça dérape si vite ?"
 ancienne_adresse: "l-enfer-des-devoirs-pourquoi-ça-dérape-si-vite"
 ---
 

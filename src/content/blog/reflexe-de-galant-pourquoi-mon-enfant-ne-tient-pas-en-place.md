@@ -15,6 +15,7 @@ tags:
   - "galant"
   - "concentration"
   - "impulsivité"
+meta_description: "Réflexe de Galant : découvrez pourquoi votre enfant ne tient pas en place et comment l’aider grâce aux réflexes archaïques."
 ancienne_adresse: "réflexe-de-galant-pourquoi-mon-enfant-ne-tient-pas-en-place"
 ---
 

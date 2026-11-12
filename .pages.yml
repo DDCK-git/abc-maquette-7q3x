@@ -35,6 +35,12 @@ content:
         label: Mots-clés
         type: string
         list: true
+      - name: meta_title
+        label: Titre pour Google (facultatif, sinon le titre de l'article)
+        type: string
+      - name: meta_description
+        label: Description pour Google (facultatif, sinon le résumé)
+        type: text
       - name: ancienne_adresse
         label: Ancienne adresse Wix (ne pas modifier)
         type: string

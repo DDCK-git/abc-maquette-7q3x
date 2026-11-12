@@ -20,6 +20,7 @@ tags:
   - "pop it"
   - "anti stress"
   - "réflexe de babkin"
+meta_description: "5 jeux à faire avec un Pop it pour travaille en parallèle la motricité fine, la dextérité et le sens de la stratégie. Ces jeux ont un impact sur les réflexes d'agrippement et de Babkin."
 ancienne_adresse: "5-jeux-malins-à-faire-avec-un-pop-it"
 ---
 

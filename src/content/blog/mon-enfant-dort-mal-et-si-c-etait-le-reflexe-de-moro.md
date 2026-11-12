@@ -12,6 +12,7 @@ tags:
   - "sursaut nocturne"
   - "réflexe de Moro"
   - "hypersensibilité sensorielle"
+meta_description: "Le réflexe de Moro peut expliquer les réveils nocturnes et le sommeil agité de ton enfant. Découvre les signes à repérer et ce qui aide vraiment à mieux dormir."
 ancienne_adresse: "mon-enfant-dort-mal-et-si-c-était-le-réflexe-de-moro"
 ---
 

@@ -20,6 +20,7 @@ tags:
   - "urgence"
   - "procrastination"
   - "confiance en soi"
+meta_description: "La plupart des psychologues et des médecins s'accordent à dire que la procrastination pourrait être causée par un manque d'assurance, une mauvaise estime de soi ou encore des difficultés de concentration, la peur de l'échec ou le perfectionnisme. Tous ces éléments peuvent avoir des liens avec des réflexes archaïques actifs."
 ancienne_adresse: "p-comme-procrastination-et-réflexes-liés"
 ---
 

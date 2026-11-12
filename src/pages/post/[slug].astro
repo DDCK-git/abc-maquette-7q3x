@@ -17,7 +17,8 @@ const { Content } = await render(post);
 const hasImage = /!\[[^\]]*\]\(/.test(post.body || '');
 const hasButton = /class="btn"/.test(post.body || '');
 const minutes = readingMinutes(post.body);
-const description = excerpt(post.data.description, 160) || post.data.title;
+const description = post.data.meta_description || excerpt(post.data.description, 160) || post.data.title;
+const pageTitle = post.data.meta_title || post.data.title + " · L'ABC des réflexes";
 const article = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -32,7 +33,7 @@ const article = {
   keywords: post.data.tags.join(', ') || undefined,
 };
 ---
-<Base title={post.data.title + " · L'ABC des réflexes"} description={description} current="blog" path={postPath(post)} image={post.data.cover} type="article" jsonld={[article]}>
+<Base title={pageTitle} description={description} current="blog" path={postPath(post)} image={post.data.cover} type="article" jsonld={[article]}>
   <article class="article">
     <div class="wrap narrow">
       <header>

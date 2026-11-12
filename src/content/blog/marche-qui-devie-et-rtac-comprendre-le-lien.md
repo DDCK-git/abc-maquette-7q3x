@@ -4,6 +4,7 @@ date: 2024-04-28
 description: "Tu te demandes pourquoi tu as tendance à dévier à la marche lorsque tu discutes avec un ami ? C'est une histoire de réflexes archaïques !"
 cover: /img/blog/couvertures/marche.jpg
 tags: []
+meta_description: "Le RTAC est un réflexe qui peut entraver la motricité globale et te faire dévier quand tu marches ou quand tu conduis"
 ancienne_adresse: "marche-qui-dévie-et-rtac-comprendre-le-lien"
 ---
 

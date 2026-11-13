@@ -41,6 +41,6 @@ export default defineConfig({
   base,
   trailingSlash: 'never',
   build: { format: 'file', inlineStylesheets: 'always' },
-  integrations: [sitemap({ filter: (page) => !/\/(about-1|404|politique|mentions-legales)/.test(decodeURI(page)) })],
+  integrations: [sitemap({ filter: (page) => !/\/(about-1|404|politique|mentions-legales|programme-du-soir|demo-programme)/.test(decodeURI(page)) })],
   markdown: { rehypePlugins: [prefixBase] },
 });

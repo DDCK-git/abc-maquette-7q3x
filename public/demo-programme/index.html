@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Démo · Programme du soir, 21 jours</title>
+<style>
+@font-face{font-family:Poppins;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/poppins-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Poppins;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/poppins-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:Poppins;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/poppins-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Poppins;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/poppins-latin-700-normal.woff2) format("woff2")}
+:root{--ink:#09371F;--ink2:#3E5C4C;--ground:#FBFBF4;--white:#FFFFFF;--line:#C9D6CF;--turq:#00B1B0;--t-turq:#D9F3F2;--t-rose:#FFE1EB;--t-coral:#FFE6E0;--t-sage:#E3ECE7;--coral:#FF8370;--page:#E7F4F5}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--page);color:var(--ink);font-family:Poppins,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+#shell{max-width:420px;min-height:100vh;margin:0 auto;background:var(--ground);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(9,55,31,.12)}
+#banner{background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 16px;text-align:center}
+#app{flex:1;display:flex;flex-direction:column;gap:16px;padding:24px 20px 20px}
+.kicker{margin:0;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+h1{margin:0;font-size:25px;line-height:1.25;font-weight:700}
+h2{margin:0;font-size:18px;font-weight:700}
+p{margin:0}
+.lead{font-size:14px;line-height:1.55;color:var(--ink2)}
+.small{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.stack{display:flex;flex-direction:column;gap:10px}
+.grow{flex:1}
+button{font-family:inherit;color:var(--ink);cursor:pointer}
+.btn{min-height:54px;border-radius:27px;border:none;background:var(--ink);color:#fff;font-size:16px;font-weight:600;padding:0 20px;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.btn[disabled]{background:#9DB3A8;cursor:default}
+.btn.ghost{background:var(--ground);color:var(--ink);border:2px solid var(--ink)}
+.link{background:none;border:none;padding:10px 0;font-size:13px;font-weight:600;text-decoration:underline;min-height:44px;color:var(--ink)}
+.opt{min-height:60px;border-radius:16px;border:1px solid var(--line);background:var(--white);padding:10px 14px;display:flex;align-items:center;gap:12px;text-align:left;font-size:15px;font-weight:500;line-height:1.35;width:100%}
+.opt.on{border:2px solid var(--ink);background:var(--t-turq);font-weight:600}
+.opt svg{flex-shrink:0}
+.bar{height:8px;border-radius:4px;background:var(--t-sage);overflow:hidden}
+.bar>i{display:block;height:8px;border-radius:4px;background:var(--turq)}
+.card{border-radius:20px;border:1px solid var(--line);background:var(--white);padding:16px}
+.tint{border-radius:20px;background:var(--t-turq);padding:16px 18px}
+.row{display:flex;align-items:center;gap:12px}
+.row>svg{flex-shrink:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:30px;padding:4px 12px;border-radius:15px;background:var(--t-sage);display:inline-flex;align-items:center;font-size:12px;font-weight:600}
+.chip.coral{background:var(--t-coral)}
+.check{min-height:52px;border-radius:14px;border:1px solid var(--line);background:var(--white);padding:8px 14px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;line-height:1.35;cursor:pointer}
+.check.on{background:var(--t-turq);border-color:var(--t-turq)}
+.check input{width:22px;height:22px;accent-color:var(--ink);flex-shrink:0}
+.pcard{width:100%;border:2px solid transparent;border-radius:20px;padding:14px;display:flex;align-items:center;gap:14px;text-align:left}
+.pcard.on{border-color:var(--ink)}
+.pcard svg{flex-shrink:0;overflow:visible}
+.pt{display:flex;flex-direction:column;gap:4px}
+.pt b{font-size:16px;line-height:1.25}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{min-width:44px;min-height:44px;padding:0 12px;border-radius:22px;border:1px solid var(--line);background:var(--white);font-size:14px;font-weight:600}
+.pill.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.lbl{font-size:14px;font-weight:700;margin-top:4px}
+.quote{border-left:4px solid var(--coral);padding:2px 0 2px 12px;font-size:13.5px;line-height:1.55}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pick{position:relative;min-height:150px;border-radius:18px;border:1px solid var(--line);padding:12px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.pick.on{outline:3px solid var(--ink);outline-offset:1px}
+.pick b{font-size:14px;font-weight:600;line-height:1.25}
+@keyframes flip{from{transform:rotateY(90deg) scale(.7)}to{transform:none}}
+@keyframes pulse{from{transform:scale(.86)}to{transform:scale(1)}}
+.tile.flip{animation:flip .55s ease-out}
+.tile.pend{border:none;padding:0;cursor:pointer;background:#FF8370;border-radius:50%;animation:pulse .7s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.tile.flip,.tile.pend{animation:none}}
+.mosaic{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;border-radius:12px;overflow:hidden}
+.mosaic.full{gap:0}
+.tile{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#3E5C4C;background:#EEF2E8;border-radius:5px}
+.tile.now{outline:3px solid var(--ink);outline-offset:-3px;background:#D9F3F2}
+.tile.on{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 700 300%22%3E%3Crect width=%22700%22 height=%22300%22 fill=%22%2312455A%22/%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%2295%22 cy=%22120%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22160%22 cy=%2230%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22215%22 cy=%2295%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22270%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22110%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22390%22 cy=%2225%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22445%22 cy=%2290%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22500%22 cy=%2240%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22545%22 cy=%22130%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22660%22 cy=%22150%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22665%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%2260%22 cy=%22165%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22240%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22470%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22120%22 cy=%2270%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22600%22 cy=%2275%22 r=%2246%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22580%22 cy=%2262%22 r=%2240%22 fill=%22%2312455A%22/%3E%3Cpath d=%22M110 62a16 16 0 0 1 30-6 14 14 0 0 1 26 8 12 12 0 0 1-4 23h-50a13 13 0 0 1-2-25z%22 fill=%22%23FF7FA8%22/%3E%3Cpath d=%22M352 58a14 14 0 0 1 27-5 12 12 0 0 1 22 7 10 10 0 0 1-3 20h-44a11 11 0 0 1-2-22z%22 fill=%22%23FFB3A4%22/%3E%3Cpath d=%22M0 300V222Q120 160 250 216T480 208T700 186V300Z%22 fill=%22%2300B1B0%22/%3E%3Cpath d=%22M90 214v-34%22 stroke=%22%2309371F%22 stroke-width=%228%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2290%22 cy=%22162%22 r=%2228%22 fill=%22%2309371F%22/%3E%3Ccircle cx=%2280%22 cy=%22156%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22100%22 cy=%22170%22 r=%224%22 fill=%22%23FF8370%22/%3E%3Crect x=%22296%22 y=%22168%22 width=%2264%22 height=%2248%22 fill=%22%23FBFBF4%22/%3E%3Cpath d=%22M286 170l42-34 42 34z%22 fill=%22%23FF8370%22/%3E%3Crect x=%22306%22 y=%22180%22 width=%2218%22 height=%2218%22 fill=%22%23FEC84D%22/%3E%3Crect x=%22334%22 y=%22186%22 width=%2216%22 height=%2230%22 fill=%22%2309371F%22/%3E%3Cpath d=%22M370 150q6-10 12 0M388 132q8-12 16 0%22 stroke=%22%23FBFBF4%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M520 206l24-40 24 40z%22 fill=%22%23FF8370%22/%3E%3Cpath d=%22M544 166v40%22 stroke=%22%2309371F%22 stroke-width=%224%22/%3E%3Cpath d=%22M0 300V262Q200 204 400 262T700 244V300Z%22 fill=%22%23008A89%22/%3E%3Ccircle cx=%2240%22 cy=%22272%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22140%22 cy=%22258%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22230%22 cy=%22262%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22276%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22430%22 cy=%22280%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22520%22 cy=%22268%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22610%22 cy=%22262%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22670%22 cy=%22270%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3C/svg%3E");background-size:700% 300%;border-radius:2px}
+.mosaic.full .tile.on{border-radius:0}
+.pick svg{width:72px;height:72px}
+.pick svg,.anim svg{overflow:visible}
+.anim{display:flex;justify-content:center;border-radius:16px;padding:12px}
+.anim svg{width:128px;height:128px}
+@keyframes fa{0%,49.9%{opacity:1}50%,100%{opacity:0}}
+@keyframes fb{0%,49.9%{opacity:0}50%,100%{opacity:1}}
+@keyframes rock{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+@keyframes puff{from{opacity:0}to{opacity:1}}
+.fa{animation:fa 1.4s linear infinite}
+.fb{opacity:0;animation:fb 1.4s linear infinite}
+.rock{transform-box:view-box;transform-origin:32px 44px;animation:rock 1.6s ease-in-out infinite alternate}
+.rise{animation:rise 2s ease-in-out infinite alternate}
+.puff{animation:puff 2s ease-in-out infinite alternate}
+.fb-only .fa{animation:none;opacity:0}.fb-only .fb{animation:none;opacity:1}.fb-only .rock{animation:none;transform:rotate(7deg)}.fb-only .rise{animation:none;transform:translateY(-6px)}.fb-only .puff{animation:none;opacity:1}
+@media (prefers-reduced-motion:reduce){.fa,.fb,.rock,.rise,.puff{animation:none}}
+.pick em{font-style:normal;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.day{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--ink2)}
+.dot{width:36px;height:36px;border-radius:18px;display:flex;align-items:center;justify-content:center}
+.dot.todo{border:2px dashed #9DB3A8}
+.dot.now{border:3px solid var(--ink);background:var(--t-turq)}
+.meter{display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:10px;font-size:13px}
+.meter .track{height:12px;border-radius:6px;background:var(--white);overflow:hidden}
+.meter .track i{display:block;height:12px;border-radius:6px;background:var(--ink)}
+.meter span:last-child{white-space:nowrap}
+textarea{border-radius:16px;border:1px solid #9DB3A8;background:var(--white);padding:14px;font-family:inherit;font-size:14px;line-height:1.5;color:var(--ink);resize:none;width:100%}
+label.t{font-size:15px;font-weight:700}
+#tabs{position:sticky;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--white);border-top:1px solid var(--line)}
+#tabs button{min-height:60px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:600;color:var(--ink2)}
+#tabs button.on{color:var(--ink);box-shadow:inset 0 3px 0 var(--turq)}
+#toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:10px 16px;border-radius:20px;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="shell">
+  <div id="banner">Démo : rien n'est enregistré ni envoyé. Les gestes et la grille viennent du blog et des posts de Sandy.</div>
+  <main id="app"></main>
+  <nav id="tabs" hidden></nav>
+</div>
+<div id="toast" role="status"></div>
+<pre id="selftest" hidden></pre>
+<script>
+var IC = {
+  check:'<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg>',
+  ring:'<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6E8579" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>',
+  clock:'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  cards:'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="12" height="16" rx="2"/><path d="M8 21h10a2 2 0 0 0 2-2V8"/></svg>',
+  list:'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>',
+  chat:'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/></svg>',
+  bell:'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 6 2 7 2 7H4s2-1 2-7"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>',
+  star:'<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="#09371F" stroke="#09371F" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.4 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.4 9.3l6-.7z"/></svg>',
+  today:'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14a8 8 0 1 1-9-10 6 6 0 0 0 9 10z"/></svg>',
+  grid:'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>',
+  play:'<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5l12 7-12 7z"/></svg>',
+  tournesol:'<svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g class="fa"><circle cx="32" cy="12" r="5.5" fill="#FFFFFF"/><path d="M32 18v20M32 24L14 16M32 24l18-8M32 38L18 56M32 38l14 18"/><path d="M8 28q-4 7 0 14M56 28q4 7 0 14" stroke="#FC3C80" stroke-width="2.5"/></g><g class="fb"><circle cx="32" cy="14" r="5.5" fill="#FFFFFF"/><path d="M32 20v18M32 25l-9 6 11 3M32 25l9 6-11 3M32 38l-5 10 4 8M32 38l5 10-4 8"/></g></svg>',
+  koala:'<svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 60h56" stroke-width="2.5"/><g class="rock"><circle cx="32" cy="18" r="5.5" fill="#FFFFFF"/><path d="M32 24v20M32 44l-12 8M32 44l12 8"/><path d="M21 30q-5 5 0 10M43 30q5 5 0 10" stroke="#FC3C80" stroke-width="2.5"/></g><path d="M22 8c7-4 13-4 20 0M22 8l1 5M22 8l5-1M42 8l-1 5M42 8l-5-1" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  enveloppement:'<svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 60h56" stroke-width="2.5"/><circle cx="32" cy="16" r="5.5" fill="#FFFFFF"/><path d="M19 32q13-11 26 0v20q-13 6-26 0z" fill="#FFFFFF"/><path d="M19 36q13 8 26 0" stroke-width="2.5"/><g class="fa"><path d="M3 42h8M7 38l4 4-4 4M61 42h-8M57 38l-4 4 4 4" stroke="#FC3C80" stroke-width="2.5"/></g><g class="fb"><path d="M8 42h8M12 38l4 4-4 4M56 42h-8M52 38l-4 4 4 4" stroke="#FC3C80" stroke-width="2.5"/></g></svg>',
+  ballon:'<svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 60h56" stroke-width="2.5"/><circle cx="32" cy="44" r="15" fill="#FFFFFF"/><g class="rock"><circle cx="10" cy="23" r="5.5" fill="#FFFFFF"/><path d="M16 26c10 1 26 0 38 8"/></g><path d="M22 9c7-4 13-4 20 0M22 9l1 5M22 9l5-1M42 9l-1 5M42 9l-5-1" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  poids:'<svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 56h56" stroke-width="2.5"/><circle cx="11" cy="45" r="5.5" fill="#FFFFFF"/><path d="M18 49h38"/><g class="fa"><circle cx="30" cy="38" r="7" fill="#FFFFFF"/><circle cx="25" cy="31" r="2.5" fill="#FFFFFF"/><circle cx="35" cy="31" r="2.5" fill="#FFFFFF"/></g><g class="fb"><circle cx="46" cy="38" r="7" fill="#FFFFFF"/><circle cx="41" cy="31" r="2.5" fill="#FFFFFF"/><circle cx="51" cy="31" r="2.5" fill="#FFFFFF"/></g><path d="M30 20h16M42 16l4 4-4 4" stroke="#FC3C80" stroke-width="2.5"/></svg>'
+};
+var PROGS = {
+  soir:{name:'Le programme du soir',why:'des signes autour du coucher : il décharge, il négocie, il sursaute. C\'est souvent un corps qui n\'a pas pu décharger, et souvent le réflexe de Moro qui est resté actif et garde le système nerveux en alerte.',chip:'Le soir'},
+  bouche:{name:'Le programme bouche',why:'des signes autour de la bouche : ongles, stylos, pouce. C\'est souvent le même signal.',chip:'La bouche'},
+  devoirs:{name:'Le programme devoirs',why:'des signes à la table des devoirs : posture, crayon, chaise. Tenir assis lui coûte cher.',chip:'Les devoirs'},
+  motricite:{name:'Le programme motricité',why:'des signes dans ses mouvements : il se cogne, il évite le vélo, il s\'assoit en W.',chip:'La motricité'}
+};
+var ORDER = ['soir','bouche','devoirs','motricite'];
+var QUIZ = [
+  {k:'Le soir',t:'Entre 18 h et 20 h, ton MINI, c\'est plutôt…',multi:true,o:[['Il court, il saute, il grimpe partout','soir'],['Il négocie chaque étape du coucher','soir'],['Une fois couché, il sursaute au moindre bruit','soir'],['Rien de tout ça, il se pose tout seul',null]]},
+  {k:'Les devoirs',t:'À la table des devoirs, tu vois…',multi:true,o:[['Il s\'affale, la tête sur le bras','devoirs'],['Il se tortille, il glisse de sa chaise','devoirs'],['Il serre son crayon à trouer la feuille','devoirs'],['Rien de tout ça',null]]},
+  {k:'La bouche',t:'Ce qu\'il met à la bouche…',multi:true,o:[['Il se ronge les ongles','bouche'],['Il mâchouille ses stylos ou son col','bouche'],['Il suce encore son pouce','bouche'],['Rien de tout ça',null]]},
+  {k:'Le mouvement',t:'Quand il bouge…',multi:true,o:[['Il se cogne, il renverse son verre','motricite'],['Il évite le vélo ou le ballon','motricite'],['Il s\'assoit souvent en W','motricite'],['Il est à l\'aise dans son corps',null]]},
+  {k:'La nuit',t:'Et une fois la lumière éteinte…',multi:true,o:[['Il ne s\'endort que si tu restes','soir'],['Il se réveille en sursaut','soir'],['Il dort les bras en croix, se découvre','soir'],['Il dort bien',null]]},
+  {k:'Ta priorité',t:'Ce qui te pèse le plus en ce moment…',multi:false,w:2,o:[['Les soirées et le coucher','soir'],['Les devoirs','devoirs'],['Ce qu\'il met à la bouche','bouche'],['Sa maladresse','motricite']]}
+];
+var GRID = ['Il se réveille en sursaut, sans raison apparente','Il dort les bras en croix ou les poings serrés','Il sursaute au moindre bruit, même léger','Il a du mal à s\'endormir seul, il a besoin d\'être rassuré en continu','Il réagit fort à la lumière, au toucher, ou à d\'autres stimulations sensorielles','Il semble « sur ses gardes » même quand tout est calme'];
+var ART_SOMMEIL = 'https://www.abcdesreflexes.com/post/mon-enfant-dort-mal-et-si-c-%C3%A9tait-le-r%C3%A9flexe-de-moro', ART_MORO = 'https://www.abcdesreflexes.com/post/m-comme-r%C3%A9flexe-de-moro';
+var CARDS = {
+  tournesol:{tint:'#FFF1CC',title:'Le tournesol',txt:'Allongé sur le dos, ton enfant écarte bras et jambes en étoile, puis les ramène doucement au centre du corps, comme pour se faire un câlin à lui-même.',meta:['5 à 8 fois','Lentement'],reflexe:'Réflexe de Moro',rx:'Le réflexe de Moro déclenche une réaction d\'alerte face à un danger perçu. Quand il reste actif, le corps reste en état d\'alerte, même la nuit, même endormi.',why:'Quand on travaille ce réflexe avec les bons mouvements, le système nerveux se calme enfin.',src:'son article « Réflexe de Moro et sommeil »',url:ART_SOMMEIL},
+  koala:{tint:'#FFE6E0',title:'Le koala',txt:'Ton enfant est assis, tu places tes mains sous ses bras et tu le berces doucement d\'un côté à l\'autre, en gardant un contact stable et sécurisant.',meta:['1 à 2 minutes'],reflexe:'Réflexe de Moro',rx:'Le réflexe de Moro déclenche une réaction d\'alerte face à un danger perçu. Quand il reste actif, le corps reste en état d\'alerte, même la nuit, même endormi.',why:'Quand on travaille ce réflexe avec les bons mouvements, le système nerveux se calme enfin.',src:'son article « Réflexe de Moro et sommeil »',url:ART_SOMMEIL},
+  enveloppement:{tint:'#FFE1EB',title:'L\'enveloppement',txt:'Un câlin ferme et enveloppant, bras autour du corps, en respirant calmement avec lui. Tu peux aussi installer un plaid tout doux autour de ton enfant.',meta:['20 à 30 secondes','Un plaid tout doux'],reflexe:'Réflexe de Moro',rx:'Le réflexe de Moro déclenche une réaction d\'alerte face à un danger perçu. Quand il reste actif, le corps reste en état d\'alerte, même la nuit, même endormi.',why:'Ce contact profond aide le système nerveux à comprendre qu\'il n\'y a pas de danger.',src:'son article « Réflexe de Moro et sommeil »',url:ART_SOMMEIL},
+  ballon:{tint:'#D9F3F2',title:'Le bercement sur le ballon',txt:'À plat ventre sur le ballon, un léger mouvement de balancement d\'avant en arrière ou de rotation douce.',meta:['Quelques minutes','Un gros ballon'],reflexe:'Réflexe de Moro',rx:'Le réflexe de Moro déclenche une réaction d\'alerte face à un danger perçu. Quand il reste actif, le corps reste en état d\'alerte, même la nuit, même endormi.',why:'Le mouvement rythmique et enveloppant du ballon imite un bercement, celui-là même qui rassure un tout-petit. Fait régulièrement avant le coucher, ça aide le corps à se sentir en sécurité.',src:'son post sur l\'auto-bercement',url:ART_MORO},
+  poids:{tint:'#E3ECE7',title:'Le poids doux',txt:'Allongé sur le ventre, tu fais rouler doucement une grosse peluche sur son dos, jamais sur la nuque ni la tête. Reste à côté, en silence, et retire-la s\'il n\'aime pas.',meta:['Une grosse peluche'],reflexe:'Réflexes liés à l\'alerte et au stress',rx:'Souvent, le corps reste en alerte au moment de se coucher, comme s\'il n\'arrivait pas à passer en « mode nuit ». Parmi les pistes que Sandy observe en bilan : certains réflexes liés à l\'alerte et au stress.',why:'',src:'son post sur le rituel DODO',url:''}
+};
+var SETS = [['tournesol','koala','enveloppement'],['ballon','poids','tournesol'],['koala','enveloppement','ballon'],['poids','tournesol','koala']];
+var JOURS = ['lun','mar','mer','jeu','ven','sam','dim'];
+var JOURS_ICS = ['MO','TU','WE','TH','FR','SA','SU'];
+var ORDRE_JOURS = [0,1,3,6,2,4,5];
+var HEURES = ['18 h 30','19 h 15','20 h'];
+var CANAUX = {agenda:'Mon agenda',whatsapp:'WhatsApp',sms:'SMS',email:'E-mail'};
+var PARCOURS = [
+  {k:'soir',c:'#D9F3F2',p:'Une soirée apaisée',t:'Le soir',r:'réflexe de Moro'},
+  {k:'bouche',c:'#FFE1EB',p:'Des stylos et des cols épargnés',t:'La bouche',r:'réflexes de la sphère orale'},
+  {k:'devoirs',c:'#FFF1CC',p:'Des devoirs sans cris ni colère',t:'Les devoirs',r:'réflexes toniques du cou'},
+  {k:'bougeotte',c:'#FFE6E0',p:'Un enfant qui arrive à se poser',t:'La bougeotte',r:'réflexe de Galant'},
+  {k:'pipi',c:'#E3ECE7',p:'Vers des nuits au sec',t:'Pipi au lit',r:'réflexe de Galant'},
+  {k:'habillage',c:'#D9F3F2',p:'Des matins plus cool',t:'L\'habillage',r:'réflexe de Galant'},
+  {k:'crises',c:'#FFE1EB',p:'Moins de débordements',t:'Les crises',r:'réflexe de Moro'}
+];
+var PIC = {
+  soir:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 28v30M8 46h48v12"/><rect x="12" y="37" width="13" height="8" rx="4" fill="#FFFFFF"/><path d="M27 46c2-9 25-9 29 0"/><path d="M36 10h9l-9 11h9M51 5h6l-6 7h6" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  bouche:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="26" cy="24" r="11" fill="#FFFFFF"/><path d="M22 22h.01M30 22h.01M26 35v21M26 42l11-5"/><path d="M34 29l20 7M54 36l4 1" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  devoirs:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="20" r="5.5" fill="#FFFFFF"/><path d="M18 26v18M18 44h12v14M18 32l16 6M32 40h26M54 40v18"/><path d="M34 38l7-10" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  bougeotte:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g class="rock"><circle cx="32" cy="14" r="5.5" fill="#FFFFFF"/><path d="M32 20v18M32 26l-12-5M32 26l12 5M32 38l-8 16M32 38l9 15"/></g><path d="M11 18q-5 9 0 18M53 18q5 9 0 18" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  pipi:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 28v30M8 46h48v12"/><rect x="12" y="37" width="13" height="8" rx="4" fill="#FFFFFF"/><path d="M27 46c2-9 25-9 29 0"/><path d="M44 6c4 6 7 9 7 13a7 7 0 0 1-14 0c0-4 3-7 7-13z" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  habillage:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M23 12L9 21l6 10 7-4v27h20V27l7 4 6-10-14-9c-2 6-14 6-18 0z" fill="#FFFFFF"/><path d="M32 19v8" stroke="#FC3C80" stroke-width="2.5"/></svg>',
+  crises:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="24" r="5.5" fill="#FFFFFF"/><path d="M32 30v16M32 34L20 26M32 34l12-8M32 46l-8 12M32 46l8 12"/><path d="M32 6v7M18 9l4 6M46 9l-4 6M10 22h7M47 22h7" stroke="#FC3C80" stroke-width="2.5"/></svg>'
+};
+function pCard(x,o){ o=o||{}; var tag=o.a?'button':'div';
+  return '<'+tag+' class="pcard'+(o.on?' on':'')+'" style="background:'+x.c+'"'+(o.a?' data-a="'+o.a+'" data-v="'+x.k+'" aria-pressed="'+(!!o.on)+'"':'')+'>'+PIC[x.k]+'<span class="pt"><b>'+x.p+'</b><span class="small">'+(o.note||(x.t+(x.r?' · '+x.r:'')))+'</span>'+(o.chip?'<span class="chip" style="background:#fff;align-self:flex-start">'+o.chip+'</span>':'')+'</span></'+tag+'>'; }
+var REPERES = {
+  7:{t:'Sandy t\'explique le réflexe de Moro',q:'Le réflexe de Moro est un réflexe archaïque présent chez tous les bébés dès la naissance. Il déclenche une réaction d\'alerte face à un danger perçu. Normalement, il s\'intègre vers 4 mois. Mais parfois, il reste actif bien après.',src:'son article « Réflexe de Moro et sommeil »',url:ART_SOMMEIL},
+  14:{t:'Sandy t\'explique ce que ce réflexe change au moment de dormir',q:'Quand le réflexe de Moro reste actif, le système nerveux de ton enfant reste en état d\'alerte, même au moment de s\'endormir. Le moindre bruit ou la moindre sensation peut suffire à le faire sursauter et repousser l\'endormissement.',src:'son post sur l\'auto-bercement',url:ART_MORO}
+};
+var SCENE = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 700 300%22%3E%3Crect width=%22700%22 height=%22300%22 fill=%22%2312455A%22/%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%2295%22 cy=%22120%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22160%22 cy=%2230%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22215%22 cy=%2295%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22270%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22110%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22390%22 cy=%2225%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22445%22 cy=%2290%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22500%22 cy=%2240%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22545%22 cy=%22130%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22660%22 cy=%22150%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22665%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%2260%22 cy=%22165%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22240%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22470%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22120%22 cy=%2270%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22600%22 cy=%2275%22 r=%2246%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22580%22 cy=%2262%22 r=%2240%22 fill=%22%2312455A%22/%3E%3Cpath d=%22M110 62a16 16 0 0 1 30-6 14 14 0 0 1 26 8 12 12 0 0 1-4 23h-50a13 13 0 0 1-2-25z%22 fill=%22%23FF7FA8%22/%3E%3Cpath d=%22M352 58a14 14 0 0 1 27-5 12 12 0 0 1 22 7 10 10 0 0 1-3 20h-44a11 11 0 0 1-2-22z%22 fill=%22%23FFB3A4%22/%3E%3Cpath d=%22M0 300V222Q120 160 250 216T480 208T700 186V300Z%22 fill=%22%2300B1B0%22/%3E%3Cpath d=%22M90 214v-34%22 stroke=%22%2309371F%22 stroke-width=%228%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2290%22 cy=%22162%22 r=%2228%22 fill=%22%2309371F%22/%3E%3Ccircle cx=%2280%22 cy=%22156%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22100%22 cy=%22170%22 r=%224%22 fill=%22%23FF8370%22/%3E%3Crect x=%22296%22 y=%22168%22 width=%2264%22 height=%2248%22 fill=%22%23FBFBF4%22/%3E%3Cpath d=%22M286 170l42-34 42 34z%22 fill=%22%23FF8370%22/%3E%3Crect x=%22306%22 y=%22180%22 width=%2218%22 height=%2218%22 fill=%22%23FEC84D%22/%3E%3Crect x=%22334%22 y=%22186%22 width=%2216%22 height=%2230%22 fill=%22%2309371F%22/%3E%3Cpath d=%22M370 150q6-10 12 0M388 132q8-12 16 0%22 stroke=%22%23FBFBF4%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M520 206l24-40 24 40z%22 fill=%22%23FF8370%22/%3E%3Cpath d=%22M544 166v40%22 stroke=%22%2309371F%22 stroke-width=%224%22/%3E%3Cpath d=%22M0 300V262Q200 204 400 262T700 244V300Z%22 fill=%22%23008A89%22/%3E%3Ccircle cx=%2240%22 cy=%22272%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22140%22 cy=%22258%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22230%22 cy=%22262%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22276%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22430%22 cy=%22280%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22520%22 cy=%22268%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22610%22 cy=%22262%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22670%22 cy=%22270%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3C/svg%3E';
+var S;
+function reset(){ S={screen:'accueil',q:0,answers:[[],[],[],[],[],[]],grid1:[],grid7:[],grid14:[],grid21:[],saved7:false,saved14:false,day:1,done:{},pending:null,lastFlip:null,picked:null,sent:false,draft:'',freq:4,days:[0,1,3,6],hour:'19 h 15',channel:'agenda',committed:false,wait:{}}; }
+function scores(){ var sc={soir:0,bouche:0,devoirs:0,motricite:0}; QUIZ.forEach(function(q,i){ S.answers[i].forEach(function(j){ var p=q.o[j][1]; if(p) sc[p]+=(q.w||1); }); }); return sc; }
+function topProg(){ var sc=scores(), best='soir', max=-1; ORDER.forEach(function(p){ if(sc[p]>max){max=sc[p];best=p;} }); return {key:best,max:max,sc:sc}; }
+function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toast._t); toast._t=setTimeout(function(){t.classList.remove('show');},1800); }
+function go(s){ S.screen=s; render(); window.scrollTo(0,0); }
+function has(a,v){ return a.indexOf(v)>=0; }
+function toggle(a,v){ var i=a.indexOf(v); if(i>=0) a.splice(i,1); else a.push(v); }
+function dueCheck(){ if(S.done[S.day]){ if(S.day===7 && !S.saved7) return 7; if(S.day===14 && !S.saved14) return 14; } return 0; }
+function meterRow(label,set,saved,day){ var txt; if(saved){ txt=set.length+' sur '+GRID.length; } else if(S.day<day){ txt='dans '+(day-S.day)+(day-S.day>1?' jours':' jour'); } else if(S.day===day){ txt='ce soir'; } else { txt='pas fait'; } return '<div class="meter"><b>'+label+'</b><div class="track">'+(saved?'<i style="width:'+Math.round(set.length/GRID.length*100)+'%"></i>':'')+'</div><span>'+txt+'</span></div>'; }
+function act(name,arg){
+  if(name==='start'){ go('quiz'); }
+  else if(name==='opt'){ var q=QUIZ[S.q], a=S.answers[S.q]; if(q.multi){ var none=q.o[arg][1]===null; if(none){ S.answers[S.q]=has(a,arg)?[]:[arg]; } else { S.answers[S.q]=a.filter(function(j){return q.o[j][1]!==null;}); toggle(S.answers[S.q],arg); } } else { S.answers[S.q]=[arg]; } render(); }
+  else if(name==='next'){ if(S.q<QUIZ.length-1){ S.q++; go('quiz'); } else go('resultat'); }
+  else if(name==='prev'){ if(S.q>0){ S.q--; go('quiz'); } else go('accueil'); }
+  else if(name==='toGrid'){ go('grille'); }
+  else if(name==='toCommit'){ go('engagement'); }
+  else if(name==='freq'){ S.freq=arg; S.days=ORDRE_JOURS.slice(0,arg).sort(function(a,b){return a-b;}); render(); }
+  else if(name==='day'){ toggle(S.days,arg); S.days.sort(function(a,b){return a-b;}); S.freq=S.days.length; render(); }
+  else if(name==='hour'){ S.hour=HEURES[arg]; render(); }
+  else if(name==='channel'){ S.channel=arg; render(); }
+  else if(name==='commit'){ var first=!S.committed; S.committed=true; if(first){ go('grille'); } else { go('suivi'); toast('Tes soirs sont mis à jour'); } }
+  else if(name==='wait'){ S.wait[arg]=!S.wait[arg]; render(); }
+  else if(name==='g1'){ toggle(S.grid1,arg); render(); }
+  else if(name==='saveG1'){ S.day=1; S.picked=null; go('jour'); toast('Grille du jour 1 enregistrée'); }
+  else if(name==='pick'){ S.picked=arg; render(); }
+  else if(name==='done'){ if(!S.picked) return; S.done[S.day]=S.picked; S.pending=S.day; S.picked=null; go('suivi'); }
+  else if(name==='flip'){ if(S.pending!==arg) return; S.pending=null; S.lastFlip=arg; render(); toast(Object.keys(S.done).length===21?'Le tableau est complet':'Un morceau de plus'); }
+  else if(name==='nextDay'){ S.pending=null; var due=dueCheck(); if(S.saved21){ go('bilan'); } else if(due){ go('grille'+due); } else if(!S.done[S.day] && S.day<21){ S.picked=null; go('jour'); } else if(S.day<21){ S.day++; S.picked=null; go('jour'); } else go('grille21'); }
+  else if(name==='g7'){ toggle(S.grid7,arg); render(); }
+  else if(name==='g14'){ toggle(S.grid14,arg); render(); }
+  else if(name==='saveG7'){ S.saved7=true; go('suivi'); toast('Point d\'étape enregistré'); }
+  else if(name==='saveG14'){ S.saved14=true; go('suivi'); toast('Point d\'étape enregistré'); }
+  else if(name==='jump21'){ S.pending=null; for(var d=1; d<=20; d++){ if(!S.done[d]) S.done[d]=SETS[(d-1)%4][d%3]; } if(!S.saved7){ S.grid7=S.grid1.slice(); S.saved7=true; } if(!S.saved14){ S.grid14=S.grid1.slice(0,Math.max(S.grid1.length-1,0)); S.saved14=true; } S.day=21; S.picked=null; go('grille21'); }
+  else if(name==='g21'){ toggle(S.grid21,arg); render(); }
+  else if(name==='saveG21'){ S.done[21]=S.done[21]||'poids'; S.saved21=true; go('bilan'); }
+  else if(name==='tab'){ go(arg); }
+  else if(name==='send'){ var ta=document.getElementById('q'); S.draft=ta?ta.value.trim():S.draft; if(!S.draft){ toast('Écris ta question d\'abord'); return; } S.sent=true; render(); }
+  else if(name==='again'){ S.sent=false; S.draft=''; render(); }
+  else if(name==='reset'){ reset(); go('accueil'); }
+}
+function vAccueil(){ return '<p class="kicker">Sandy · ABC des réflexes</p><h1>Le programme du soir en 21 jours</h1><p class="lead">Ton enfant décharge à fond le soir, le coucher s\'éternise, ça négocie, ça pleure pour un rien. Tu n\'as rien à lire : ton enfant choisit chaque soir un geste à faire avec toi.</p>'
+  +'<div class="tint stack" style="gap:14px"><div class="row" style="align-items:flex-start">'+IC.list+'<p style="font-size:14px;line-height:1.45"><b style="font-size:15px">Comprendre</b><br>Un repérage en 6 questions.</p></div><div class="row" style="align-items:flex-start">'+IC.cards+'<p style="font-size:14px;line-height:1.45"><b style="font-size:15px">Agir</b><br>Un geste par jour à faire avec ton MINI, en 7 minutes.</p></div><div class="row" style="align-items:flex-start">'+IC.clock+'<p style="font-size:14px;line-height:1.45"><b style="font-size:15px">S\'engager</b><br>Tu choisis tes jours et on te rappelle de faire les gestes.</p></div><div class="row" style="align-items:flex-start">'+IC.chat+'<p style="font-size:14px;line-height:1.45"><b style="font-size:15px">Demander</b><br>Sandy répond à une question par semaine, et tu retrouves toutes les réponses précédentes.</p></div></div>'
+  +'<div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:6px">Ce que ce programme n\'est pas</p><p class="small">Ce programme propose des gestes doux. Ce n\'est pas un diagnostic ni un traitement, et si ton enfant ronfle, fait des pauses en respirant ou transpire beaucoup, parles-en aussi à ton médecin.</p></div>'
+  +'<div class="grow"></div><button class="btn" data-a="start">Commencer le repérage</button>'; }
+function vQuiz(){ var q=QUIZ[S.q], a=S.answers[S.q], pct=Math.round((S.q+1)/QUIZ.length*100);
+  var h='<div class="row"><button class="opt" data-a="prev" aria-label="Question précédente" style="width:44px;min-height:44px;height:44px;border-radius:22px;padding:0;justify-content:center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><div class="grow stack" style="gap:6px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500;color:#3E5C4C"><span>Repérage</span><span>'+(S.q+1)+' sur '+QUIZ.length+'</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div></div>';
+  h+='<div class="stack" style="gap:8px;margin-top:6px"><p class="kicker">'+q.k+'</p><h1>'+q.t+'</h1><p class="lead">'+(q.multi?'Coche tout ce que tu vois souvent. Il n\'y a pas de bonne réponse.':'Une seule réponse.')+'</p></div><div class="stack">';
+  q.o.forEach(function(o,i){ var on=has(a,i); h+='<button class="opt'+(on?' on':'')+'" data-a="opt" data-v="'+i+'" aria-pressed="'+on+'">'+(on?IC.check:IC.ring)+'<span>'+o[0]+'</span></button>'; });
+  h+='</div><div class="grow"></div><button class="btn" data-a="next"'+(a.length?'':' disabled')+'>'+(S.q<QUIZ.length-1?'Suivant':'Voir mon point de départ')+'</button>'; return h; }
+function vResultat(){ var t=topProg(), cat=['soir','bouche','devoirs'], best='soir', bm=-1;
+  cat.forEach(function(k){ if(t.sc[k]>bm){ bm=t.sc[k]; best=k; } });
+  var p=PROGS[best], lab={soir:'le soir',bouche:'la bouche',devoirs:'les devoirs'}[best], prop=PARCOURS.filter(function(x){return x.k===best;})[0];
+  var h='<p class="kicker">Ton point de départ</p><h1>Je te propose de commencer par '+lab+'</h1>';
+  h+='<p class="lead">'+(bm>0?'Tu as surtout coché '+p.why:'Tu n\'as presque rien coché, et c\'est une bonne nouvelle. Tu peux quand même essayer le parcours du soir : il structure la fin de journée.')+'</p>';
+  h+='<p class="lbl">Ma proposition pour toi</p>'+pCard(prop,{on:true,chip:'Choisi pour commencer'});
+  var autres=PARCOURS.filter(function(x){return x.k!==best;}).sort(function(a,b){ return (t.sc[b.k]>0?1:0)-(t.sc[a.k]>0?1:0); });
+  h+='<p class="lbl">Les autres parcours</p><div class="stack">'+autres.map(function(x){ var on=!!S.wait[x.k]; return pCard(x,{a:'wait',on:on,note:on?'Tu seras prévenue quand il sortira.':'',chip:(!on&&t.sc[x.k]>0)?'Repéré dans tes réponses':''}); }).join('')+'</div>';
+  h+='<div class="grow"></div>'+(best!=='soir'?'<p class="small">Dans cette démo, seul le parcours du soir est construit : la suite te le montre.</p>':'')+'<button class="btn" data-a="toCommit">'+(best==='soir'?'Commencer par le soir':'Voir la suite avec le parcours du soir')+'</button>'; return h; }
+function semaines(j,f){ var w=Math.ceil(j/f); return w+' semaine'+(w>1?'s':''); }
+function joursTxt(){ return S.days.map(function(d){return JOURS[d];}).join(', '); }
+function agenda(){ var d=new Date(), pad=function(x){return (x<10?'0':'')+x;}, hm=S.hour.replace(' h ',':').replace(' h',':00').split(':');
+  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ABC des reflexes//Programme du soir//FR','BEGIN:VEVENT','UID:programme-soir-'+d.getTime()+'@abcdesreflexes.com','DTSTAMP:'+d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+'T000000Z','DTSTART:'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'T'+pad(parseInt(hm[0],10))+pad(parseInt(hm[1],10))+'00','DURATION:PT10M','RRULE:FREQ=WEEKLY;BYDAY='+S.days.map(function(x){return JOURS_ICS[x];}).join(',')+';COUNT=21','SUMMARY:Le programme du soir avec mon MINI (7 minutes)','BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:C\'est l\'heure de la carte','TRIGGER:-PT10M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  return 'data:text/calendar;charset=utf-8,'+encodeURIComponent(ics); }
+function vEngagement(){ var f=S.freq;
+  var h='<p class="kicker">Ton engagement</p><h1>Combien de soirs par semaine veux-tu faire le programme avec ton MINI ?</h1><p class="lead">Le programme compte 21 jours d\'activité, que tu répartis sur autant de semaines qu\'il te faut. Choisis un rythme que tu peux vraiment tenir, tu pourras le changer à tout moment.</p>';
+  h+='<div class="pills">'+[0,1,2,3,4,5,6,7].map(function(i){ return '<button class="pill'+(f===i?' on':'')+'" data-a="freq" data-v="'+i+'" aria-pressed="'+(f===i)+'">'+i+'</button>'; }).join('')+'</div>';
+  if(f>0){
+    h+='<p class="small"><b style="color:#09371F">À ce rythme, tes 21 jours d\'activité te prendront '+semaines(21,f)+'.</b></p>';
+    h+='<p class="lbl">Quels soirs ?</p><div class="pills">'+JOURS.map(function(j,i){ var on=has(S.days,i); return '<button class="pill'+(on?' on':'')+'" data-a="day" data-v="'+i+'" aria-pressed="'+on+'">'+j+'</button>'; }).join('')+'</div>';
+    h+='<p class="lbl">Vers quelle heure ?</p><div class="pills">'+HEURES.map(function(x,i){ return '<button class="pill'+(S.hour===x?' on':'')+'" data-a="hour" data-v="'+i+'">'+x+'</button>'; }).join('')+'</div>';
+    h+='<p class="lbl">Comment veux-tu que je te le rappelle ?</p><div class="pills">'+Object.keys(CANAUX).map(function(k){ return '<button class="pill'+(S.channel===k?' on':'')+'" data-a="channel" data-v="'+k+'">'+CANAUX[k]+'</button>'; }).join('')+'</div>';
+    h+='<div class="card"><p class="small">'+(S.channel==='agenda'?'Tes soirs sont bloqués dans l\'agenda de ton téléphone, qui te prévient 10 minutes avant.':(S.channel==='email'?'Tu reçois un e-mail le matin de chacun de tes soirs.':'Tu reçois un message '+CANAUX[S.channel]+' à '+S.hour+', uniquement les soirs choisis.'))+'</p></div>';
+  } else { h+='<div class="card"><p class="small">Sans soir choisi, il n\'y a pas de rappel : c\'est toi qui penses à venir quand tu peux.</p></div>'; }
+  h+='<div class="grow"></div><button class="btn" data-a="commit">'+(f>0?'Je m\'engage pour '+f+(f>1?' soirs':' soir')+' par semaine':'Continuer sans engagement')+'</button>'; return h; }
+function vParcours(){ var sc=scores();
+  var h='<p class="kicker">Les parcours</p><h1>Tu pourras enchaîner avec un autre parcours quand celui-ci sera terminé</h1><p class="lead">Chaque parcours reprend un guide de Sandy et travaille un réflexe. Un même réflexe se cache souvent derrière plusieurs signes.</p><div class="stack">';
+  PARCOURS.forEach(function(x){ var cur=x.k==='soir', on=!!S.wait[x.k];
+    h+= cur ? pCard(x,{on:true,chip:'En cours'}) : pCard(x,{a:'wait',on:on,note:on?'Tu seras prévenue quand il sortira.':'',chip:(!on&&sc[x.k]>0)?'Repéré dans tes réponses':''}); });
+  h+='</div><p class="small">Dans la vraie version, toucher un parcours sert à savoir lequel construire en premier.</p>'; return h; }
+function vGrille(which){ var set={1:S.grid1,7:S.grid7,14:S.grid14,21:S.grid21}[which], a='g'+which;
+  var week='Coche ce que tu vois ce soir sans chercher à te souvenir de la dernière fois. Sept jours d\'activité, c\'est encore court, alors on se contente de noter.';
+  var T={1:'Regarde ton MINI ce soir sans rien changer',7:'On refait la grille après 7 jours d\'activité',14:'On refait la grille après 14 jours d\'activité',21:'On refait une dernière fois la grille du jour 1'}[which];
+  var L={1:'Coche ce que tu vois. Ce sont les signes d\'un réflexe de Moro encore actif, d\'après la grille de Sandy. Tu referas exactement la même grille tous les 7 jours d\'activité.',7:week,14:week,21:'Coche ce que tu vois encore ce soir sans chercher à te souvenir de ce que tu avais coché.'}[which];
+  var B={1:'Enregistrer ma grille',7:'Enregistrer mon point d\'étape',14:'Enregistrer mon point d\'étape',21:'Comparer avec le jour 1'}[which];
+  var h='<p class="kicker">Grille d\'observation · Jour '+which+'</p><h1>'+T+'</h1><p class="lead">'+L+'</p><div class="stack" style="gap:8px">';
+  GRID.forEach(function(g,i){ var on=has(set,i); h+='<label class="check'+(on?' on':'')+'"><input type="checkbox" data-a="'+a+'" data-v="'+i+'"'+(on?' checked':'')+'><span>'+g+'</span></label>'; });
+  h+='</div><div class="grow"></div><div class="row"><span class="dot" style="width:44px;height:44px;border-radius:22px;background:#FF8370;font-size:18px;font-weight:700;flex-shrink:0">'+set.length+'</span><p class="small">'+(set.length>1?'cases cochées':'case cochée')+' ce soir. '+(which===1&&set.length>=3?'Avec 3 cases ou plus, Sandy écrit que le réflexe de Moro est probablement encore actif.':'C\'est ton point de repère, pas une note.')+'</p></div><button class="btn" data-a="saveG'+which+'">'+B+'</button>'; return h; }
+function vJour(){ var ks=SETS[(S.day-1)%4], already=S.done[S.day];
+  var h='<p class="kicker">Jour '+S.day+' sur 21</p><h1>C\'est ton MINI qui choisit la carte de ce soir</h1><p class="lead">Tends-lui le téléphone pour qu\'il touche le bonhomme qui fait le geste dont il a envie.</p><div class="cards">';
+  ks.forEach(function(k){ var c=CARDS[k], on=S.picked===k; h+='<button class="pick'+(on?' on':'')+'" data-a="pick" data-v="'+k+'" aria-pressed="'+on+'" style="background:'+c.tint+'">'+IC[k]+'<b>'+c.title+'</b></button>'; });
+  h+='</div>';
+  if(S.picked){ var c=CARDS[S.picked]; h+='<div class="card stack" style="gap:12px"><div class="anim" style="background:'+c.tint+'">'+IC[S.picked]+'</div><h2>'+c.title+'</h2><p style="font-size:14px;line-height:1.55">'+c.txt+'</p><div class="chips"><span class="chip" style="background:'+c.tint+'">'+c.reflexe+'</span>'+c.meta.map(function(m){return '<span class="chip">'+m+'</span>';}).join('')+'</div><p class="small"><b style="color:#09371F">Le réflexe en jeu.</b> '+c.rx+'</p><p class="small"><b style="color:#09371F">Ce que le geste lui apporte.</b> '+(c.why||'Sandy ne l\'explique pas encore dans ses posts : à compléter avec elle.')+'</p><p class="small">Geste décrit par Sandy dans '+c.src+'.'+(c.url?' <a href="'+c.url+'" target="_blank" rel="noopener" style="color:#09371F;font-weight:600">Lire son article</a>':'')+'</p></div>'; }
+  else { h+='<div class="card"><p class="small">'+(already?'La carte du jour est déjà faite. Il peut en choisir une autre s\'il en redemande.':'Laisse-le prendre son temps pour choisir. Sandy le rappelle : en douceur, jamais en force, et si ton enfant montre un inconfort, on arrête et on observe.')+'</p></div>'; }
+  h+='<div class="grow"></div><button class="btn" data-a="done"'+(S.picked?'':' disabled')+'>C\'est fait, il a gagné sa gommette</button>'; return h; }
+function vSuivi(){ var n=Object.keys(S.done).length-(S.pending?1:0), full=n===21;
+  var h='<p class="kicker">Le suivi de ton MINI</p><h1>'+(n===0?'Ton MINI n\'a pas encore retourné de gommette':(n===1?'Ton MINI a retourné sa première gommette':'Ton MINI a déjà retourné '+n+' gommettes'))+'</h1><div class="card" style="padding:12px"><div class="mosaic'+(full?' full':'')+'">';
+  for(var d=1; d<=21; d++){ var col=(d-1)%7, row=Math.floor((d-1)/7);
+    if(S.pending===d) h+='<button class="tile pend" data-a="flip" data-v="'+d+'" aria-label="Retourner la gommette du jour '+d+'">'+IC.star+'</button>';
+    else if(S.done[d]) h+='<div class="tile on'+(S.lastFlip===d?' flip':'')+'" style="background-position:'+(col/6*100)+'% '+(row/2*100)+'%" title="Jour '+d+' : '+CARDS[S.done[d]].title+'"></div>';
+    else h+='<div class="tile'+(d===S.day?' now':'')+'">'+d+'</div>'; }
+  S.lastFlip=null;
+  h+='</div><p class="small" style="margin-top:10px">'+(S.pending?'<b style="color:#09371F">Ton MINI peut retourner la gommette du jour.</b> Elle cache un morceau du tableau.':(full?'Le tableau de ton MINI est complet et il peut le garder.':'Chaque gommette retournée dévoile un morceau du tableau, qui sera complet au jour 21.'))+'</p>'+(full?'<a class="btn ghost" style="margin-top:12px" download="le-tableau-de-mon-mini.svg" href="'+SCENE+'">Garder le tableau de ton MINI</a>':'')+'</div>';
+  h+='<div class="tint stack" style="gap:10px"><p style="font-size:15px;font-weight:700">Ta grille d\'observation</p>'+meterRow('Jour 1',S.grid1,true,1)+meterRow('Jour 7',S.grid7,S.saved7,7)+meterRow('Jour 14',S.grid14,S.saved14,14)+meterRow('Jour 21',S.grid21,!!S.saved21,21)+'<p class="small">Tu refais la même grille tous les 7 jours d\'activité. Au jour 21, tu la compares avec celle du jour 1 et je te dis vers qui te tourner si rien n\'a bougé.</p></div>';
+  var rk=S.saved14?14:(S.saved7?7:0); if(rk){ var r=REPERES[rk]; h+='<div class="card stack" style="gap:8px"><p class="kicker">Repère après '+rk+' gommettes</p><h2>'+r.t+'</h2><p class="quote">« '+r.q+' »</p><p class="small">Extrait de '+r.src+'.</p><a class="link" style="padding:0;min-height:32px;display:inline-flex;align-items:center" href="'+r.url+'" target="_blank" rel="noopener">Lire l\'article de Sandy sur ce réflexe</a></div>'; }
+  if(S.freq>0){ var wk=n%S.freq, full2=(n>0&&wk===0); var faits=full2?S.freq:wk;
+    h+='<div class="card stack" style="gap:10px"><div class="row">'+IC.bell+'<p style="font-size:13px;line-height:1.45"><b>Tes soirs : '+joursTxt()+' à '+S.hour+'.</b> Rappel par '+CANAUX[S.channel].toLowerCase().replace('mon agenda','ton agenda')+'.</p></div><div class="meter"><b>Semaine</b><div class="track"><i style="width:'+Math.round(faits/S.freq*100)+'%"></i></div><span>'+faits+' sur '+S.freq+'</span></div>'+(n<21?'<p class="small">Il te reste '+(21-n)+' jour'+(21-n>1?'s':'')+' d\'activité, soit '+semaines(21-n,S.freq)+' à ce rythme.</p>':'')+'<div class="row" style="gap:16px"><button class="link" style="padding:0;min-height:32px" data-a="toCommit">Changer mes soirs</button>'+(S.channel==='agenda'?'<a class="link" style="padding:0;min-height:32px;display:inline-flex;align-items:center" download="programme-du-soir.ics" href="'+agenda()+'">Ajouter à mon agenda</a>':'')+'</div></div>';
+  } else { h+='<div class="card row">'+IC.bell+'<p style="font-size:13px;line-height:1.45">Tu n\'as pas choisi de soirs, donc pas de rappel. <button class="link" style="padding:0;min-height:0" data-a="toCommit">Choisir mes soirs</button></p></div>'; }
+  h+='<div class="grow"></div>';
+  h+='<button class="btn" data-a="nextDay">'+(S.saved21?'Voir le bilan des 21 jours':dueCheck()?'Faire le point après '+dueCheck()+' jours d\'activité':(S.day<21?(S.done[S.day]?'Passer au jour '+(S.day+1):'Aller à la carte du jour'):'Refaire la grille du jour 21'))+'</button><button class="link" data-a="jump21">Démo : sauter directement au jour 21</button>'; return h; }
+function vQuestion(){ var h='<p class="kicker">La question de la semaine</p><h1>Sandy répond chaque semaine à la question d\'un parent</h1><p class="lead">Sa réponse s\'écoute ici et en story.</p>';
+  h+='<div class="tint stack" style="background:#FFE6E0;gap:12px"><p class="kicker" style="color:#09371F">Cette semaine</p><p style="font-size:16px;line-height:1.4;font-weight:600">« Tu proposes quoi à la place quand ça bouge dans tous les sens ? »</p><div class="card row" style="padding:12px;border:none"><button aria-label="Écouter la réponse de Sandy" data-a="noop" style="width:48px;height:48px;border-radius:24px;border:none;background:#09371F;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+IC.play+'</button><div class="grow stack" style="gap:6px"><b style="font-size:13px">La réponse de Sandy</b><div class="bar" style="height:6px"><i style="width:35%;height:6px"></i></div></div><span class="small">audio</span></div><p style="font-size:13px;line-height:1.5">Question posée par une maman en commentaire d\'un post de Sandy.</p></div>';
+  h+='<p class="lbl">Les réponses des semaines précédentes</p><div class="stack">'+['Semaine 2','Semaine 1'].map(function(w){ return '<button class="opt" data-a="noop" style="min-height:52px">'+IC.play.replace('#FFFFFF','#09371F')+'<span><b>'+w+'</b><br><span class="small">La question retenue et la réponse de Sandy</span></span></button>'; }).join('')+'</div>';
+  if(S.sent){ h+='<div class="card stack"><h2>Question reçue</h2><p class="small">« '+S.draft.replace(/[<>&]/g,'')+' »</p><p class="small">Sandy en choisit une par semaine. Si c\'est la tienne, tu l\'entendras ici et en story.</p><button class="link" data-a="again">Poser une autre question</button></div>'; }
+  else { h+='<div class="stack" style="gap:8px"><label class="t" for="q">Ta question</label><textarea id="q" rows="4" placeholder="Depuis le jour 5, il refuse le sandwich…"></textarea></div><div class="card" style="padding:12px 14px"><p class="small">Sandy ne répond pas à chacun : elle choisit chaque semaine la question qui servira au plus de parents. Le bilan est là pour la situation précise de ton enfant.</p></div><div class="grow"></div><button class="btn" data-a="send">Envoyer ma question</button>'; }
+  return h; }
+function vBilan(){ var a=S.grid1.length, b=S.grid21.length, diff=a-b;
+  var h='<p class="kicker">Jour 21</p><h1>'+(diff>0?'Il y a du mouvement sur ta grille':'Ta grille n\'a pas bougé')+'</h1>';
+  h+='<div class="tint stack" style="gap:10px">'+meterRow('Jour 1',S.grid1,true,1)+(S.saved7?meterRow('Jour 7',S.grid7,true,7):'')+(S.saved14?meterRow('Jour 14',S.grid14,true,14):'')+meterRow('Jour 21',S.grid21,true,21)+'</div>';
+  if(diff>0){ h+='<p class="lead">'+diff+(diff>1?' signes':' signe')+' en moins par rapport au jour 1. Garde les gestes qu\'il redemande.</p><div class="card"><p class="small">Si des signes restent et te pèsent, un bilan au cabinet permet de les regarder de plus près.</p></div>'; }
+  else { h+='<p class="lead">Ça arrive, et ça ne veut pas dire que tu as mal fait. C\'est le moment de regarder plus loin.</p><div class="card stack"><p style="font-size:14px;font-weight:600">Vers qui te tourner</p><p class="small">Un bilan de 90 minutes au cabinet permet de voir quels réflexes restent actifs.</p></div>'; }
+  h+='<div class="grow"></div><a class="btn" href="https://www.abcdesreflexes.com" target="_blank" rel="noopener">Voir comment se passe un bilan</a><button class="btn ghost" data-a="tab" data-v="suivi">Revoir le tableau de mon MINI</button><button class="link" data-a="reset">Recommencer la démo</button>'; return h; }
+function vGestes(){ return '<p class="kicker">Planche des gestes</p><h1>Les cinq bonshommes animés du programme du soir</h1><p class="lead">Chaque bonhomme montre à l\'enfant le geste qu\'il va faire.</p><div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr))">'+Object.keys(CARDS).map(function(k){ return '<div class="pick" style="background:'+CARDS[k].tint+'">'+IC[k]+'<b>'+CARDS[k].title+'</b></div>'; }).join('')+'</div><div class="grow"></div><button class="btn" data-a="reset">Revenir au début de la démo</button>'; }
+function render(){ var v={gestes:vGestes,accueil:vAccueil,quiz:vQuiz,resultat:vResultat,engagement:vEngagement,parcours:vParcours,grille:function(){return vGrille(1);},grille7:function(){return vGrille(7);},grille14:function(){return vGrille(14);},grille21:function(){return vGrille(21);},jour:vJour,suivi:vSuivi,question:vQuestion,bilan:vBilan}[S.screen];
+  document.getElementById('app').innerHTML=v();
+  var tabs=document.getElementById('tabs'), show=has(['jour','suivi','question','bilan','parcours'],S.screen); tabs.hidden=!show;
+  if(show){ tabs.innerHTML=[['jour','Ce soir',IC.today],['suivi','Progression',IC.grid],['parcours','Parcours',IC.cards],['question','Question',IC.chat]].map(function(t){ return '<button data-a="tab" data-v="'+t[0]+'" class="'+(S.screen===t[0]?'on':'')+'">'+t[2]+'<span>'+t[1]+'</span></button>'; }).join(''); } }
+document.addEventListener('click',function(e){ var el=e.target.closest('[data-a]'); if(!el||el.disabled) return; var a=el.getAttribute('data-a'); if(a==='g1'||a==='g7'||a==='g14'||a==='g21'||a==='noop') return; var v=el.getAttribute('data-v'); act(a, v!==null && /^\d+$/.test(v)?parseInt(v,10):v); });
+document.addEventListener('change',function(e){ var el=e.target; if(el.matches && el.matches('input[data-a]')) act(el.getAttribute('data-a'),parseInt(el.getAttribute('data-v'),10)); });
+function preset(name){ if(name==='devoirs'){ reset(); S.answers=[[3],[0,1,2],[3],[3],[3],[1]]; S.screen='resultat'; return; } if(name==='tableau'){ preset('bilan'); S.screen='suivi'; return; } if(name==='retourner'){ preset('suivi'); S.done[4]='koala'; S.pending=4; return; } reset(); S.answers=[[0,2],[3],[0],[3],[0],[0]]; S.grid1=[0,1,3,5]; S.committed=(name!=='engagement'&&name!=='resultat'&&name!=='quiz'&&name!=='accueil');
+  if(name==='quiz'){ S.q=0; S.answers=[[0,2],[],[],[],[],[]]; }
+  if(name==='jour'||name==='suivi'||name==='question'){ S.day=4; S.done={1:'tournesol',2:'koala',3:'ballon'}; if(name==='jour') S.picked='koala'; }
+  if(name==='grille21'||name==='bilan'){ for(var d=1; d<=21; d++) S.done[d]=SETS[(d-1)%4][d%3]; S.day=21; S.grid21=[1]; S.saved21=(name==='bilan'); S.saved7=true; S.grid7=[0,1,3]; S.saved14=true; S.grid14=[1,3]; }
+  if(name==='grille7'||name==='grille14'){ var D=name==='grille7'?7:14; for(var e=1; e<=D; e++) S.done[e]=SETS[(e-1)%4][e%3]; S.day=D; if(D===14){ S.saved7=true; S.grid7=[0,1,3]; } }
+  S.screen=name; }
+function selfTest(){ var r=[], ok=function(n,c){ r.push((c?'OK   ':'FAIL ')+n); }, html=function(){ return document.getElementById('app').innerHTML; };
+  reset(); render(); ok('accueil affiché', html().indexOf('Commencer le repérage')>0 && html().indexOf('Comprendre')>0 && html().indexOf('S\'engager')>0 && html().indexOf('7 minutes')>0);
+  act('start'); ok('quiz question 1', S.screen==='quiz' && html().indexOf('1 sur 6')>0);
+  ok('bouton suivant désactivé sans réponse', html().indexOf('data-a="next" disabled')>0);
+  act('opt',0); act('opt',2); ok('multi-sélection', S.answers[0].length===2);
+  act('opt',3); ok('« rien » efface les autres', S.answers[0].length===1 && S.answers[0][0]===3);
+  act('opt',0); ok('une réponse efface « rien »', S.answers[0].length===1 && S.answers[0][0]===0);
+  act('next'); act('opt',3); act('next'); act('opt',0); act('next'); act('opt',3); act('next'); act('opt',0); act('next');
+  ok('question 6 à choix unique', S.q===5); act('opt',1); act('opt',0); ok('choix unique remplace', S.answers[5].length===1 && S.answers[5][0]===0);
+  act('next'); ok('résultat = on commence par le soir', S.screen==='resultat' && topProg().key==='soir' && html().indexOf('commencer par le soir')>0 && html().indexOf('Une soirée apaisée')>0);
+  ok('autres parcours proposés au point de départ', html().indexOf('Ma proposition pour toi')>0 && html().indexOf('Vers des nuits au sec')>0 && html().indexOf('Repéré dans tes réponses')>0 && html().indexOf('diagnostic')<0 && html().indexOf('21 jours')<0);
+  act('wait','pipi'); ok('parcours demandé depuis le point de départ', S.wait.pipi && S.screen==='resultat' && html().indexOf('Tu seras prévenue quand il sortira')>0);
+  act('toCommit'); ok('engagement : 4 soirs proposés', S.screen==='engagement' && S.freq===4 && html().indexOf('Je m\'engage pour 4 soirs par semaine')>0 && html().indexOf('te prendront 6 semaines')>0);
+  act('freq',2); ok('2 soirs : deux jours cochés', S.days.length===2 && html().indexOf('pour 2 soirs')>0);
+  act('day',5); ok('ajouter un jour change le rythme', S.freq===3 && has(S.days,5));
+  act('freq',0); ok('zéro soir : sans engagement ni rappel', html().indexOf('Continuer sans engagement')>0 && html().indexOf('pas de rappel')>0);
+  act('freq',1); ok('un seul soir au singulier', html().indexOf('pour 1 soir par semaine')>0 && html().indexOf('21 semaines')>0);
+  act('freq',7); ok('tous les soirs : 3 semaines', html().indexOf('te prendront 3 semaines')>0);
+  act('freq',4); act('channel','whatsapp'); act('hour',2); ok('canal et heure choisis', S.channel==='whatsapp' && S.hour==='20 h' && html().indexOf('message WhatsApp à 20 h')>0);
+  act('commit'); ok('engagement pris, on passe à la grille', S.committed && S.screen==='grille');
+  act('toGrid'); act('g1',0); act('g1',1); act('g1',3); act('g1',1); ok('grille jour 1 : 2 cases', S.grid1.length===2 && html().indexOf('>2</span>')>0);
+  act('saveG1'); ok('jour 1 affiché', S.screen==='jour' && html().indexOf('Jour 1 sur 21')>0 && html().indexOf('data-a="done" disabled')>0);
+  act('pick','tournesol'); ok('bonhomme animé dans la carte choisie', html().indexOf('class="anim"')>0 && html().indexOf('class="fb"')>0);
+  ok('carte choisie : geste de Sandy relié au réflexe', html().indexOf('comme pour se faire un câlin')>0 && html().indexOf('Le réflexe en jeu')>0 && html().indexOf('le système nerveux se calme enfin')>0 && html().indexOf('Lire son article')>0 && html().indexOf('data-a="done" disabled')<0);
+  act('done'); ok('gommette à retourner proposée', S.pending===1 && html().indexOf('data-a="flip"')>0 && html().indexOf('tile on')<0);
+  act('flip',1);   ok('la gommette dévoile un morceau du tableau', html().indexOf('tile on')>0 && html().split('tile on').length===2);
+  ok('gommette collée', S.done[1]==='tournesol' && S.screen==='suivi' && html().indexOf('première gommette')>0);
+  act('nextDay'); ok('jour 2 propose un autre jeu de cartes', S.day===2 && html().indexOf('Le poids doux')>0);
+  act('tab','question'); ok('écran question', html().indexOf('Ta question')>0 && html().indexOf('semaines précédentes')>0);
+  document.getElementById('q').value='Il refuse le sandwich'; act('send'); ok('question envoyée', S.sent && html().indexOf('Question reçue')>0);
+  act('tab','suivi'); act('jump21'); ok('saut au jour 21', S.screen==='grille21' && S.day===21 && Object.keys(S.done).length===20);
+  act('g21',0); act('saveG21'); ok('bilan : 1 signe en moins', S.screen==='bilan' && html().indexOf('1 signe en moins')>0);
+  S.grid21=[0,1,2]; render(); ok('bilan : rien n\'a bougé', html().indexOf('n\'a pas bougé')>0 && html().indexOf('Vers qui te tourner')>0);
+  preset('suivi'); S.day=7; for(var d7=4; d7<=7; d7++) S.done[d7]='koala'; render(); ok('jour 7 : point d\'étape proposé', html().indexOf('Faire le point après 7 jours d\'activité')>0);
+  act('nextDay'); ok('grille du jour 7 ouverte', S.screen==='grille7' && html().indexOf('Jour 7')>0);
+  act('g7',0); act('saveG7'); ok('point du jour 7 enregistré', S.saved7 && S.screen==='suivi' && html().indexOf('1 sur 6')>0);
+  act('nextDay'); ok('jour 8 après le point', S.day===8 && S.screen==='jour');
+  preset('suivi'); act('nextDay'); ok('carte du jour sans sauter de jour', S.day===4 && S.screen==='jour');
+  preset('bilan'); render(); act('tab','suivi'); ok('tableau complet à garder au jour 21', html().indexOf('est complet')>0 && html().indexOf('download=')>0 && html().split('tile on').length===22);
+  preset('suivi'); render(); ok('suivi : soirs et semaine affichés', html().indexOf('Tes soirs : lun, mar, jeu, dim à 19 h 15')>0 && html().indexOf('3 sur 4')>0 && html().indexOf('4 sur 6')>0 && html().indexOf('BEGIN%3AVCALENDAR')>0 && html().indexOf('Il te reste 18 jours d\'activité, soit 5 semaines')>0);
+  act('toCommit'); act('freq',5); act('commit'); ok('changer ses soirs revient au suivi', S.screen==='suivi' && S.freq===5);
+  act('tab','parcours'); ok('onglet parcours', html().indexOf('Pipi au lit · réflexe de Galant')>0 && html().indexOf('Les devoirs · réflexes toniques du cou')>0 && html().indexOf('Des matins plus cool')>0 && html().indexOf('Repéré dans tes réponses')>0 && html().indexOf('En cours')>0);
+  act('wait','bouche'); ok('liste d\'attente notée', S.wait.bouche && html().indexOf('Tu seras prévenue quand il sortira')>0);
+  preset('tableau'); render(); ok('repère de Sandy après 14 gommettes', html().indexOf('réflexe de Moro')>0 && html().indexOf('Repère après 14')>0);
+  reset(); S.answers=[[3],[0,1,2],[3],[3],[3],[1]]; S.screen='resultat'; render(); ok('réponses « devoirs » : on propose les devoirs', html().indexOf('commencer par les devoirs')>0 && html().indexOf('Des devoirs sans cris ni colère')<html().indexOf('Les autres parcours') && html().indexOf('Une soirée apaisée')>html().indexOf('Les autres parcours') && html().indexOf('Voir la suite avec le parcours du soir')>0);
+  reset(); S.answers=[[3],[3],[3],[0,1,2],[3],[3]]; S.screen='resultat'; render(); ok('réponses « mouvement » : pas de parcours fantôme', html().indexOf('commencer par le soir')>0 && html().indexOf('undefined')<0);
+  preset('bilan'); render(); ok('bilan : quatre grilles', html().indexOf('Jour 7')>0 && html().indexOf('Jour 14')>0);
+  ['accueil','quiz','resultat','grille','jour','suivi','question','engagement','parcours','grille7','grille14','grille21','bilan','gestes','tableau'].forEach(function(n){ preset(n); try{ render(); ok('rendu '+n, html().length>200 && html().indexOf('undefined')<0 && html().indexOf('NaN')<0); }catch(err){ ok('rendu '+n+' : '+err.message,false); } });
+  var fails=r.filter(function(x){return x.indexOf('FAIL')===0;}).length; document.title='SELFTEST '+(fails?'FAIL '+fails:'OK '+r.length); var pre=document.getElementById('selftest'); pre.hidden=false; pre.textContent=r.join('\n'); }
+(function(){ if(/[?&]f=b/.test(location.search)) document.documentElement.classList.add('fb-only'); var h=(location.hash||'').replace('#',''); if(h==='selftest'){ reset(); selfTest(); return; } if(h && h!=='accueil'){ preset(h); render(); } else { reset(); render(); } })();
+</script>
+</body>
+</html>

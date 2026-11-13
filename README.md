@@ -68,6 +68,13 @@ Aujourd'hui le site est publié sur une adresse provisoire GitHub Pages, **non i
 3. **Domaine** : il est chez Squarespace Domains, la messagerie chez Google. Il suffit de faire pointer `www` (et le domaine nu) vers le nouvel hébergeur. **Ne pas toucher aux enregistrements MX**, sinon les e-mails s'arrêtent.
 4. **Après la bascule** : déclarer le plan du site dans Google Search Console et vérifier quelques anciennes adresses.
 
+## La page de prévente du programme du soir
+
+- Page : `src/pages/programme-du-soir.astro`, à l'adresse `/programme-du-soir`. Elle n'est pas dans le menu et reste non indexée tant que la prévente n'est pas ouverte (retirer `noindex` à la fin de la balise `<Base …>` le jour J).
+- Prix et lien de paiement : `PREVENTE_PRIX` et `PREVENTE_URL` dans `src/lib/site.ts`. Tant que `PREVENTE_URL` est vide, le bouton ouvre un e-mail de réservation adressé à Sandy.
+- La démo affichée dans le téléphone est une copie : `public/demo-programme/index.html`. Pour la mettre à jour, recopier `products/demo/programme-soir.html` de l'atelier Instagram en remplaçant le lien Google Fonts par les polices locales (voir l'historique du dépôt).
+- Les encadrés en pointillés listent ce qui reste à décider avec Sandy ; les supprimer avant l'ouverture.
+
 ## Sécurité
 
 - Le site n'a ni serveur, ni base de données, ni page d'administration : il n'y a rien à pirater côté site.

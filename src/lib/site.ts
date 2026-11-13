@@ -9,6 +9,9 @@ export const TEL_AFFICHE = '07 69 35 84 85';
 export const EMAIL = 'sandy@abcdesreflexes.com';
 export const SITE_NAME = "L'ABC des réflexes";
 export const PROD_URL = 'https://www.abcdesreflexes.com';
+// Programme du soir : lien de paiement de la prévente (vide tant qu'il n'est pas créé) et prix
+export const PREVENTE_URL = '';
+export const PREVENTE_PRIX = 29;
 
 // Version de prévisualisation : pas d'indexation par les moteurs de recherche
 export const PREVIEW = process.env.PREVIEW === '1';

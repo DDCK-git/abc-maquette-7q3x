@@ -164,13 +164,13 @@ var ORDRE_JOURS = [0,1,3,6,2,4,5];
 var HEURES = ['18 h 30','19 h 15','20 h'];
 var CANAUX = {agenda:'Mon agenda',whatsapp:'WhatsApp',sms:'SMS',email:'E-mail'};
 var PARCOURS = [
-  {k:'soir',c:'#D9F3F2',p:'Une soirée apaisée',t:'Le soir',r:'réflexe de Moro'},
-  {k:'bouche',c:'#FFE1EB',p:'Des stylos et des cols épargnés',t:'La bouche',r:'réflexes de la sphère orale'},
-  {k:'devoirs',c:'#FFF1CC',p:'Des devoirs sans cris ni colère',t:'Les devoirs',r:'réflexes toniques du cou'},
-  {k:'bougeotte',c:'#FFE6E0',p:'Un enfant qui arrive à se poser',t:'La bougeotte',r:'réflexe de Galant'},
-  {k:'pipi',c:'#E3ECE7',p:'Vers des nuits au sec',t:'Pipi au lit',r:'réflexe de Galant'},
-  {k:'habillage',c:'#D9F3F2',p:'Des matins plus cool',t:'L\'habillage',r:'réflexe de Galant'},
-  {k:'crises',c:'#FFE1EB',p:'Moins de débordements',t:'Les crises',r:'réflexe de Moro'}
+  {k:'soir',c:'#D9F3F2',p:'Une soirée apaisée',t:'Le soir',r:'souvent le réflexe de Moro'},
+  {k:'bouche',c:'#FFE1EB',p:'Un besoin de mâchouiller qui s\'apaise',t:'La bouche',r:'souvent les réflexes de la sphère orale'},
+  {k:'devoirs',c:'#FFF1CC',p:'Des devoirs sans cris ni colère',t:'Les devoirs',r:'souvent les réflexes toniques du cou'},
+  {k:'bougeotte',c:'#FFE6E0',p:'Un enfant qui arrive à se poser',t:'La bougeotte',r:'souvent le réflexe de Galant'},
+  {k:'pipi',c:'#E3ECE7',p:'Vers des nuits au sec',t:'Pipi au lit',r:'souvent le réflexe de Galant'},
+  {k:'habillage',c:'#D9F3F2',p:'Des matins plus cool',t:'L\'habillage',r:'souvent le réflexe de Galant'},
+  {k:'crises',c:'#FFE1EB',p:'Moins de débordements',t:'Les crises',r:'souvent le réflexe de Moro'}
 ];
 var PIC = {
   soir:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 28v30M8 46h48v12"/><rect x="12" y="37" width="13" height="8" rx="4" fill="#FFFFFF"/><path d="M27 46c2-9 25-9 29 0"/><path d="M36 10h9l-9 11h9M51 5h6l-6 7h6" stroke="#FC3C80" stroke-width="2.5"/></svg>',
@@ -264,7 +264,7 @@ function vEngagement(){ var f=S.freq;
   } else { h+='<div class="card"><p class="small">Sans soir choisi, il n\'y a pas de rappel : c\'est toi qui penses à venir quand tu peux.</p></div>'; }
   h+='<div class="grow"></div><button class="btn" data-a="commit">'+(f>0?'Je m\'engage pour '+f+(f>1?' soirs':' soir')+' par semaine':'Continuer sans engagement')+'</button>'; return h; }
 function vParcours(){ var sc=scores();
-  var h='<p class="kicker">Les parcours</p><h1>Tu pourras enchaîner avec un autre parcours quand celui-ci sera terminé</h1><p class="lead">Chaque parcours reprend un guide de Sandy et travaille un réflexe. Un même réflexe se cache souvent derrière plusieurs signes.</p><div class="stack">';
+  var h='<p class="kicker">Les parcours</p><h1>Tu pourras enchaîner avec un autre parcours quand celui-ci sera terminé</h1><p class="lead">Chaque parcours reprend un guide de Sandy. Un même signe peut venir de plusieurs réflexes, et un même réflexe se cache souvent derrière plusieurs signes.</p><div class="stack">';
   PARCOURS.forEach(function(x){ var cur=x.k==='soir', on=!!S.wait[x.k];
     h+= cur ? pCard(x,{on:true,chip:'En cours'}) : pCard(x,{a:'wait',on:on,note:on?'Tu seras prévenue quand il sortira.':'',chip:(!on&&sc[x.k]>0)?'Repéré dans tes réponses':''}); });
   h+='</div><p class="small">Dans la vraie version, toucher un parcours sert à savoir lequel construire en premier.</p>'; return h; }
@@ -364,7 +364,7 @@ function selfTest(){ var r=[], ok=function(n,c){ r.push((c?'OK   ':'FAIL ')+n); 
   preset('bilan'); render(); act('tab','suivi'); ok('tableau complet à garder au jour 21', html().indexOf('est complet')>0 && html().indexOf('download=')>0 && html().split('tile on').length===22);
   preset('suivi'); render(); ok('suivi : soirs et semaine affichés', html().indexOf('Tes soirs : lun, mar, jeu, dim à 19 h 15')>0 && html().indexOf('3 sur 4')>0 && html().indexOf('4 sur 6')>0 && html().indexOf('BEGIN%3AVCALENDAR')>0 && html().indexOf('Il te reste 18 jours d\'activité, soit 5 semaines')>0);
   act('toCommit'); act('freq',5); act('commit'); ok('changer ses soirs revient au suivi', S.screen==='suivi' && S.freq===5);
-  act('tab','parcours'); ok('onglet parcours', html().indexOf('Pipi au lit · réflexe de Galant')>0 && html().indexOf('Les devoirs · réflexes toniques du cou')>0 && html().indexOf('Des matins plus cool')>0 && html().indexOf('Repéré dans tes réponses')>0 && html().indexOf('En cours')>0);
+  act('tab','parcours'); ok('onglet parcours', html().indexOf('Pipi au lit · souvent le réflexe de Galant')>0 && html().indexOf('Les devoirs · souvent les réflexes toniques du cou')>0 && html().indexOf('Des matins plus cool')>0 && html().indexOf('Repéré dans tes réponses')>0 && html().indexOf('En cours')>0);
   act('wait','bouche'); ok('liste d\'attente notée', S.wait.bouche && html().indexOf('Tu seras prévenue quand il sortira')>0);
   preset('tableau'); render(); ok('repère de Sandy après 14 gommettes', html().indexOf('réflexe de Moro')>0 && html().indexOf('Repère après 14')>0);
   reset(); S.answers=[[3],[0,1,2],[3],[3],[3],[1]]; S.screen='resultat'; render(); ok('réponses « devoirs » : on propose les devoirs', html().indexOf('commencer par les devoirs')>0 && html().indexOf('Des devoirs sans cris ni colère')<html().indexOf('Les autres parcours') && html().indexOf('Une soirée apaisée')>html().indexOf('Les autres parcours') && html().indexOf('Voir la suite avec le parcours du soir')>0);

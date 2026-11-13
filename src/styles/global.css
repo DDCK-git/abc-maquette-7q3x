@@ -137,7 +137,7 @@ section{padding:88px 0}
 .hours td{padding:7px 0;border-bottom:1px solid var(--line)}
 .hours td:last-child{text-align:right;font-weight:600}
 .hours .off td:last-child{font-weight:400;color:var(--ink-2)}
-.big-cta{background:var(--turq);color:#fff;border:none}
+.big-cta{background:var(--turq-d);color:#fff;border:none}
 .big-cta p{color:#fff}
 .big-cta h3{font-size:26px}
 
@@ -157,7 +157,7 @@ footer .legal{width:100%;border-top:1px solid rgba(255,255,255,.16);padding-top:
 .cal li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px}
 .cal li:last-child{border-bottom:none}
 .cal li b{min-width:76px}
-.cal li.past{color:#8FA398}
+.cal li.past{color:#5F7469}
 .cal li.past em{margin-left:auto;font-style:normal;font-size:12.5px;font-weight:600;border:1px solid var(--line);border-radius:12px;padding:2px 10px}
 .mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .mod{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
@@ -234,9 +234,10 @@ footer .legal{width:100%;border-top:1px solid rgba(255,255,255,.16);padding-top:
 .prose ul.chev{padding-left:0;list-style:none}
 .prose blockquote{margin:22px 0;padding:18px 24px;background:var(--aqua);border-left:5px solid var(--pink);border-radius:0 var(--r-sm) var(--r-sm) 0;font-weight:500}
 .prose blockquote p{margin:6px 0}
-.prose img{border-radius:var(--r-md);margin:22px auto;max-height:720px;width:auto}
+.prose img{border-radius:var(--r-md);margin:22px auto;width:100%;max-width:560px;height:auto}
+.prose img.paysage{max-width:100%}
 .prose p:has(> img + img){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:26px 0}
-.prose p:has(> img + img) img{margin:0;width:100%;max-height:none}
+.prose p:has(> img + img) img{margin:0;width:100%;max-width:none}
 .prose p:has(> img + img) br{display:none}
 .prose video{width:100%;border-radius:var(--r-md);margin:10px 0 22px;background:#000}
 .prose strong{font-weight:600}

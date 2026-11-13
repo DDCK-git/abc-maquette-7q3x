@@ -68,6 +68,14 @@ Aujourd'hui le site est publié sur une adresse provisoire GitHub Pages, **non i
 3. **Domaine** : il est chez Squarespace Domains, la messagerie chez Google. Il suffit de faire pointer `www` (et le domaine nu) vers le nouvel hébergeur. **Ne pas toucher aux enregistrements MX**, sinon les e-mails s'arrêtent.
 4. **Après la bascule** : déclarer le plan du site dans Google Search Console et vérifier quelques anciennes adresses.
 
+## Sécurité
+
+- Le site n'a ni serveur, ni base de données, ni page d'administration : il n'y a rien à pirater côté site.
+- Le compte GitHub propriétaire du dépôt est la clé de tout : y activer la double authentification.
+- L'éditeur du blog (Pages CMS) ne doit être installé que sur ce dépôt, pas sur tous les dépôts du compte.
+- `public/_headers` contient les en-têtes de sécurité, actifs dès que le site est chez Netlify ou Cloudflare Pages (GitHub Pages ne les lit pas).
+- Chaque modification est historisée : on peut toujours revenir à la version d'avant.
+
 ## Ce qu'il reste à compléter avant la mise en production
 
 - `src/pages/mentions-legales.astro` : statut, numéro SIRET et hébergeur (entre crochets).

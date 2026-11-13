@@ -17,7 +17,7 @@ function prefixBase() {
     const walk = (n) => {
       if (n.type === 'element' && n.tagName === 'img' && n.properties && typeof n.properties.src === 'string') {
         const hit = images[decodeURI(n.properties.src).normalize('NFC')];
-        if (hit) Object.assign(n.properties, { src: hit.src, width: hit.width, height: hit.height });
+        if (hit) Object.assign(n.properties, { src: hit.src, width: hit.width, height: hit.height, className: [hit.width >= hit.height * 1.2 ? 'paysage' : 'portrait'] });
         Object.assign(n.properties, first ? { fetchpriority: 'high' } : { loading: 'lazy' }, { decoding: 'async' });
         first = false;
       }

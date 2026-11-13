@@ -33,7 +33,7 @@ npm run build
 
 ## Publier un article
 
-**Avec l'éditeur en ligne (pour Sandy)** : aller sur https://app.pagescms.org, se connecter avec GitHub, choisir ce dépôt, puis « Articles du blog ». Un article enregistré est en ligne environ une minute plus tard. Il faut pour cela que le compte GitHub de Sandy soit invité comme collaborateur du dépôt (Settings > Collaborators).
+**Avec l'éditeur en ligne (pour Sandy)** : voir `GUIDE-BLOG.md`. Mise en route, une seule fois, par le propriétaire du dépôt : aller sur https://app.pagescms.org, se connecter avec GitHub, installer l'application GitHub de Pages CMS sur ce dépôt, ouvrir le dépôt, puis inviter Sandy par e-mail dans la partie « Collaborators ». Sandy n'a pas besoin de compte GitHub. Un article enregistré est en ligne environ une minute plus tard ; un article coché « Brouillon » n'apparaît pas.
 
 **À la main ou avec Claude** : ajouter un fichier dans `src/content/blog/` avec cet en-tête, puis pousser sur `main`.
 

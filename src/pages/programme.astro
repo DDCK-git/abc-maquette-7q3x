@@ -53,6 +53,10 @@ const parcours = [
   { k: 'crises', c: '#FFE1EB', p: 'Moins de débordements', t: "Les crises", r: 'souvent le réflexe de Moro', svg: `<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="24" r="5.5" fill="#FFFFFF"/><path d="M32 30v16M32 34L20 26M32 34l12-8M32 46l-8 12M32 46l8 12"/><path d="M32 6v7M18 9l4 6M46 9l-4 6M10 22h7M47 22h7" stroke="#FC3C80" stroke-width="2.5"/></svg>` },
 ];
 
+// Sur la page, un seul geste est montré en entier ; les autres se découvrent dans le parcours
+const exemple = gestes.find((g) => g.nom === 'Le bercement sur le ballon');
+const autresGestes = gestes.filter((g) => g !== exemple);
+
 const inclus = [
   "Le repérage en 6 questions qui te dit par où commencer",
   "Le parcours du soir en 21 jours d'activité à ton rythme",
@@ -132,9 +136,18 @@ const jsonld = [
 
     <section class="white">
       <div class="wrap">
-        <div class="head"><p class="kicker">Les gestes du soir</p><h2>Le parcours relie chaque geste à un réflexe et t'explique ce qu'il apporte</h2><p class="lead">Voici les cinq gestes du parcours du soir que Sandy décrit sur son blog et dans ses posts. Ton MINI choisit le sien en touchant le bonhomme qui lui fait envie, et vous le faites ensemble en 7 minutes.</p></div>
+        <div class="head"><p class="kicker">Les gestes du soir</p><h2>Le parcours relie chaque geste à un réflexe et t'explique ce qu'il apporte</h2><p class="lead">Voici un des cinq gestes du parcours du soir, présenté comme tu le retrouveras. Les quatre autres t'attendent dans le parcours.</p></div>
+        <div class="lp-exemple" style={'background:' + exemple.c}>
+          <Fragment set:html={exemple.svg} />
+          <div>
+            <h3>{exemple.nom}</h3>
+            <p>{exemple.txt}</p>
+            <p><b>Le réflexe en jeu.</b> Le réflexe de Moro déclenche une réaction d'alerte face à un danger perçu. Quand il reste actif, le corps reste en état d'alerte, même la nuit, même endormi.</p>
+            <p><b>Ce que le geste lui apporte.</b> Le mouvement rythmique et enveloppant du ballon imite un bercement, celui-là même qui rassure un tout-petit. Fait régulièrement avant le coucher, ça aide le corps à se sentir en sécurité.</p>
+          </div>
+        </div>
         <div class="lp-gestes">
-          {gestes.map((g) => <div class="lp-geste" style={'background:' + g.c}><Fragment set:html={g.svg} /><h3>{g.nom}</h3><p>{g.txt}</p></div>)}
+          {autresGestes.map((g) => <div class="lp-geste" style={'background:' + g.c}><Fragment set:html={g.svg} /><h3>{g.nom}</h3><p>À découvrir dans le parcours</p></div>)}
         </div>
         <p class="lp-quote">« Quand on travaille ce réflexe avec les bons mouvements, le système nerveux se calme enfin. »<span>Sandy</span></p>
       </div>
@@ -211,7 +224,11 @@ const jsonld = [
 .lp-parc em{align-self:flex-start;margin-top:6px;font-style:normal;font-size:12.5px;font-weight:600;background:#fff;border-radius:13px;padding:3px 12px}
 .lp-parc:first-child{outline:2px solid var(--ink)}
 .lp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.lp-gestes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.lp-exemple{border-radius:var(--r-lg);padding:32px;display:flex;gap:28px;align-items:flex-start;margin-bottom:20px}
+.lp-exemple svg{flex-shrink:0;width:112px;height:112px;overflow:visible}
+.lp-exemple h3{font-size:22px;margin-bottom:10px}
+.lp-exemple p{font-size:16px;line-height:1.6}
+.lp-gestes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .lp-geste{border-radius:var(--r-md);padding:22px 18px;display:flex;flex-direction:column;gap:10px}
 .lp-geste svg{overflow:visible}
 .lp-geste h3{font-size:17px}
@@ -251,6 +268,8 @@ const jsonld = [
   .lp-parc{flex-direction:row;align-items:center}
   .lp-geste{flex-direction:row;align-items:center;flex-wrap:wrap}
   .lp-geste p{flex-basis:100%}
+  .lp-exemple{flex-direction:column;padding:24px;gap:14px}
+  .lp-exemple svg{width:84px;height:84px}
   .lp-prix{padding:28px}
   .buybar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:10px 16px;align-items:center;justify-content:space-between;gap:12px;font-size:15px}
   footer{padding-bottom:96px}

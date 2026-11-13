@@ -54,20 +54,20 @@ const parcours = [
 ];
 
 const inclus = [
-  "Le repérage en 6 questions, pour savoir par où commencer",
-  "Le parcours du soir : 21 jours d'activité, à ton rythme",
-  'Cinq gestes de Sandy, chacun relié à son réflexe et expliqué',
-  "La grille d'observation, refaite tous les 7 jours d'activité",
-  'Tes soirs bloqués dans ton agenda, avec un rappel',
-  "La réponse de Sandy à une question de parent, chaque semaine",
+  "Le repérage en 6 questions qui te dit par où commencer",
+  "Le parcours du soir en 21 jours d'activité à ton rythme",
+  'Cinq gestes de Sandy reliés à leur réflexe et expliqués',
+  "La grille d'observation à refaire tous les 7 jours d'activité",
+  'Ton agenda qui bloque tes soirs et te les rappelle',
+  "La réponse de Sandy à une question de parent chaque semaine",
   'Le tableau que ton MINI dévoile et garde à la fin',
 ];
 
 const faq = [
-  ['Faut-il installer une application ?', "Non. Le programme s'ouvre dans le navigateur de ton téléphone, sans rien installer."],
+  ['Faut-il installer une application ?', "Non, le programme s'ouvre directement dans le navigateur de ton téléphone."],
   ['Combien de temps ça prend ?', "7 minutes par soir. Le programme compte 21 jours d'activité, que tu répartis sur autant de semaines qu'il te faut."],
-  ['Est-ce un abonnement ?', "Non. C'est un paiement unique de " + prix + ', sans abonnement.'],
-  ["Et si mon enfant n'aime pas un geste ?", "C'est lui qui choisit son geste chaque soir, parmi trois. Sandy le rappelle : en douceur, jamais en force, et si ton enfant montre un inconfort, on arrête et on observe."],
+  ['Est-ce un abonnement ?', 'Non, tu paies ' + prix + " une seule fois et il n'y a pas d'abonnement."],
+  ["Et si mon enfant n'aime pas un geste ?", "C'est lui qui choisit son geste chaque soir, parmi trois. Sandy rappelle que tout se fait en douceur et qu'on arrête pour observer dès que l'enfant montre un inconfort."],
   ['Quelle différence avec un bilan au cabinet ?', "Le programme te donne des gestes à faire à la maison et t'explique les réflexes. Le bilan de 90 minutes teste les réflexes de ton enfant au cabinet et débouche sur un suivi sur mesure."],
 ];
 const jsonld = [
@@ -77,16 +77,16 @@ const jsonld = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
 ];
 ---
-<Base title="Décode ton MINI · Les parcours de Sandy pour simplifier ton quotidien, un geste par jour" description="Coucher qui s'éternise, devoirs qui dérapent, tout à la bouche : chaque parcours explique le réflexe en jeu et donne un geste par jour à faire avec ton enfant. En prévente à 29 €." path="/programme" image="/img/cabinet.jpg" jsonld={jsonld} noindex>
+<Base title="Décode ton MINI · Les parcours de Sandy pour simplifier ton quotidien avec un geste par jour" description="Coucher qui s'éternise, devoirs qui dérapent, tout à la bouche : chaque parcours explique le réflexe en jeu et donne un geste par jour à faire avec ton enfant. En prévente à 29 €." path="/programme" image="/img/cabinet.jpg" jsonld={jsonld} noindex>
   <div class="lp">
     <section class="lp-hero">
       <div class="wrap lp-hero-grid">
         <div>
           <p class="kicker">En prévente · Les parcours de Sandy</p>
-          <h1>Décode ton MINI pour simplifier ton quotidien, un geste par jour</h1>
+          <h1>Décode ton MINI pour simplifier ton quotidien avec un geste par jour</h1>
           <p class="lead">Un coucher qui s'éternise, des devoirs qui dérapent, tout à la bouche : derrière ces signes, il y a souvent un réflexe archaïque encore actif. Chaque parcours t'explique lequel, et te donne un geste par jour à faire avec ton enfant.</p>
           <div class="btns"><a class="btn" href={acheter}>Je réserve ma place à {prix}</a><a class="btn ghost" href={demo}>Essayer la démo</a></div>
-          <div class="facts"><span class="fact"><i></i>Un parcours par signe</span><span class="fact"><i></i>21 jours d'activité</span><span class="fact"><i></i>À ton rythme</span><span class="fact"><i></i>Sur ton téléphone, sans rien installer</span></div>
+          <div class="facts"><span class="fact"><i></i>Un parcours par signe</span><span class="fact"><i></i>21 jours d'activité</span><span class="fact"><i></i>À ton rythme</span><span class="fact"><i></i>Rien à installer sur ton téléphone</span></div>
           <p class="note lp-note">Ce programme propose des gestes doux. Ce n'est pas un diagnostic ni un traitement, et si ton enfant ronfle, fait des pauses en respirant ou transpire beaucoup, parles-en aussi à ton médecin.</p>
         </div>
         <div class="phone" aria-label="Aperçu du programme">
@@ -99,7 +99,7 @@ const jsonld = [
       <div class="wrap">
         <div class="head"><p class="kicker">Les parcours</p><h2>Chaque parcours part d'un signe du quotidien et travaille les réflexes qui se cachent derrière</h2><p class="lead">Un repérage en 6 questions te dit par lequel commencer. Un même signe peut venir de plusieurs réflexes, et chaque parcours t'explique ceux qui sont en jeu. Le premier parcours, le soir, ouvre avec la prévente, et les autres suivront.</p></div>
         <div class="lp-parcours">
-          {parcours.map((x, i) => <div class="lp-parc" style={'background:' + x.c}><Fragment set:html={x.svg} /><div><b>{x.p}</b><span>{x.t} · {x.r}</span><em>{i === 0 ? "Disponible à l'ouverture" : 'À venir'}</em></div></div>)}
+          {parcours.map((x, i) => <div class="lp-parc" style={'background:' + x.c}><Fragment set:html={x.svg} /><div><b>{x.p}</b><span>{x.t}</span><em>{i === 0 ? "Disponible à l'ouverture" : 'À venir'}</em></div></div>)}
         </div>
       </div>
     </section>
@@ -113,7 +113,7 @@ const jsonld = [
           <p class="lp-strong">3 cases cochées ou plus ? Le réflexe de Moro est probablement encore actif chez ton enfant.</p>
         </div>
         <div class="card">
-          <h3>Le réflexe de Moro, en deux mots</h3>
+          <h3>Sandy t'explique le réflexe de Moro</h3>
           <p>Le réflexe de Moro est un réflexe archaïque présent chez tous les bébés dès la naissance. Il déclenche une réaction d'alerte face à un danger perçu.</p>
           <p>Normalement, il s'intègre vers 4 mois. Mais parfois, il reste actif bien après. Le corps reste alors en état d'alerte permanent, même la nuit, même endormi.</p>
           <p><a class="more" href={url('/post/mon-enfant-dort-mal-et-si-c-était-le-réflexe-de-moro')}>Lire l'article de Sandy</a></p>
@@ -132,7 +132,7 @@ const jsonld = [
 
     <section class="white">
       <div class="wrap">
-        <div class="head"><p class="kicker">Les gestes du soir</p><h2>Chaque geste est relié à un réflexe, et le parcours t'explique ce qu'il apporte</h2><p class="lead">Voici les cinq gestes du parcours du soir, ceux que Sandy décrit sur son blog et dans ses posts. Ils prennent 7 minutes, et ton MINI choisit le sien en touchant le bonhomme qui lui fait envie.</p></div>
+        <div class="head"><p class="kicker">Les gestes du soir</p><h2>Le parcours relie chaque geste à un réflexe et t'explique ce qu'il apporte</h2><p class="lead">Voici les cinq gestes du parcours du soir que Sandy décrit sur son blog et dans ses posts. Ton MINI choisit le sien en touchant le bonhomme qui lui fait envie, et vous le faites ensemble en 7 minutes.</p></div>
         <div class="lp-gestes">
           {gestes.map((g) => <div class="lp-geste" style={'background:' + g.c}><Fragment set:html={g.svg} /><h3>{g.nom}</h3><p>{g.txt}</p></div>)}
         </div>
@@ -170,7 +170,7 @@ const jsonld = [
         <div class="lp-prix">
           <p class="kicker" style="color:var(--sun)">Tarif de lancement · le parcours du soir</p>
           <p class="lp-montant">{prix}</p>
-          <p>Paiement unique, sans abonnement.</p>
+          <p>Tu paies une seule fois et il n'y a pas d'abonnement.</p>
           <ul class="chev lp-inclus">{inclus.map((x) => <li>{x}</li>)}</ul>
           <a class="btn" href={acheter}>Je réserve ma place à {prix}</a>
           <p class="lp-petit">Tu es prévenue par e-mail dès l'ouverture du programme.</p>

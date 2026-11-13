@@ -1,0 +1,9 @@
+# Mise en cache longue des fichiers qui ne changent pas (lu par Netlify et Cloudflare Pages)
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+/img-opt/*
+  Cache-Control: public, max-age=2592000
+/img/*
+  Cache-Control: public, max-age=2592000
+/video/*
+  Cache-Control: public, max-age=2592000

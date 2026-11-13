@@ -1,11 +1,13 @@
+/* police de secours aux mêmes proportions que Poppins : le texte ne saute pas quand la police arrive */
+@font-face{font-family:"Poppins secours";src:local("Arial");size-adjust:112.16%;ascent-override:93.62%;descent-override:31.21%;line-gap-override:8.92%}
 :root{
-  --turq:#00B1B0; --turq-d:#008A89; --ink:#09371F; --ink-2:#3E5C4C; --coral:#FF8370; --pink:#FC3C80;
+  --turq:#00B1B0; --turq-d:#007372; --ink:#09371F; --ink-2:#3E5C4C; --coral:#FF8370; --pink:#FC3C80;
   --sun:#FEC84D; --aqua:#E7F4F5; --ivory:#FBFBF4; --white:#FFFFFF; --line:#D5E2DC; --sage:#618773;
   --r-lg:28px; --r-md:20px; --r-sm:14px; --w:1120px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--ivory);color:var(--ink);font-family:Poppins,"Avenir Next",Avenir,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:Poppins,"Poppins secours","Avenir Next",Avenir,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3,p,ul,ol,figure,blockquote{margin:0}
@@ -117,12 +119,12 @@ section{padding:88px 0}
 .post img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--aqua)}
 .post div{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex-grow:1}
 .post time{font-size:13px;font-weight:600;color:var(--turq-d);text-transform:uppercase;letter-spacing:.06em}
-.post h3{font-size:18.5px}
+.post .t{font-size:18.5px;line-height:1.3;font-weight:600;letter-spacing:0}
 .post p{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
 .post.big{grid-column:span 3;flex-direction:row}
 .post.big img{width:52%;aspect-ratio:auto;min-height:320px}
 .post.big div{padding:36px;justify-content:center;gap:12px}
-.post.big h3{font-size:28px;line-height:1.25}
+.post.big .t{font-size:28px;line-height:1.25}
 .post.big p{font-size:16px}
 
 /* Instagram */
@@ -203,7 +205,7 @@ footer .legal{width:100%;border-top:1px solid rgba(255,255,255,.16);padding-top:
   .post.big{grid-column:auto;flex-direction:column}
   .post.big img{width:100%;min-height:0;aspect-ratio:16/10}
   .post.big div{padding:22px}
-  .post.big h3{font-size:21px}
+  .post.big .t{font-size:21px}
   .portrait{max-width:280px;margin:0 auto}
   .insta{padding:28px 24px}
   .colleague{grid-template-columns:minmax(0,1fr);gap:20px;padding:26px;margin-top:48px}
@@ -241,3 +243,6 @@ footer .legal{width:100%;border-top:1px solid rgba(255,255,255,.16);padding-top:
 @media (max-width:900px){
   .prose p:has(> img + img){grid-template-columns:minmax(0,1fr)}
 }
+
+.chev a{color:inherit;text-decoration-color:var(--coral);text-decoration-thickness:2px;text-underline-offset:3px}
+.chev a:hover{text-decoration-color:var(--pink)}

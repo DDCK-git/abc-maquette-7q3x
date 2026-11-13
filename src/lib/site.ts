@@ -17,12 +17,19 @@ const B = import.meta.env.BASE_URL.replace(/\/$/, '');
 /** Lien interne, avec le sous-dossier de l'adresse provisoire si besoin */
 export const url = (p = '/') => B + (p.startsWith('/') ? p : '/' + p);
 
+import images from '../data/images.json';
+/** Image allégée avec ses dimensions, à étaler dans une balise <img {...pic('/img/x.jpg')}> */
+export function pic(path: string) {
+  const hit = (images as Record<string, { src: string; width: number; height: number }>)[path.normalize('NFC')];
+  return hit ? { src: url(hit.src), width: hit.width, height: hit.height } : { src: url(path) };
+}
+
 export type Post = CollectionEntry<'blog'>;
 export const postSlug = (p: Post) => p.data.ancienne_adresse || p.id;
 export const postPath = (p: Post) => '/post/' + postSlug(p);
 
 export async function allPosts(): Promise<Post[]> {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', (p) => !p.data.brouillon);
   return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 

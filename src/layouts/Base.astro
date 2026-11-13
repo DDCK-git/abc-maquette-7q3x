@@ -5,7 +5,7 @@ import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
 import '@fontsource/poppins/800.css';
 import '../styles/global.css';
-import { url, RDV, INSTA, FACEBOOK, LINKEDIN, TEL, TEL_AFFICHE, EMAIL, SITE_NAME, PROD_URL, PREVIEW } from '../lib/site';
+import { url, pic, RDV, INSTA, FACEBOOK, LINKEDIN, TEL, TEL_AFFICHE, EMAIL, SITE_NAME, PROD_URL, PREVIEW } from '../lib/site';
 
 interface Props {
   title: string;
@@ -77,7 +77,7 @@ const nav = [
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href={url('/')}><img src={url('/img/logo.png')} alt="" width="52" height="52"><span><b>L'ABC des réflexes</b><span>Sandy Stevens · Obernai</span></span></a>
+    <a class="brand" href={url('/')}><img src={pic('/img/logo.png').src} alt="" width="52" height="52"><span><b>L'ABC des réflexes</b><span>Sandy Stevens · Obernai</span></span></a>
     <nav class="nav" id="nav" aria-label="Navigation principale">
       {nav.map(([href, label, key]) => <a href={url(href)} class={key === current ? 'on' : undefined}>{label}</a>)}
       <a class="btn small" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous</a>

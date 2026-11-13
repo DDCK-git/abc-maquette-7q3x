@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
-import { allPosts, url, RDV, INSTA } from '../lib/site';
+import { allPosts, url, pic, RDV, INSTA } from '../lib/site';
 const latest = (await allPosts()).slice(0, 3);
 
 // Questions pratiques : uniquement des faits repris du site et de la page de réservation du cabinet
@@ -30,7 +30,7 @@ const faqLd = {
       <div class="facts"><span class="fact"><i></i>Maîtresse pendant 15 ans</span><span class="fact"><i></i>Praticienne depuis 2018</span><span class="fact"><i></i>Formatrice Arc-en-Flex®</span></div>
     </div>
     <div class="cover">
-      <img src={url('/img/cabinet.jpg')} alt="Le cabinet de Sandy à Obernai, avec son fauteuil, ses affiches et son panier de balles">
+      <img {...pic('/img/cabinet.jpg')} fetchpriority="high" alt="Le cabinet de Sandy à Obernai, avec son fauteuil, ses affiches et son panier de balles">
       <div class="tags"><span class="tag">Si ton enfant</span><span class="tag p">&gt; ne tient pas en place</span><span class="tag p">&gt; porte tout à la bouche</span><span class="tag p">&gt; dort mal</span></div>
       <a class="handle" href={INSTA} target="_blank" rel="noopener"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>@sandy_abcdesreflexes</a>
     </div>
@@ -53,9 +53,9 @@ const faqLd = {
   <div class="wrap">
     <div class="head"><p class="kicker">Consultations</p><h2>On vient me voir pour des difficultés qui touchent la tête, le cœur ou le corps</h2><p class="lead">J'accueille les enfants, les adolescents et les adultes. Voici les situations que l'on retrouve dans chacune des trois sphères.</p></div>
     <div class="grid3">
-      <div class="card sphere"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.3 1 2.1h5c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h3>Sphère cognitive</h3><ul class="chev"><li>Manque de concentration</li><li>Difficultés d'organisation</li><li>Problèmes de mémoire</li><li>Problèmes de graphisme</li><li>Difficultés en lecture et en écriture</li><li>Difficultés de communication</li><li>Troubles dys (dyslexie, dyscalculie, dysorthographie, dysphasie, dyspraxie)</li><li>TDA/H, TSA</li></ul></div>
-      <div class="card sphere c2"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><h3>Sphère émotionnelle</h3><ul class="chev"><li>Agitation et hyperactivité</li><li>Forte émotivité, hypersensibilité</li><li>Problèmes relationnels</li><li>Troubles alimentaires</li><li>Gestion du stress, burn-out</li><li>Angoisses, phobies</li><li>Manque de confiance en soi, timidité excessive</li><li>Tics, tocs</li></ul></div>
-      <div class="card sphere c3"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M5 9h14M12 9v6M12 15l-4 6M12 15l4 6"/></svg></span><h3>Sphère corporelle</h3><ul class="chev"><li>Troubles de la posture</li><li>Maladresse et chutes</li><li>Manque de tonus musculaire</li><li>Problèmes d'équilibre et de coordination</li><li>Mal de dos, vertige</li><li>Mal des transports</li><li>Énurésie, encoprésie</li><li>Marche sur la pointe des pieds</li><li>Difficultés dans certains sports</li></ul></div>
+      <div class="card sphere"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.3 1 2.1h5c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h3>Sphère cognitive</h3><ul class="chev"><li>Manque de concentration</li><li>Difficultés d'organisation</li><li>Problèmes de mémoire</li><li><a href={url('/post/a-comme-réflexe-d-agrippement')}>Problèmes de graphisme</a></li><li>Difficultés en lecture et en écriture</li><li>Difficultés de communication</li><li>Troubles dys (dyslexie, dyscalculie, dysorthographie, dysphasie, dyspraxie)</li><li>TDA/H, TSA</li></ul></div>
+      <div class="card sphere c2"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><h3>Sphère émotionnelle</h3><ul class="chev"><li><a href={url('/post/réflexe-de-galant-pourquoi-mon-enfant-ne-tient-pas-en-place')}>Agitation et hyperactivité</a></li><li>Forte émotivité, hypersensibilité</li><li>Problèmes relationnels</li><li>Troubles alimentaires</li><li><a href={url('/post/m-comme-réflexe-de-moro')}>Gestion du stress</a>, burn-out</li><li><a href={url('/post/p-comme-réflexe-de-paralysie-par-la-peur')}>Angoisses, phobies</a></li><li>Manque de confiance en soi, timidité excessive</li><li>Tics, tocs</li></ul></div>
+      <div class="card sphere c3"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M5 9h14M12 9v6M12 15l-4 6M12 15l4 6"/></svg></span><h3>Sphère corporelle</h3><ul class="chev"><li>Troubles de la posture</li><li>Maladresse et chutes</li><li>Manque de tonus musculaire</li><li>Problèmes d'équilibre et de coordination</li><li>Mal de dos, vertige</li><li><a href={url('/post/tout-sur-le-mal-des-transports')}>Mal des transports</a></li><li><a href={url('/post/g-comme-réflexe-de-galant')}>Énurésie</a>, encoprésie</li><li><a href={url('/post/r-comme-réflexe-tonique-labyrinthique')}>Marche sur la pointe des pieds</a></li><li>Difficultés dans certains sports</li></ul></div>
     </div>
     <p class="note" style="margin-top:26px">Mon approche en réflexes ne se substitue pas à des traitements ou à des suivis médicaux. Je ne te demanderai jamais d'interrompre un suivi en cours, et je travaille en lien avec des psychologues, orthophonistes, ostéopathes, orthoptistes et graphothérapeutes.</p>
   </div>
@@ -77,7 +77,7 @@ const faqLd = {
 <section id="sandy">
   <div class="wrap">
     <div class="about">
-      <div class="portrait"><img src={url('/img/sandy.png')} alt="Portrait de Sandy Stevens"></div>
+      <div class="portrait"><img {...pic('/img/sandy.png')} alt="Portrait de Sandy Stevens" loading="lazy"></div>
       <div>
         <p class="kicker">Qui suis-je</p>
         <h2 style="margin-bottom:20px">Je suis Sandy, alsacienne d'adoption et maman de deux vikings</h2>
@@ -124,7 +124,7 @@ const faqLd = {
       </ul>
       <div class="btns" style="margin-top:28px"><a class="btn" href={url('/formations')}>Voir le parcours et toutes les dates</a></div>
     </div>
-    <img src={url('/img/salle-formation.jpg')} alt="La salle de formation avec ses tapis et ses coussins de toutes les couleurs" loading="lazy">
+    <img {...pic('/img/salle-formation.jpg')} alt="La salle de formation avec ses tapis et ses coussins de toutes les couleurs" loading="lazy">
   </div>
 </section>
 

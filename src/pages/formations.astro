@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { url, TEL, TEL_AFFICHE, EMAIL, PROD_URL } from '../lib/site';
+import { url, pic, TEL, TEL_AFFICHE, EMAIL, PROD_URL } from '../lib/site';
 
 // Dates des cursus : [couleur, nom, libellé, date de fin (AAAA-MM-JJ)]. Une date passée s'affiche « terminé » toute seule.
 const alsace = [
@@ -67,7 +67,7 @@ const course = {
 
   <section class="white">
     <div class="wrap split">
-      <img src={url('/img/salle-formation.jpg')} alt="La salle de formation avec ses tapis et ses coussins de toutes les couleurs" loading="lazy">
+      <img {...pic('/img/salle-formation.jpg')} alt="La salle de formation avec ses tapis et ses coussins de toutes les couleurs" loading="lazy">
       <div class="stack">
         <p class="kicker" style="margin:0">Une formation ancrée dans le terrain</p>
         <h2>J'ai été enseignante pendant 15 ans avant d'accompagner en cabinet</h2>
@@ -98,7 +98,7 @@ const course = {
       <div class="mods">
         {modules.map(([c, n, t]) => (
           <a class="mod" href={'https://www.arc-en-flex.fr/module-' + c + '/'} target="_blank" rel="noopener">
-            <img src={url('/img/module-' + c + '.jpg')} alt="" loading="lazy">
+            <img {...pic('/img/module-' + c + '.jpg')} alt="" loading="lazy">
             <div><span><i class={'dot m-' + c}></i>Module {n}</span><b>{t}</b></div>
           </a>
         ))}

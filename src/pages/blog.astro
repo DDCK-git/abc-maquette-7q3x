@@ -15,7 +15,7 @@ const posts = await allPosts();
   </section>
   <section>
     <div class="wrap">
-      <div class="posts" id="posts">{posts.map((p, i) => <PostCard post={p} big={i === 0} />)}</div>
+      <div class="posts" id="posts">{posts.map((p, i) => <PostCard post={p} big={i === 0} level="h2" />)}</div>
       <p id="none" class="lead" hidden>Aucun article ne correspond à cette recherche.</p>
     </div>
   </section>

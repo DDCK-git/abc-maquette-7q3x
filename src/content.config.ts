@@ -12,6 +12,8 @@ const blog = defineCollection({
     cover: z.string().optional(),
     tags: z.array(z.string()).optional().default([]),
     // titre et description pour Google, s'ils diffèrent du titre et du résumé affichés
+    // un brouillon n'apparaît pas sur le site
+    brouillon: z.boolean().optional().default(false),
     meta_title: z.string().optional(),
     meta_description: z.string().optional(),
     // adresse de l'article sur l'ancien site Wix, conservée pour le référencement

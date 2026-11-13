@@ -35,6 +35,9 @@ content:
         label: Mots-clés
         type: string
         list: true
+      - name: brouillon
+        label: Brouillon (coché = l'article n'apparaît pas sur le site)
+        type: boolean
       - name: meta_title
         label: Titre pour Google (facultatif, sinon le titre de l'article)
         type: string

@@ -64,7 +64,7 @@ const inclus = [
   "La grille d'observation à refaire tous les 7 jours d'activité",
   'Ton agenda qui bloque tes soirs et te les rappelle',
   "La réponse de Sandy à une question de parent chaque semaine",
-  'Le tableau que ton MINI dévoile et garde à la fin',
+  'La planche de gommettes que ton MINI retourne et garde à la fin',
 ];
 
 const faq = [
@@ -76,7 +76,7 @@ const faq = [
 ];
 const jsonld = [
   { '@context': 'https://schema.org', '@type': 'Product', name: 'Décode ton MINI : le parcours du soir', description: "Un parcours de 21 jours d'activité : un geste par jour à faire avec son enfant, relié au réflexe archaïque en jeu.",
-    brand: { '@id': PROD_URL + '/#cabinet' }, image: PROD_URL + '/img/tableau.svg',
+    brand: { '@id': PROD_URL + '/#cabinet' }, image: PROD_URL + '/img/gommettes.svg',
     offers: { '@type': 'Offer', price: PREVENTE_PRIX, priceCurrency: 'EUR', availability: 'https://schema.org/PreOrder', url: PROD_URL + '/programme' } },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
 ];
@@ -86,22 +86,21 @@ const jsonld = [
     <section class="lp-hero">
       <div class="wrap lp-hero-grid">
         <div>
-          <p class="kicker">En prévente · Les parcours de Sandy</p>
           <h1>Décode ton MINI pour simplifier ton quotidien avec un geste par jour</h1>
           <p class="lead">Un coucher qui s'éternise, des devoirs qui dérapent, tout à la bouche : derrière ces signes, il y a souvent un réflexe archaïque encore actif. Chaque parcours t'explique lequel, et te donne un geste par jour à faire avec ton enfant.</p>
-          <div class="btns"><a class="btn" href={acheter}>Je réserve ma place à {prix}</a><a class="btn ghost" href={demo}>Essayer la démo</a></div>
-          <div class="facts"><span class="fact"><i></i>Un parcours par signe</span><span class="fact"><i></i>21 jours d'activité</span><span class="fact"><i></i>À ton rythme</span><span class="fact"><i></i>Rien à installer sur ton téléphone</span></div>
+          <div class="btns"><a class="btn" href={acheter}>Je réserve ma place à {prix}</a><a class="btn ghost" href={demo}>Faire le repérage</a></div>
+          <p class="facts-line">Le programme est en prévente. Tu fais tes 21 jours d'activité à ton rythme, et il n'y a rien à installer sur ton téléphone.</p>
           <p class="note lp-note">Ce programme propose des gestes doux. Ce n'est pas un diagnostic ni un traitement, et si ton enfant ronfle, fait des pauses en respirant ou transpire beaucoup, parles-en aussi à ton médecin.</p>
         </div>
         <div class="phone" aria-label="Aperçu du programme">
-          <iframe src={demo} title="Démo du programme du soir" loading="lazy"></iframe>
+          <iframe src={demo} title="Le repérage en 6 questions"></iframe>
         </div>
       </div>
     </section>
 
     <section class="white">
       <div class="wrap">
-        <div class="head"><p class="kicker">Les parcours</p><h2>Chaque parcours part d'un signe du quotidien et travaille les réflexes qui se cachent derrière</h2><p class="lead">Un repérage en 6 questions te dit par lequel commencer. Un même signe peut venir de plusieurs réflexes, et chaque parcours t'explique ceux qui sont en jeu. Le premier parcours, le soir, ouvre avec la prévente, et les autres suivront.</p></div>
+        <div class="head"><h2>Chaque parcours part d'un signe du quotidien et travaille les réflexes qui se cachent derrière</h2><p class="lead">Un repérage en 6 questions te dit par lequel commencer. Un même signe peut venir de plusieurs réflexes, et chaque parcours t'explique ceux qui sont en jeu. Le premier parcours, le soir, ouvre avec la prévente, et les autres suivront.</p></div>
         <div class="lp-parcours">
           {parcours.map((x, i) => <div class="lp-parc" style={'background:' + x.c}><Fragment set:html={x.svg} /><div><b>{x.p}</b><span>{x.t}</span><em>{i === 0 ? "Disponible à l'ouverture" : 'À venir'}</em></div></div>)}
         </div>
@@ -111,7 +110,6 @@ const jsonld = [
     <section class="aqua">
       <div class="wrap lp-two">
         <div>
-          <p class="kicker">Le premier parcours : le soir</p>
           <h2>Tu reconnais peut-être ton enfant dans ces signes du soir</h2>
           <ul class="chev lp-signes">{signes.map((s) => <li>{s}</li>)}</ul>
           <p class="lp-strong">3 cases cochées ou plus ? Le réflexe de Moro est probablement encore actif chez ton enfant.</p>
@@ -127,7 +125,7 @@ const jsonld = [
 
     <section>
       <div class="wrap">
-        <div class="head"><p class="kicker">Comment ça marche</p><h2>Chaque parcours t'accompagne pendant 21 jours d'activité</h2></div>
+        <div class="head"><h2>Chaque parcours t'accompagne pendant 21 jours d'activité</h2></div>
         <div class="lp-steps">
           {etapes.map(([v, t], i) => <div class="card"><span class="num">{i + 1}</span><h3>{v}</h3><p>{t}</p></div>)}
         </div>
@@ -136,7 +134,7 @@ const jsonld = [
 
     <section class="white">
       <div class="wrap">
-        <div class="head"><p class="kicker">Les gestes du soir</p><h2>Le parcours relie chaque geste à un réflexe et t'explique ce qu'il apporte</h2><p class="lead">Voici un des cinq gestes du parcours du soir, présenté comme tu le retrouveras. Les quatre autres t'attendent dans le parcours.</p></div>
+        <div class="head"><h2>Le parcours relie chaque geste à un réflexe et t'explique ce qu'il apporte</h2><p class="lead">Voici un des cinq gestes du parcours du soir, présenté comme tu le retrouveras. Les quatre autres t'attendent dans le parcours.</p></div>
         <div class="lp-exemple" style={'background:' + exemple.c}>
           <Fragment set:html={exemple.svg} />
           <div>
@@ -155,11 +153,10 @@ const jsonld = [
 
     <section>
       <div class="wrap lp-two lp-center">
-        <img class="lp-tableau" src={url('/img/tableau.svg')} alt="Le tableau du programme : une nuit calme avec une maison, une lune et des collines" width="700" height="300" loading="lazy">
+        <img class="lp-tableau" src={url('/img/gommettes.svg')} alt="Les 21 gommettes du programme : un petit visage rouge et hérissé au jour 1, de plus en plus pâle et calme, jusqu'au dernier qui s'endort au jour 21" width="518" height="234" loading="lazy">
         <div>
-          <p class="kicker">La progression</p>
-          <h2>Chaque gommette retournée dévoile un morceau du tableau de ton MINI</h2>
-          <p>Après son geste, ton enfant retourne la gommette du jour. Au bout des 21 jours, le tableau est complet et il peut le garder.</p>
+          <h2>Chaque gommette retournée fait apparaître un petit visage un peu plus calme que la veille</h2>
+          <p>Après son geste, ton enfant retourne la gommette du jour. Le premier visage est rouge et tout hérissé, et le dernier s'endort au jour 21. Ton MINI peut ensuite garder sa planche.</p>
           <p>De ton côté, tu refais la même grille d'observation tous les 7 jours d'activité, pour voir ce qui bouge.</p>
         </div>
       </div>
@@ -169,7 +166,6 @@ const jsonld = [
       <div class="wrap lp-two lp-center">
         <div class="portrait"><img {...pic('/img/sandy.png')} alt="Portrait de Sandy Stevens" loading="lazy"></div>
         <div>
-          <p class="kicker">Qui je suis</p>
           <h2>Je suis Sandy, ancienne maîtresse et praticienne en réflexes archaïques</h2>
           <p>J'ai été maîtresse pendant 15 ans avant de devenir praticienne en réflexes archaïques en 2018, puis formatrice. Je suis aussi maman de deux garçons neuroatypiques : j'ai cherché, galéré, trouvé la clé.</p>
           <p class="lp-strong">Plus de 6 000 parents ont commenté mon post sur les soirées difficiles pour recevoir mon guide.</p>
@@ -181,9 +177,8 @@ const jsonld = [
     <section class="white" id="reserver">
       <div class="wrap lp-two">
         <div class="lp-prix">
-          <p class="kicker" style="color:var(--sun)">Tarif de lancement · le parcours du soir</p>
-          <p class="lp-montant">{prix}</p>
-          <p>Tu paies une seule fois et il n'y a pas d'abonnement.</p>
+                    <p class="lp-montant">{prix}</p>
+          <p>C'est le tarif de lancement du parcours du soir : tu paies une seule fois et il n'y a pas d'abonnement.</p>
           <ul class="chev lp-inclus">{inclus.map((x) => <li>{x}</li>)}</ul>
           <a class="btn" href={acheter}>Je réserve ma place à {prix}</a>
           <p class="lp-petit">Tu es prévenue par e-mail dès l'ouverture du programme.</p>
@@ -202,13 +197,18 @@ const jsonld = [
 </Base>
 
 <style is:global>
+/* Hallmark · checked: 2026-11-14 · genre: editorial (inferred)
+ * floor: fixed 7a, 26a, 48, 49a, 54, 63 · structural: printed (3, 44c, 58, 59, 77)
+ * dismissed 80 · la planche montre les gommettes du programme que l'enfant retourne, c'est le produit vendu et pas un dessin de décor
+ * built: the project · redesign: polish · v2.0.0 */
 .lp-hero{padding:56px 0 72px;background:linear-gradient(180deg,var(--ivory) 0%,var(--aqua) 100%)}
 .lp-hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
-.lp-hero h1{font-size:clamp(32px,4vw,48px)}
+.lp-hero h1{font-size:clamp(32px,4vw,48px);text-wrap:balance}
 .lp-hero .lead{margin:20px 0 28px;max-width:600px}
 .lp-note{margin-top:26px;max-width:600px;font-size:13.5px}
-.phone{width:340px;height:690px;margin-left:auto;border-radius:46px;border:10px solid var(--ink);overflow:hidden;background:#fff;box-shadow:0 34px 70px rgba(9,55,31,.28)}
+.phone{width:340px;height:690px;margin-left:auto;border-radius:46px;border:10px solid var(--ink);overflow:hidden;background:var(--white);box-shadow:var(--shadow-phone)}
 .phone iframe{width:100%;height:100%;border:0;display:block}
+.phone iframe:focus{outline:3px solid var(--focus);outline-offset:-3px}
 .lp-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
 .lp-center{align-items:center}
 .lp h2{margin-bottom:18px}
@@ -221,7 +221,7 @@ const jsonld = [
 .lp-parc div{display:flex;flex-direction:column;gap:5px}
 .lp-parc b{font-size:17px;line-height:1.3}
 .lp-parc span{font-size:13.5px;color:var(--ink-2)}
-.lp-parc em{align-self:flex-start;margin-top:6px;font-style:normal;font-size:12.5px;font-weight:600;background:#fff;border-radius:13px;padding:3px 12px}
+.lp-parc em{align-self:flex-start;margin-top:6px;font-style:normal;font-size:12.5px;font-weight:600;background:var(--white);border-radius:13px;padding:4px 12px}
 .lp-parc:first-child{outline:2px solid var(--ink)}
 .lp-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .lp-exemple{border-radius:var(--r-lg);padding:32px;display:flex;gap:28px;align-items:flex-start;margin-bottom:20px}
@@ -229,20 +229,22 @@ const jsonld = [
 .lp-exemple h3{font-size:22px;margin-bottom:10px}
 .lp-exemple p{font-size:16px;line-height:1.6}
 .lp-gestes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.lp-geste{border-radius:var(--r-md);padding:22px 18px;display:flex;flex-direction:column;gap:10px}
-.lp-geste svg{overflow:visible}
+.lp-geste{border-radius:var(--r-md);padding:22px 18px;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:14px;row-gap:4px;align-items:center}
+.lp-geste svg{grid-row:1 / 3}
+.lp-geste svg{overflow:visible;width:44px;height:44px}
+.lp-geste h3{font-size:16px}
 .lp-geste h3{font-size:17px}
 .lp-geste p{font-size:14.5px;line-height:1.55}
 .lp-quote{max-width:780px;margin:56px auto 0;text-align:center;font-size:clamp(20px,2.3vw,26px);line-height:1.45;font-weight:600}
 .lp-quote span{display:block;margin-top:12px;font-size:15px;font-weight:400;color:var(--ink-2)}
-.lp-tableau{width:100%;height:auto;border-radius:var(--r-lg);box-shadow:0 24px 50px rgba(9,55,31,.18)}
-.lp-prix{background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:40px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.lp-tableau{width:100%;height:auto;border-radius:var(--r-lg);box-shadow:var(--shadow-lg)}
+.lp-prix{background:var(--ink);color:var(--on-dark);border-radius:var(--r-lg);padding:40px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 .lp-prix p{margin:0}
 .lp-montant{font-size:64px;font-weight:800;line-height:1}
 .lp-inclus{margin:8px 0 12px}
 .lp-inclus li{margin:10px 0;font-size:16px}
 .lp-inclus li::before{color:var(--sun)}
-.lp-petit{font-size:13.5px;color:#CFE0D8}
+.lp-petit{font-size:13.5px;color:var(--on-dark-2)}
 .lp-faq details{border-bottom:1px solid var(--line);padding:16px 0}
 .lp-faq summary{font-weight:600;font-size:17px;cursor:pointer;list-style-position:inside}
 .lp-faq p{margin-top:10px;color:var(--ink-2)}
@@ -271,7 +273,7 @@ const jsonld = [
   .lp-exemple{flex-direction:column;padding:24px;gap:14px}
   .lp-exemple svg{width:84px;height:84px}
   .lp-prix{padding:28px}
-  .buybar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:10px 16px;align-items:center;justify-content:space-between;gap:12px;font-size:15px}
+  .buybar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--white);border-top:1px solid var(--line);padding:10px 16px;align-items:center;justify-content:space-between;gap:12px;font-size:15px}
   footer{padding-bottom:96px}
 }
 </style>

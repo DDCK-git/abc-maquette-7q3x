@@ -22,11 +22,11 @@ const faqLd = {
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="kicker">Réflexes archaïques · Obernai, près de Strasbourg</p>
-      <h1>J'aide ceux qui ne rentrent <span class="hl-p">ni dans les cases ni dans le moule</span> à accéder à leur plein potentiel</h1>
+      
+      <h1>J'aide ceux qui ne rentrent ni dans les cases ni dans le moule à accéder à leur plein potentiel</h1>
       <p class="lead">Je suis Sandy, praticienne et formatrice à Obernai, et j'accompagne tous les âges de la vie grâce à l'intégration des réflexes archaïques.</p>
       <div class="btns"><a class="btn" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous</a><a class="btn ghost" href="#reflexes">Comprendre les réflexes</a></div>
-      <div class="facts"><span class="fact"><i></i>Maîtresse pendant 15 ans</span><span class="fact"><i></i>Praticienne depuis 2018</span><span class="fact"><i></i>Formatrice Arc-en-Flex®</span></div>
+      <p class="facts-line">J'ai été maîtresse pendant 15 ans, je suis praticienne depuis 2018 et formatrice Arc-en-Flex®.</p>
     </div>
     <div class="cover">
       <img {...pic('/img/cabinet.jpg')} fetchpriority="high" alt="Le cabinet de Sandy à Obernai, avec son fauteuil, ses affiches et son panier de balles">
@@ -38,7 +38,7 @@ const faqLd = {
 
 <section class="aqua" id="reflexes">
   <div class="wrap">
-    <div class="head"><p class="kicker">Les enjeux</p><h2>Les réflexes archaïques sont les premiers gestes instinctifs du bébé</h2></div>
+    <div class="head"><h2>Les réflexes archaïques sont les premiers gestes instinctifs du bébé</h2></div>
     <div class="grid3">
       <div class="card"><span class="num">1</span><h3>Dès la naissance</h3><p>Le bébé active des gestes instinctifs et essentiels qui constituent ses réflexes primitifs, comme le réflexe de Moro, le réflexe de succion ou l'agrippement.</p></div>
       <div class="card"><span class="num">2</span><h3>Au fil des mois</h3><p>En répétant ces mouvements involontaires, le nourrisson automatise ses schémas sensori-moteurs. Ses réflexes s'intègrent en bâtissant un réseau de communication entre toutes les parties du système nerveux.</p></div>
@@ -50,7 +50,7 @@ const faqLd = {
 
 <section id="consultations">
   <div class="wrap">
-    <div class="head"><p class="kicker">Consultations</p><h2>On vient me voir pour des difficultés qui touchent la tête, le cœur ou le corps</h2><p class="lead">J'accueille les enfants, les adolescents et les adultes. Voici les situations que l'on retrouve dans chacune des trois sphères.</p></div>
+    <div class="head"><h2>On vient me voir pour des difficultés qui touchent la tête, le cœur ou le corps</h2><p class="lead">J'accueille les enfants, les adolescents et les adultes. Voici les situations que l'on retrouve dans chacune des trois sphères.</p></div>
     <div class="grid3">
       <div class="card sphere"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.3 1 2.1h5c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h3>Sphère cognitive</h3><ul class="chev"><li>Manque de concentration</li><li>Difficultés d'organisation</li><li>Problèmes de mémoire</li><li><a href={url('/post/a-comme-réflexe-d-agrippement')}>Problèmes de graphisme</a></li><li>Difficultés en lecture et en écriture</li><li>Difficultés de communication</li><li>Troubles dys (dyslexie, dyscalculie, dysorthographie, dysphasie, dyspraxie)</li><li>TDA/H, TSA</li></ul></div>
       <div class="card sphere c2"><span class="ico"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><h3>Sphère émotionnelle</h3><ul class="chev"><li><a href={url('/post/réflexe-de-galant-pourquoi-mon-enfant-ne-tient-pas-en-place')}>Agitation et hyperactivité</a></li><li>Forte émotivité, hypersensibilité</li><li>Problèmes relationnels</li><li>Troubles alimentaires</li><li><a href={url('/post/m-comme-réflexe-de-moro')}>Gestion du stress</a>, burn-out</li><li><a href={url('/post/p-comme-réflexe-de-paralysie-par-la-peur')}>Angoisses, phobies</a></li><li>Manque de confiance en soi, timidité excessive</li><li>Tics, tocs</li></ul></div>
@@ -62,13 +62,13 @@ const faqLd = {
 
 <section class="white" id="comment">
   <div class="wrap">
-    <div class="head"><p class="kicker">Comment ça marche</p><h2>Voici comment se passe un suivi avec moi</h2></div>
+    <div class="head"><h2>Voici comment se passe un suivi avec moi</h2></div>
     <div class="grid3">
       <div class="card" style="background:var(--ivory)"><span class="num">1</span><h3>Le premier rendez-vous</h3><p>Nous faisons connaissance et nous échangeons autour des raisons de ta visite et de ton parcours de vie. Je teste ensuite tes réflexes à travers des mouvements simples, puis je te rédige un compte-rendu de bilan initial.</p></div>
       <div class="card" style="background:var(--ivory)"><span class="num">2</span><h3>Le suivi en réflexes</h3><p>Le nombre de séances s'adapte à tes besoins et à ton objectif de travail. Les exercices sont variés et ludiques, et tu restes pleinement acteur de tes mouvements.</p></div>
       <div class="card" style="background:var(--ivory)"><span class="num">3</span><h3>Entre deux séances</h3><p>Tu repars avec un programme individuel sur mesure, fait de quelques mouvements à réaliser chez toi pour parfaire l'intégration des réflexes travaillés au cabinet.</p></div>
     </div>
-    <div class="chips" style="margin:28px 0 32px"><span class="chip">Bilan de 90 minutes · 95 €</span><span class="chip">Séance de suivi de 45 minutes · 65 €</span><span class="chip">Séances espacées de 3 à 4 semaines</span></div>
+    <div class="chips" style="margin:28px 0 32px"><span class="chip">Bilan de 90 minutes à 95 €</span><span class="chip">Séance de suivi de 45 minutes à 65 €</span><span class="chip">Séances espacées de 3 à 4 semaines</span></div>
     <a class="btn" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous</a>
   </div>
 </section>
@@ -78,7 +78,7 @@ const faqLd = {
     <div class="about">
       <div class="portrait"><img {...pic('/img/sandy.png')} alt="Portrait de Sandy Stevens" loading="lazy"></div>
       <div>
-        <p class="kicker">Qui suis-je</p>
+        
         <h2 style="margin-bottom:20px">Je suis Sandy, alsacienne d'adoption et maman de deux vikings</h2>
         <p>J'ai t'huit ans (parce que je ne retiens jamais mon âge), une curiosité débordante et une soif d'apprendre et de transmettre insatiable. C'est ce qui m'a donné envie de devenir maîtresse, un métier que j'ai exercé pendant 15 ans.</p>
         <p>La naissance de mes enfants a profondément fait bouger les lignes. Grâce à eux, j'ai basculé dans le monde merveilleux et coloré de la neurodiversité, et je suis devenue praticienne en réflexes archaïques en 2018.</p>
@@ -94,11 +94,11 @@ const faqLd = {
     <div class="colleague" id="marjorie">
       <span class="avatar" aria-hidden="true">ME</span>
       <div>
-        <p class="kicker">Au cabinet avec moi</p>
+        
         <h2>Quand je ne consulte pas, ma collègue Marjorie te reçoit à la même adresse</h2>
         <p style="margin-top:14px">Marjorie Ebel est praticienne certifiée en réflexes archaïques pour la méthodologie Arc-En-Flex®. Elle accompagne les enfants, les adolescents et les adultes, et elle est présente au cabinet le mardi et le samedi.</p>
         <p class="todo">À compléter avec Marjorie : sa photo et quelques mots sur son parcours.</p>
-        <div class="btns" style="margin-top:18px"><a class="btn" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous avec Marjorie</a></div>
+        <div class="btns" style="margin-top:18px"><a class="btn" href={RDV} target="_blank" rel="noopener">Réserver avec Marjorie</a></div>
       </div>
     </div>
   </div>
@@ -113,15 +113,15 @@ const faqLd = {
 <section class="dark" id="formations">
   <div class="wrap split">
     <div>
-      <p class="kicker">Formations</p>
+      
       <h2>Je forme aussi les professionnels aux réflexes archaïques</h2>
       <p class="lead" style="margin:18px 0 22px">Je propose le cursus complet de certification praticien Arc-en-Flex®, du module de base jusqu'à la pratique professionnelle, en Alsace toute l'année et en Belgique à partir de 2027.</p>
       <ul class="dates">
-        <li><i class="dot m-rouge"></i><b>Module Rouge</b><span>du 7 au 10 décembre 2026 à Obernai</span></li>
-        <li><i class="dot m-rouge"></i><b>Module Rouge</b><span>du 12 au 15 février 2027 près de Bruxelles</span></li>
-        <li><i class="dot m-orange"></i><b>Module Orange</b><span>du 4 au 7 mars 2027 à Obernai</span></li>
+        <li><b>Module Rouge</b><span>du 7 au 10 décembre 2026 à Obernai</span></li>
+        <li><b>Module Rouge</b><span>du 12 au 15 février 2027 près de Bruxelles</span></li>
+        <li><b>Module Orange</b><span>du 4 au 7 mars 2027 à Obernai</span></li>
       </ul>
-      <div class="btns" style="margin-top:28px"><a class="btn" href={url('/formations')}>Voir le parcours et toutes les dates</a></div>
+      <div class="btns" style="margin-top:28px"><a class="btn" href={url('/formations')}>Voir toutes les dates</a></div>
     </div>
     <img {...pic('/img/salle-formation.jpg')} alt="La salle de formation avec ses tapis et ses coussins de toutes les couleurs" loading="lazy">
   </div>
@@ -129,7 +129,7 @@ const faqLd = {
 
 <section id="blog">
   <div class="wrap">
-    <div class="head"><p class="kicker">Le blog</p><h2>Je décode sur le blog les comportements du quotidien</h2></div>
+    <div class="head"><h2>Je décode sur le blog les comportements du quotidien</h2></div>
     <div class="posts">{latest.map((p) => <PostCard post={p} />)}</div>
     <p style="margin-top:32px"><a class="more" href={url('/blog')}>Lire tous les articles</a></p>
     <div class="insta" style="margin-top:64px"><h2>Je partage aussi des repères et des mouvements à tester à la maison sur Instagram</h2><a class="btn dark" href={INSTA} target="_blank" rel="noopener"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>@sandy_abcdesreflexes</a></div>
@@ -138,7 +138,7 @@ const faqLd = {
 
 <section id="questions">
   <div class="wrap">
-    <div class="head"><p class="kicker">Questions pratiques</p><h2>Les réponses aux questions pratiques avant de venir au cabinet</h2></div>
+    <div class="head"><h2>Les réponses aux questions pratiques avant de venir au cabinet</h2></div>
     <div class="grid2">
       {faq.map(([q, a]) => <div class="card"><h3>{q}</h3><p>{a}</p></div>)}
     </div>
@@ -147,7 +147,7 @@ const faqLd = {
 
 <section class="white" id="contact">
   <div class="wrap">
-    <div class="head"><p class="kicker">Contact</p><h2>Le cabinet se trouve au cœur d'Obernai, à 25 minutes de Strasbourg</h2></div>
+    <div class="head"><h2>Le cabinet se trouve au cœur d'Obernai, à 25 minutes de Strasbourg</h2></div>
     <div class="contact">
       <div class="card big-cta">
         <h3>Tu peux réserver ta séance en ligne</h3>

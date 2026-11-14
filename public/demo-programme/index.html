@@ -5,20 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>Démo · Programme du soir, 21 jours</title>
+<meta name="description" content="Le repérage en 6 questions du programme de Sandy Stevens, pour savoir par quel parcours commencer avec ton enfant.">
 <style>
+/* Hallmark · checked: 2026-11-14 · genre: playful (inferred) · shape: app screen
+ * floor: fixed 7a, 26a, 34, 48, 67, 16 · structural: none printed
+ * dismissed 80 · les petits visages des gommettes sont l'objet même du programme que l'enfant retourne chaque jour, pas une illustration de décor
+ * dismissed 1 · Poppins est la police de la marque de Sandy, reprise de son site et de ses visuels Instagram
+ * built: the project · redesign: polish · v2.0.0 */
 @font-face{font-family:Poppins;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/poppins-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:Poppins;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/poppins-latin-500-normal.woff2) format("woff2")}
 @font-face{font-family:Poppins;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/poppins-latin-600-normal.woff2) format("woff2")}
 @font-face{font-family:Poppins;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/poppins-latin-700-normal.woff2) format("woff2")}
-:root{--ink:#09371F;--ink2:#3E5C4C;--ground:#FBFBF4;--white:#FFFFFF;--line:#C9D6CF;--turq:#00B1B0;--t-turq:#D9F3F2;--t-rose:#FFE1EB;--t-coral:#FFE6E0;--t-sage:#E3ECE7;--coral:#FF8370;--page:#E7F4F5}
+:root{--ink:#09371F;--ink2:#3E5C4C;--ground:#FBFBF4;--white:#FBFEFA;--on-dark:#FBFEFA;--line:#C9D6CF;--edge:#618773;--muted-fill:#9DB3A8;--tile:#EEF2E8;--focus:#007372;--pink:#FC3C80;--shadow:0 16px 40px rgba(9,55,31,.12);--font:Poppins,system-ui,-apple-system,"Segoe UI",sans-serif;--turq:#00B1B0;--t-turq:#D9F3F2;--t-rose:#FFE1EB;--t-coral:#FFE6E0;--t-sage:#E3ECE7;--coral:#FF8370;--page:#E7F4F5}
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--page);color:var(--ink);font-family:Poppins,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-#shell{max-width:420px;min-height:100vh;margin:0 auto;background:var(--ground);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(9,55,31,.12)}
-#banner{background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:8px 16px;text-align:center}
+html,body{margin:0;padding:0;overflow-x:clip}
+body{background:var(--page);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+#shell{max-width:420px;min-height:100vh;margin:0 auto;background:var(--ground);display:flex;flex-direction:column;box-shadow:var(--shadow)}
+#banner{background:var(--ink);color:var(--on-dark);font-size:12px;line-height:1.4;padding:8px 16px;text-align:center}
 #app{flex:1;display:flex;flex-direction:column;gap:16px;padding:24px 20px 20px}
-.kicker{margin:0;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
-h1{margin:0;font-size:25px;line-height:1.25;font-weight:700}
+.kicker{margin:0;font-size:13px;font-weight:600;color:var(--ink2)}
+h1{margin:0;font-size:25px;line-height:1.25;font-weight:700;text-wrap:balance}
 h2{margin:0;font-size:18px;font-weight:700}
 p{margin:0}
 .lead{font-size:14px;line-height:1.55;color:var(--ink2)}
@@ -26,8 +32,9 @@ p{margin:0}
 .stack{display:flex;flex-direction:column;gap:10px}
 .grow{flex:1}
 button{font-family:inherit;color:var(--ink);cursor:pointer}
-.btn{min-height:54px;border-radius:27px;border:none;background:var(--ink);color:#fff;font-size:16px;font-weight:600;padding:0 20px;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none}
-.btn[disabled]{background:#9DB3A8;cursor:default}
+.btn{min-height:54px;border-radius:27px;border:none;background:var(--ink);color:var(--on-dark);font-size:16px;font-weight:600;padding:0 20px;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.btn[disabled]{background:var(--muted-fill);cursor:not-allowed}
+button:active:not([disabled]),a.btn:active{filter:brightness(.94)}
 .btn.ghost{background:var(--ground);color:var(--ink);border:2px solid var(--ink)}
 .link{background:none;border:none;padding:10px 0;font-size:13px;font-weight:600;text-decoration:underline;min-height:44px;color:var(--ink)}
 .opt{min-height:60px;border-radius:16px;border:1px solid var(--line);background:var(--white);padding:10px 14px;display:flex;align-items:center;gap:12px;text-align:left;font-size:15px;font-weight:500;line-height:1.35;width:100%}
@@ -52,9 +59,9 @@ button{font-family:inherit;color:var(--ink);cursor:pointer}
 .pt b{font-size:16px;line-height:1.25}
 .pills{display:flex;gap:6px;flex-wrap:wrap}
 .pill{min-width:44px;min-height:44px;padding:0 12px;border-radius:22px;border:1px solid var(--line);background:var(--white);font-size:14px;font-weight:600}
-.pill.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pill.on{background:var(--ink);border-color:var(--ink);color:var(--on-dark)}
 .lbl{font-size:14px;font-weight:700;margin-top:4px}
-.quote{border-left:4px solid var(--coral);padding:2px 0 2px 12px;font-size:13.5px;line-height:1.55}
+.quote{font-size:14px;line-height:1.55;font-weight:500}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .pick{position:relative;min-height:150px;border-radius:18px;border:1px solid var(--line);padding:12px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .pick.on{outline:3px solid var(--ink);outline-offset:1px}
@@ -62,14 +69,13 @@ button{font-family:inherit;color:var(--ink);cursor:pointer}
 @keyframes flip{from{transform:rotateY(90deg) scale(.7)}to{transform:none}}
 @keyframes pulse{from{transform:scale(.86)}to{transform:scale(1)}}
 .tile.flip{animation:flip .55s ease-out}
-.tile.pend{border:none;padding:0;cursor:pointer;background:#FF8370;border-radius:50%;animation:pulse .7s ease-in-out infinite alternate}
+.tile.pend{border:none;padding:0;cursor:pointer;background:var(--coral);border-radius:50%;animation:pulse .7s ease-in-out infinite alternate}
 @media (prefers-reduced-motion:reduce){.tile.flip,.tile.pend{animation:none}}
 .mosaic{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;border-radius:12px;overflow:hidden}
-.mosaic.full{gap:0}
-.tile{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#3E5C4C;background:#EEF2E8;border-radius:5px}
-.tile.now{outline:3px solid var(--ink);outline-offset:-3px;background:#D9F3F2}
-.tile.on{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 700 300%22%3E%3Crect width=%22700%22 height=%22300%22 fill=%22%2312455A%22/%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%2295%22 cy=%22120%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22160%22 cy=%2230%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22215%22 cy=%2295%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22270%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22110%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22390%22 cy=%2225%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22445%22 cy=%2290%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22500%22 cy=%2240%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22545%22 cy=%22130%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22660%22 cy=%22150%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22665%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%2260%22 cy=%22165%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22240%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22470%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22120%22 cy=%2270%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22600%22 cy=%2275%22 r=%2246%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22580%22 cy=%2262%22 r=%2240%22 fill=%22%2312455A%22/%3E%3Cpath d=%22M110 62a16 16 0 0 1 30-6 14 14 0 0 1 26 8 12 12 0 0 1-4 23h-50a13 13 0 0 1-2-25z%22 fill=%22%23FF7FA8%22/%3E%3Cpath d=%22M352 58a14 14 0 0 1 27-5 12 12 0 0 1 22 7 10 10 0 0 1-3 20h-44a11 11 0 0 1-2-22z%22 fill=%22%23FFB3A4%22/%3E%3Cpath d=%22M0 300V222Q120 160 250 216T480 208T700 186V300Z%22 fill=%22%2300B1B0%22/%3E%3Cpath d=%22M90 214v-34%22 stroke=%22%2309371F%22 stroke-width=%228%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2290%22 cy=%22162%22 r=%2228%22 fill=%22%2309371F%22/%3E%3Ccircle cx=%2280%22 cy=%22156%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22100%22 cy=%22170%22 r=%224%22 fill=%22%23FF8370%22/%3E%3Crect x=%22296%22 y=%22168%22 width=%2264%22 height=%2248%22 fill=%22%23FBFBF4%22/%3E%3Cpath d=%22M286 170l42-34 42 34z%22 fill=%22%23FF8370%22/%3E%3Crect x=%22306%22 y=%22180%22 width=%2218%22 height=%2218%22 fill=%22%23FEC84D%22/%3E%3Crect x=%22334%22 y=%22186%22 width=%2216%22 height=%2230%22 fill=%22%2309371F%22/%3E%3Cpath d=%22M370 150q6-10 12 0M388 132q8-12 16 0%22 stroke=%22%23FBFBF4%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M520 206l24-40 24 40z%22 fill=%22%23FF8370%22/%3E%3Cpath d=%22M544 166v40%22 stroke=%22%2309371F%22 stroke-width=%224%22/%3E%3Cpath d=%22M0 300V262Q200 204 400 262T700 244V300Z%22 fill=%22%23008A89%22/%3E%3Ccircle cx=%2240%22 cy=%22272%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22140%22 cy=%22258%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22230%22 cy=%22262%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22276%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22430%22 cy=%22280%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22520%22 cy=%22268%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22610%22 cy=%22262%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22670%22 cy=%22270%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3C/svg%3E");background-size:700% 300%;border-radius:2px}
-.mosaic.full .tile.on{border-radius:0}
+.tile{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink2);background:var(--tile);border-radius:8px}
+.tile.now{outline:3px solid var(--ink);outline-offset:-3px;background:var(--t-turq)}
+.tile.on{background:var(--white)}
+.face{width:88%;height:88%;overflow:visible}
 .pick svg{width:72px;height:72px}
 .pick svg,.anim svg{overflow:visible}
 .anim{display:flex;justify-content:center;border-radius:16px;padding:12px}
@@ -86,24 +92,24 @@ button{font-family:inherit;color:var(--ink);cursor:pointer}
 .puff{animation:puff 2s ease-in-out infinite alternate}
 .fb-only .fa{animation:none;opacity:0}.fb-only .fb{animation:none;opacity:1}.fb-only .rock{animation:none;transform:rotate(7deg)}.fb-only .rise{animation:none;transform:translateY(-6px)}.fb-only .puff{animation:none;opacity:1}
 @media (prefers-reduced-motion:reduce){.fa,.fb,.rock,.rise,.puff{animation:none}}
-.pick em{font-style:normal;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.pick em{font-style:normal;font-size:12px;font-weight:600}
 .days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
 .day{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--ink2)}
 .dot{width:36px;height:36px;border-radius:18px;display:flex;align-items:center;justify-content:center}
-.dot.todo{border:2px dashed #9DB3A8}
+.dot.todo{border:2px dashed var(--muted-fill)}
 .dot.now{border:3px solid var(--ink);background:var(--t-turq)}
 .meter{display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:10px;font-size:13px}
 .meter .track{height:12px;border-radius:6px;background:var(--white);overflow:hidden}
 .meter .track i{display:block;height:12px;border-radius:6px;background:var(--ink)}
 .meter span:last-child{white-space:nowrap}
-textarea{border-radius:16px;border:1px solid #9DB3A8;background:var(--white);padding:14px;font-family:inherit;font-size:14px;line-height:1.5;color:var(--ink);resize:none;width:100%}
+textarea{border-radius:16px;border:1px solid var(--edge);background:var(--white);padding:14px;font-family:inherit;font-size:14px;line-height:1.5;color:var(--ink);resize:none;width:100%}
 label.t{font-size:15px;font-weight:700}
 #tabs{position:sticky;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--white);border-top:1px solid var(--line)}
 #tabs button{min-height:60px;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:600;color:var(--ink2)}
 #tabs button.on{color:var(--ink);box-shadow:inset 0 3px 0 var(--turq)}
-#toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:10px 16px;border-radius:20px;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}
+#toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:var(--on-dark);font-size:13px;font-weight:600;padding:10px 16px;border-radius:20px;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}
 #toast.show{opacity:1}
-button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--turq);outline-offset:2px}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -182,12 +188,35 @@ var PIC = {
   crises:'<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#09371F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="24" r="5.5" fill="#FFFFFF"/><path d="M32 30v16M32 34L20 26M32 34l12-8M32 46l-8 12M32 46l8 12"/><path d="M32 6v7M18 9l4 6M46 9l-4 6M10 22h7M47 22h7" stroke="#FC3C80" stroke-width="2.5"/></svg>'
 };
 function pCard(x,o){ o=o||{}; var tag=o.a?'button':'div';
-  return '<'+tag+' class="pcard'+(o.on?' on':'')+'" style="background:'+x.c+'"'+(o.a?' data-a="'+o.a+'" data-v="'+x.k+'" aria-pressed="'+(!!o.on)+'"':'')+'>'+PIC[x.k]+'<span class="pt"><b>'+x.p+'</b><span class="small">'+(o.note||x.t)+'</span>'+(o.chip?'<span class="chip" style="background:#fff;align-self:flex-start">'+o.chip+'</span>':'')+'</span></'+tag+'>'; }
+  return '<'+tag+' class="pcard'+(o.on?' on':'')+'" style="background:'+x.c+'"'+(o.a?' data-a="'+o.a+'" data-v="'+x.k+'" aria-pressed="'+(!!o.on)+'"':'')+'>'+PIC[x.k]+'<span class="pt"><b>'+x.p+'</b><span class="small">'+(o.note||x.t)+'</span>'+(o.chip?'<span class="chip" style="background:var(--white);align-self:flex-start">'+o.chip+'</span>':'')+'</span></'+tag+'>'; }
 var REPERES = {
   7:{t:'Sandy t\'explique le réflexe de Moro',q:'Le réflexe de Moro est un réflexe archaïque présent chez tous les bébés dès la naissance. Il déclenche une réaction d\'alerte face à un danger perçu. Normalement, il s\'intègre vers 4 mois. Mais parfois, il reste actif bien après.',src:'son article « Réflexe de Moro et sommeil »',url:ART_SOMMEIL},
   14:{t:'Sandy t\'explique ce que ce réflexe change au moment de dormir',q:'Quand le réflexe de Moro reste actif, le système nerveux de ton enfant reste en état d\'alerte, même au moment de s\'endormir. Le moindre bruit ou la moindre sensation peut suffire à le faire sursauter et repousser l\'endormissement.',src:'son post sur l\'auto-bercement',url:ART_MORO}
 };
-var SCENE = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 700 300%22%3E%3Crect width=%22700%22 height=%22300%22 fill=%22%2312455A%22/%3E%3Ccircle cx=%2240%22 cy=%2240%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%2295%22 cy=%22120%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22160%22 cy=%2230%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22215%22 cy=%2295%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22270%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22110%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22390%22 cy=%2225%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22445%22 cy=%2290%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22500%22 cy=%2240%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22545%22 cy=%22130%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22660%22 cy=%22150%22 r=%224%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22665%22 cy=%2235%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%2260%22 cy=%22165%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22240%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22470%22 cy=%22150%22 r=%223%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22120%22 cy=%2270%22 r=%223%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22600%22 cy=%2275%22 r=%2246%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22580%22 cy=%2262%22 r=%2240%22 fill=%22%2312455A%22/%3E%3Cpath d=%22M110 62a16 16 0 0 1 30-6 14 14 0 0 1 26 8 12 12 0 0 1-4 23h-50a13 13 0 0 1-2-25z%22 fill=%22%23FF7FA8%22/%3E%3Cpath d=%22M352 58a14 14 0 0 1 27-5 12 12 0 0 1 22 7 10 10 0 0 1-3 20h-44a11 11 0 0 1-2-22z%22 fill=%22%23FFB3A4%22/%3E%3Cpath d=%22M0 300V222Q120 160 250 216T480 208T700 186V300Z%22 fill=%22%2300B1B0%22/%3E%3Cpath d=%22M90 214v-34%22 stroke=%22%2309371F%22 stroke-width=%228%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%2290%22 cy=%22162%22 r=%2228%22 fill=%22%2309371F%22/%3E%3Ccircle cx=%2280%22 cy=%22156%22 r=%224%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22100%22 cy=%22170%22 r=%224%22 fill=%22%23FF8370%22/%3E%3Crect x=%22296%22 y=%22168%22 width=%2264%22 height=%2248%22 fill=%22%23FBFBF4%22/%3E%3Cpath d=%22M286 170l42-34 42 34z%22 fill=%22%23FF8370%22/%3E%3Crect x=%22306%22 y=%22180%22 width=%2218%22 height=%2218%22 fill=%22%23FEC84D%22/%3E%3Crect x=%22334%22 y=%22186%22 width=%2216%22 height=%2230%22 fill=%22%2309371F%22/%3E%3Cpath d=%22M370 150q6-10 12 0M388 132q8-12 16 0%22 stroke=%22%23FBFBF4%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M520 206l24-40 24 40z%22 fill=%22%23FF8370%22/%3E%3Cpath d=%22M544 166v40%22 stroke=%22%2309371F%22 stroke-width=%224%22/%3E%3Cpath d=%22M0 300V262Q200 204 400 262T700 244V300Z%22 fill=%22%23008A89%22/%3E%3Ccircle cx=%2240%22 cy=%22272%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22140%22 cy=%22258%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22230%22 cy=%22262%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22330%22 cy=%22276%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22430%22 cy=%22280%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3Ccircle cx=%22520%22 cy=%22268%22 r=%225%22 fill=%22%23FBFBF4%22/%3E%3Ccircle cx=%22610%22 cy=%22262%22 r=%225%22 fill=%22%23FF7FA8%22/%3E%3Ccircle cx=%22670%22 cy=%22270%22 r=%225%22 fill=%22%23FEC84D%22/%3E%3C/svg%3E';
+// Les gommettes : un petit visage hérissé et rouge au jour 1, qui s'arrondit, pâlit et s'endort au jour 21
+function mixc(a,b,t){ var o='#'; for(var i=0;i<3;i++){ var x=parseInt(a.substr(1+i*2,2),16), y=parseInt(b.substr(1+i*2,2),16), v=Math.round(x+(y-x)*t).toString(16); o+=(v.length<2?'0':'')+v; } return o; }
+function n1(v){ return Math.round(v*10)/10; }
+function face(d){ var t=(d-1)/20, k=Math.pow(1-t,1.4), i, p=[], R=25, amp=11*k;
+  for(i=0;i<24;i++){ var a=Math.PI*2*i/24-Math.PI/2, r=(i%2?R-amp:R); p.push(n1(Math.cos(a)*r)+','+n1(Math.sin(a)*r)); }
+  var fill=t<.55?mixc('#F4473A','#FFC2B4',t/.55):mixc('#FFC2B4','#D9F3F2',(t-.55)/.45);
+  var h='<polygon points="'+p.join(' ')+'" fill="'+fill+'" stroke="#09371F" stroke-width="2.2" stroke-linejoin="round"/>';
+  var open=t<.5?1:Math.max(0,1-(t-.5)/.4), ex=7.5, ey=-3;
+  if(open>.2){ h+='<ellipse cx="'+(-ex)+'" cy="'+ey+'" rx="2.6" ry="'+n1(2.6*open)+'" fill="#09371F"/><ellipse cx="'+ex+'" cy="'+ey+'" rx="2.6" ry="'+n1(2.6*open)+'" fill="#09371F"/>';
+    if(open<1) h+='<path d="M'+(-ex-4)+' '+n1(ey-2.6*open)+'h8M'+(ex-4)+' '+n1(ey-2.6*open)+'h8" stroke="#09371F" stroke-width="1.8" stroke-linecap="round"/>'; }
+  else h+='<path d="M'+(-ex-3.5)+' '+ey+'q3.5 3.4 7 0M'+(ex-3.5)+' '+ey+'q3.5 3.4 7 0" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round"/>';
+  if(t<.45){ var s=4.2*(1-t/.45); h+='<path d="M'+(-ex-5)+' '+n1(ey-6-s)+'L'+(-ex+4)+' '+n1(ey-6+s*.5)+'M'+(ex+5)+' '+n1(ey-6-s)+'L'+(ex-4)+' '+n1(ey-6+s*.5)+'" stroke="#09371F" stroke-width="2.2" stroke-linecap="round"/>'; }
+  var m;
+  if(t<.4){ var z=3.6*(1-t/.4); m='M-7 '+n1(9+z/2)+'l3.5 '+n1(-z)+'l3.5 '+n1(z)+'l3.5 '+n1(-z)+'l3.5 '+n1(z); }
+  else { var c=7*(t-.4)/.6; m='M-6 9q6 '+n1(c)+' 12 0'; }
+  h+='<path d="'+m+'" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+  if(d>=20) h+='<path d="M15 -27h6l-6 7h6" fill="none" stroke="#FC3C80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+  if(d===21) h+='<path d="M25 -32h4l-4 5h4" fill="none" stroke="#FC3C80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>';
+  return h; }
+function faceSvg(d){ return '<svg class="face" aria-hidden="true" viewBox="-32 -34 64 66">'+face(d)+'</svg>'; }
+function planche(){ var h='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 518 234"><rect width="518" height="234" rx="18" fill="#FFFFFF"/>';
+  for(var d=1;d<=21;d++){ h+='<g transform="translate('+(43+((d-1)%7)*72)+','+(46+Math.floor((d-1)/7)*72)+')">'+face(d)+'</g>'; }
+  return h+'</svg>'; }
+var APERCU = true;
 var S;
 function reset(){ S={screen:'accueil',q:0,answers:[[],[],[],[],[],[]],grid1:[],grid7:[],grid14:[],grid21:[],saved7:false,saved14:false,day:1,done:{},pending:null,lastFlip:null,picked:null,sent:false,draft:'',freq:4,days:[0,1,3,6],hour:'19 h 15',channel:'agenda',committed:false,wait:{}}; }
 function scores(){ var sc={soir:0,bouche:0,devoirs:0,motricite:0}; QUIZ.forEach(function(q,i){ S.answers[i].forEach(function(j){ var p=q.o[j][1]; if(p) sc[p]+=(q.w||1); }); }); return sc; }
@@ -204,7 +233,7 @@ function act(name,arg){
   else if(name==='next'){ if(S.q<QUIZ.length-1){ S.q++; go('quiz'); } else go('resultat'); }
   else if(name==='prev'){ if(S.q>0){ S.q--; go('quiz'); } else go('accueil'); }
   else if(name==='toGrid'){ go('grille'); }
-  else if(name==='toCommit'){ go('engagement'); }
+  else if(name==='toCommit'){ go(APERCU?'verrou':'engagement'); }
   else if(name==='freq'){ S.freq=arg; S.days=ORDRE_JOURS.slice(0,arg).sort(function(a,b){return a-b;}); render(); }
   else if(name==='day'){ toggle(S.days,arg); S.days.sort(function(a,b){return a-b;}); S.freq=S.days.length; render(); }
   else if(name==='hour'){ S.hour=HEURES[arg]; render(); }
@@ -215,7 +244,7 @@ function act(name,arg){
   else if(name==='saveG1'){ S.day=1; S.picked=null; go('jour'); toast('Grille du jour 1 enregistrée'); }
   else if(name==='pick'){ S.picked=arg; render(); }
   else if(name==='done'){ if(!S.picked) return; S.done[S.day]=S.picked; S.pending=S.day; S.picked=null; go('suivi'); }
-  else if(name==='flip'){ if(S.pending!==arg) return; S.pending=null; S.lastFlip=arg; render(); toast(Object.keys(S.done).length===21?'Le tableau est complet':'Un morceau de plus'); }
+  else if(name==='flip'){ if(S.pending!==arg) return; S.pending=null; S.lastFlip=arg; render(); }
   else if(name==='nextDay'){ S.pending=null; var due=dueCheck(); if(S.saved21){ go('bilan'); } else if(due){ go('grille'+due); } else if(!S.done[S.day] && S.day<21){ S.picked=null; go('jour'); } else if(S.day<21){ S.day++; S.picked=null; go('jour'); } else go('grille21'); }
   else if(name==='g7'){ toggle(S.grid7,arg); render(); }
   else if(name==='g14'){ toggle(S.grid14,arg); render(); }
@@ -234,7 +263,7 @@ function vAccueil(){ return '<p class="kicker">Sandy · ABC des réflexes</p><h1
   +'<div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:6px">Ce que ce programme n\'est pas</p><p class="small">Ce programme propose des gestes doux. Ce n\'est pas un diagnostic ni un traitement, et si ton enfant ronfle, fait des pauses en respirant ou transpire beaucoup, parles-en aussi à ton médecin.</p></div>'
   +'<div class="grow"></div><button class="btn" data-a="start">Commencer le repérage</button>'; }
 function vQuiz(){ var q=QUIZ[S.q], a=S.answers[S.q], pct=Math.round((S.q+1)/QUIZ.length*100);
-  var h='<div class="row"><button class="opt" data-a="prev" aria-label="Question précédente" style="width:44px;min-height:44px;height:44px;border-radius:22px;padding:0;justify-content:center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><div class="grow stack" style="gap:6px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500;color:#3E5C4C"><span>Repérage</span><span>'+(S.q+1)+' sur '+QUIZ.length+'</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div></div>';
+  var h='<div class="row"><button class="opt" data-a="prev" aria-label="Question précédente" style="width:44px;min-height:44px;height:44px;border-radius:22px;padding:0;justify-content:center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#09371F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><div class="grow stack" style="gap:6px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500;color:var(--ink2)"><span>Repérage</span><span>'+(S.q+1)+' sur '+QUIZ.length+'</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div></div>';
   h+='<div class="stack" style="gap:8px;margin-top:6px"><p class="kicker">'+q.k+'</p><h1>'+q.t+'</h1><p class="lead">'+(q.multi?'Coche tout ce que tu vois souvent. Il n\'y a pas de bonne réponse.':'Une seule réponse.')+'</p></div><div class="stack">';
   q.o.forEach(function(o,i){ var on=has(a,i); h+='<button class="opt'+(on?' on':'')+'" data-a="opt" data-v="'+i+'" aria-pressed="'+on+'">'+(on?IC.check:IC.ring)+'<span>'+o[0]+'</span></button>'; });
   h+='</div><div class="grow"></div><button class="btn" data-a="next"'+(a.length?'':' disabled')+'>'+(S.q<QUIZ.length-1?'Suivant':'Voir mon point de départ')+'</button>'; return h; }
@@ -246,7 +275,7 @@ function vResultat(){ var t=topProg(), cat=['soir','bouche','devoirs'], best='so
   h+='<p class="lbl">Ma proposition pour toi</p>'+pCard(prop,{on:true,chip:'Choisi pour commencer'});
   var autres=PARCOURS.filter(function(x){return x.k!==best;}).sort(function(a,b){ return (t.sc[b.k]>0?1:0)-(t.sc[a.k]>0?1:0); });
   h+='<p class="lbl">Les autres parcours</p><div class="stack">'+autres.map(function(x){ var on=!!S.wait[x.k]; return pCard(x,{a:'wait',on:on,note:on?'Tu seras prévenue quand il sortira.':'',chip:(!on&&t.sc[x.k]>0)?'Repéré dans tes réponses':''}); }).join('')+'</div>';
-  h+='<div class="grow"></div>'+(best!=='soir'?'<p class="small">Dans cette démo, seul le parcours du soir est construit : la suite te le montre.</p>':'')+'<button class="btn" data-a="toCommit">'+(best==='soir'?'Commencer par le soir':'Voir la suite avec le parcours du soir')+'</button>'; return h; }
+  h+='<div class="grow"></div>'+(best!=='soir'&&!APERCU?'<p class="small">Dans cette démo, seul le parcours du soir est construit : la suite te le montre.</p>':'')+'<button class="btn" data-a="toCommit">'+(best==='soir'?'Commencer par le soir':'Voir la suite avec le parcours du soir')+'</button>'; return h; }
 function semaines(j,f){ var w=Math.ceil(j/f); return w+' semaine'+(w>1?'s':''); }
 function joursTxt(){ return S.days.map(function(d){return JOURS[d];}).join(', '); }
 function agenda(){ var d=new Date(), pad=function(x){return (x<10?'0':'')+x;}, hm=S.hour.replace(' h ',':').replace(' h',':00').split(':');
@@ -256,7 +285,7 @@ function vEngagement(){ var f=S.freq;
   var h='<p class="kicker">Ton engagement</p><h1>Combien de soirs par semaine veux-tu faire le programme avec ton MINI ?</h1><p class="lead">Le programme compte 21 jours d\'activité, que tu répartis sur autant de semaines qu\'il te faut. Choisis un rythme que tu peux vraiment tenir, tu pourras le changer à tout moment.</p>';
   h+='<div class="pills">'+[0,1,2,3,4,5,6,7].map(function(i){ return '<button class="pill'+(f===i?' on':'')+'" data-a="freq" data-v="'+i+'" aria-pressed="'+(f===i)+'">'+i+'</button>'; }).join('')+'</div>';
   if(f>0){
-    h+='<p class="small"><b style="color:#09371F">À ce rythme, tes 21 jours d\'activité te prendront '+semaines(21,f)+'.</b></p>';
+    h+='<p class="small"><b style="color:var(--ink)">À ce rythme, tes 21 jours d\'activité te prendront '+semaines(21,f)+'.</b></p>';
     h+='<p class="lbl">Quels soirs ?</p><div class="pills">'+JOURS.map(function(j,i){ var on=has(S.days,i); return '<button class="pill'+(on?' on':'')+'" data-a="day" data-v="'+i+'" aria-pressed="'+on+'">'+j+'</button>'; }).join('')+'</div>';
     h+='<p class="lbl">Vers quelle heure ?</p><div class="pills">'+HEURES.map(function(x,i){ return '<button class="pill'+(S.hour===x?' on':'')+'" data-a="hour" data-v="'+i+'">'+x+'</button>'; }).join('')+'</div>';
     h+='<p class="lbl">Comment veux-tu que je te le rappelle ?</p><div class="pills">'+Object.keys(CANAUX).map(function(k){ return '<button class="pill'+(S.channel===k?' on':'')+'" data-a="channel" data-v="'+k+'">'+CANAUX[k]+'</button>'; }).join('')+'</div>';
@@ -273,24 +302,24 @@ function vGrille(which){ var set={1:S.grid1,7:S.grid7,14:S.grid14,21:S.grid21}[w
   var T={1:'Regarde ton MINI ce soir sans rien changer',7:'On refait la grille après 7 jours d\'activité',14:'On refait la grille après 14 jours d\'activité',21:'On refait une dernière fois la grille du jour 1'}[which];
   var L={1:'Coche ce que tu vois. Ce sont les signes d\'un réflexe de Moro encore actif, d\'après la grille de Sandy. Tu referas exactement la même grille tous les 7 jours d\'activité.',7:week,14:week,21:'Coche ce que tu vois encore ce soir sans chercher à te souvenir de ce que tu avais coché.'}[which];
   var B={1:'Enregistrer ma grille',7:'Enregistrer mon point d\'étape',14:'Enregistrer mon point d\'étape',21:'Comparer avec le jour 1'}[which];
-  var h='<p class="kicker">Grille d\'observation · Jour '+which+'</p><h1>'+T+'</h1><p class="lead">'+L+'</p><div class="stack" style="gap:8px">';
+  var h='<p class="kicker">Grille d\'observation du jour '+which+'</p><h1>'+T+'</h1><p class="lead">'+L+'</p><div class="stack" style="gap:8px">';
   GRID.forEach(function(g,i){ var on=has(set,i); h+='<label class="check'+(on?' on':'')+'"><input type="checkbox" data-a="'+a+'" data-v="'+i+'"'+(on?' checked':'')+'><span>'+g+'</span></label>'; });
-  h+='</div><div class="grow"></div><div class="row"><span class="dot" style="width:44px;height:44px;border-radius:22px;background:#FF8370;font-size:18px;font-weight:700;flex-shrink:0">'+set.length+'</span><p class="small">'+(set.length>1?'cases cochées':'case cochée')+' ce soir. '+(which===1&&set.length>=3?'Avec 3 cases ou plus, Sandy écrit que le réflexe de Moro est probablement encore actif.':'C\'est ton point de repère, pas une note.')+'</p></div><button class="btn" data-a="saveG'+which+'">'+B+'</button>'; return h; }
+  h+='</div><div class="grow"></div><div class="row"><span class="dot" style="width:44px;height:44px;border-radius:22px;background:var(--coral);font-size:18px;font-weight:700;flex-shrink:0">'+set.length+'</span><p class="small">'+(set.length>1?'cases cochées':'case cochée')+' ce soir. '+(which===1&&set.length>=3?'Avec 3 cases ou plus, Sandy écrit que le réflexe de Moro est probablement encore actif.':'C\'est ton point de repère, pas une note.')+'</p></div><button class="btn" data-a="saveG'+which+'">'+B+'</button>'; return h; }
 function vJour(){ var ks=SETS[(S.day-1)%4], already=S.done[S.day];
   var h='<p class="kicker">Jour '+S.day+' sur 21</p><h1>C\'est ton MINI qui choisit la carte de ce soir</h1><p class="lead">Tends-lui le téléphone pour qu\'il touche le bonhomme qui fait le geste dont il a envie.</p><div class="cards">';
   ks.forEach(function(k){ var c=CARDS[k], on=S.picked===k; h+='<button class="pick'+(on?' on':'')+'" data-a="pick" data-v="'+k+'" aria-pressed="'+on+'" style="background:'+c.tint+'">'+IC[k]+'<b>'+c.title+'</b></button>'; });
   h+='</div>';
-  if(S.picked){ var c=CARDS[S.picked]; h+='<div class="card stack" style="gap:12px"><div class="anim" style="background:'+c.tint+'">'+IC[S.picked]+'</div><h2>'+c.title+'</h2><p style="font-size:14px;line-height:1.55">'+c.txt+'</p><div class="chips"><span class="chip" style="background:'+c.tint+'">'+c.reflexe+'</span>'+c.meta.map(function(m){return '<span class="chip">'+m+'</span>';}).join('')+'</div><p class="small"><b style="color:#09371F">Le réflexe en jeu.</b> '+c.rx+'</p><p class="small"><b style="color:#09371F">Ce que le geste lui apporte.</b> '+(c.why||'Sandy ne l\'explique pas encore dans ses posts : à compléter avec elle.')+'</p><p class="small">Geste décrit par Sandy dans '+c.src+'.'+(c.url?' <a href="'+c.url+'" target="_blank" rel="noopener" style="color:#09371F;font-weight:600">Lire son article</a>':'')+'</p></div>'; }
+  if(S.picked){ var c=CARDS[S.picked]; h+='<div class="card stack" style="gap:12px"><div class="anim" style="background:'+c.tint+'">'+IC[S.picked]+'</div><h2>'+c.title+'</h2><p style="font-size:14px;line-height:1.55">'+c.txt+'</p><div class="chips"><span class="chip" style="background:'+c.tint+'">'+c.reflexe+'</span>'+c.meta.map(function(m){return '<span class="chip">'+m+'</span>';}).join('')+'</div><p class="small"><b style="color:var(--ink)">Le réflexe en jeu.</b> '+c.rx+'</p><p class="small"><b style="color:var(--ink)">Ce que le geste lui apporte.</b> '+(c.why||'Sandy ne l\'explique pas encore dans ses posts : à compléter avec elle.')+'</p><p class="small">Geste décrit par Sandy dans '+c.src+'.'+(c.url?' <a href="'+c.url+'" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600">Lire son article</a>':'')+'</p></div>'; }
   else { h+='<div class="card"><p class="small">'+(already?'La carte du jour est déjà faite. Il peut en choisir une autre s\'il en redemande.':'Laisse-le prendre son temps pour choisir. Sandy le rappelle : en douceur, jamais en force, et si ton enfant montre un inconfort, on arrête et on observe.')+'</p></div>'; }
   h+='<div class="grow"></div><button class="btn" data-a="done"'+(S.picked?'':' disabled')+'>C\'est fait, il a gagné sa gommette</button>'; return h; }
 function vSuivi(){ var n=Object.keys(S.done).length-(S.pending?1:0), full=n===21;
   var h='<p class="kicker">Le suivi de ton MINI</p><h1>'+(n===0?'Ton MINI n\'a pas encore retourné de gommette':(n===1?'Ton MINI a retourné sa première gommette':'Ton MINI a déjà retourné '+n+' gommettes'))+'</h1><div class="card" style="padding:12px"><div class="mosaic'+(full?' full':'')+'">';
-  for(var d=1; d<=21; d++){ var col=(d-1)%7, row=Math.floor((d-1)/7);
+  for(var d=1; d<=21; d++){
     if(S.pending===d) h+='<button class="tile pend" data-a="flip" data-v="'+d+'" aria-label="Retourner la gommette du jour '+d+'">'+IC.star+'</button>';
-    else if(S.done[d]) h+='<div class="tile on'+(S.lastFlip===d?' flip':'')+'" style="background-position:'+(col/6*100)+'% '+(row/2*100)+'%" title="Jour '+d+' : '+CARDS[S.done[d]].title+'"></div>';
+    else if(S.done[d]) h+='<div class="tile on'+(S.lastFlip===d?' flip':'')+'" title="Jour '+d+' : '+CARDS[S.done[d]].title+'">'+faceSvg(d)+'</div>';
     else h+='<div class="tile'+(d===S.day?' now':'')+'">'+d+'</div>'; }
   S.lastFlip=null;
-  h+='</div><p class="small" style="margin-top:10px">'+(S.pending?'<b style="color:#09371F">Ton MINI peut retourner la gommette du jour.</b> Elle cache un morceau du tableau.':(full?'Le tableau de ton MINI est complet et il peut le garder.':'Chaque gommette retournée dévoile un morceau du tableau, qui sera complet au jour 21.'))+'</p>'+(full?'<a class="btn ghost" style="margin-top:12px" download="le-tableau-de-mon-mini.svg" href="'+SCENE+'">Garder le tableau de ton MINI</a>':'')+'</div>';
+  h+='</div><p class="small" style="margin-top:10px">'+(S.pending?'<b style="color:var(--ink)">Ton MINI peut retourner la gommette du jour.</b> Un petit visage se cache dessous.':(full?'Les 21 gommettes sont retournées, et ton MINI peut garder sa planche.':'Chaque gommette retournée fait apparaître un petit visage un peu plus calme que le précédent.'))+'</p>'+(full?'<a class="btn ghost" style="margin-top:12px" download="les-gommettes-de-mon-mini.svg" href="data:image/svg+xml,'+encodeURIComponent(planche())+'">Garder la planche de ton MINI</a>':'')+'</div>';
   h+='<div class="tint stack" style="gap:10px"><p style="font-size:15px;font-weight:700">Ta grille d\'observation</p>'+meterRow('Jour 1',S.grid1,true,1)+meterRow('Jour 7',S.grid7,S.saved7,7)+meterRow('Jour 14',S.grid14,S.saved14,14)+meterRow('Jour 21',S.grid21,!!S.saved21,21)+'<p class="small">Tu refais la même grille tous les 7 jours d\'activité. Au jour 21, tu la compares avec celle du jour 1 et je te dis vers qui te tourner si rien n\'a bougé.</p></div>';
   var rk=S.saved14?14:(S.saved7?7:0); if(rk){ var r=REPERES[rk]; h+='<div class="card stack" style="gap:8px"><p class="kicker">Repère après '+rk+' gommettes</p><h2>'+r.t+'</h2><p class="quote">« '+r.q+' »</p><p class="small">Extrait de '+r.src+'.</p><a class="link" style="padding:0;min-height:32px;display:inline-flex;align-items:center" href="'+r.url+'" target="_blank" rel="noopener">Lire l\'article de Sandy sur ce réflexe</a></div>'; }
   if(S.freq>0){ var wk=n%S.freq, full2=(n>0&&wk===0); var faits=full2?S.freq:wk;
@@ -299,7 +328,7 @@ function vSuivi(){ var n=Object.keys(S.done).length-(S.pending?1:0), full=n===21
   h+='<div class="grow"></div>';
   h+='<button class="btn" data-a="nextDay">'+(S.saved21?'Voir le bilan des 21 jours':dueCheck()?'Faire le point après '+dueCheck()+' jours d\'activité':(S.day<21?(S.done[S.day]?'Passer au jour '+(S.day+1):'Aller à la carte du jour'):'Refaire la grille du jour 21'))+'</button><button class="link" data-a="jump21">Démo : sauter directement au jour 21</button>'; return h; }
 function vQuestion(){ var h='<p class="kicker">La question de la semaine</p><h1>Sandy répond chaque semaine à la question d\'un parent</h1><p class="lead">Sa réponse s\'écoute ici et en story.</p>';
-  h+='<div class="tint stack" style="background:#FFE6E0;gap:12px"><p class="kicker" style="color:#09371F">Cette semaine</p><p style="font-size:16px;line-height:1.4;font-weight:600">« Tu proposes quoi à la place quand ça bouge dans tous les sens ? »</p><div class="card row" style="padding:12px;border:none"><button aria-label="Écouter la réponse de Sandy" data-a="noop" style="width:48px;height:48px;border-radius:24px;border:none;background:#09371F;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+IC.play+'</button><div class="grow stack" style="gap:6px"><b style="font-size:13px">La réponse de Sandy</b><div class="bar" style="height:6px"><i style="width:35%;height:6px"></i></div></div><span class="small">audio</span></div><p style="font-size:13px;line-height:1.5">Question posée par une maman en commentaire d\'un post de Sandy.</p></div>';
+  h+='<div class="tint stack" style="background:var(--t-coral);gap:12px"><p class="kicker" style="color:var(--ink)">Cette semaine</p><p style="font-size:16px;line-height:1.4;font-weight:600">« Tu proposes quoi à la place quand ça bouge dans tous les sens ? »</p><div class="card row" style="padding:12px;border:none"><button aria-label="Écouter la réponse de Sandy" data-a="noop" style="width:48px;height:48px;border-radius:24px;border:none;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0">'+IC.play+'</button><div class="grow stack" style="gap:6px"><b style="font-size:13px">La réponse de Sandy</b><div class="bar" style="height:6px"><i style="width:35%;height:6px"></i></div></div><span class="small">audio</span></div><p style="font-size:13px;line-height:1.5">Question posée par une maman en commentaire d\'un post de Sandy.</p></div>';
   h+='<p class="lbl">Les réponses des semaines précédentes</p><div class="stack">'+['Semaine 2','Semaine 1'].map(function(w){ return '<button class="opt" data-a="noop" style="min-height:52px">'+IC.play.replace('#FFFFFF','#09371F')+'<span><b>'+w+'</b><br><span class="small">La question retenue et la réponse de Sandy</span></span></button>'; }).join('')+'</div>';
   if(S.sent){ h+='<div class="card stack"><h2>Question reçue</h2><p class="small">« '+S.draft.replace(/[<>&]/g,'')+' »</p><p class="small">Sandy en choisit une par semaine. Si c\'est la tienne, tu l\'entendras ici et en story.</p><button class="link" data-a="again">Poser une autre question</button></div>'; }
   else { h+='<div class="stack" style="gap:8px"><label class="t" for="q">Ta question</label><textarea id="q" rows="4" placeholder="Depuis le jour 5, il refuse le sandwich…"></textarea></div><div class="card" style="padding:12px 14px"><p class="small">Sandy ne répond pas à chacun : elle choisit chaque semaine la question qui servira au plus de parents. Le bilan est là pour la situation précise de ton enfant.</p></div><div class="grow"></div><button class="btn" data-a="send">Envoyer ma question</button>'; }
@@ -309,9 +338,10 @@ function vBilan(){ var a=S.grid1.length, b=S.grid21.length, diff=a-b;
   h+='<div class="tint stack" style="gap:10px">'+meterRow('Jour 1',S.grid1,true,1)+(S.saved7?meterRow('Jour 7',S.grid7,true,7):'')+(S.saved14?meterRow('Jour 14',S.grid14,true,14):'')+meterRow('Jour 21',S.grid21,true,21)+'</div>';
   if(diff>0){ h+='<p class="lead">'+diff+(diff>1?' signes':' signe')+' en moins par rapport au jour 1. Garde les gestes qu\'il redemande.</p><div class="card"><p class="small">Si des signes restent et te pèsent, un bilan au cabinet permet de les regarder de plus près.</p></div>'; }
   else { h+='<p class="lead">Ça arrive, et ça ne veut pas dire que tu as mal fait. C\'est le moment de regarder plus loin.</p><div class="card stack"><p style="font-size:14px;font-weight:600">Vers qui te tourner</p><p class="small">Un bilan de 90 minutes au cabinet permet de voir quels réflexes restent actifs.</p></div>'; }
-  h+='<div class="grow"></div><a class="btn" href="https://www.abcdesreflexes.com" target="_blank" rel="noopener">Voir comment se passe un bilan</a><button class="btn ghost" data-a="tab" data-v="suivi">Revoir le tableau de mon MINI</button><button class="link" data-a="reset">Recommencer la démo</button>'; return h; }
+  h+='<div class="grow"></div><a class="btn" href="https://www.abcdesreflexes.com" target="_blank" rel="noopener">Voir comment se passe un bilan</a><button class="btn ghost" data-a="tab" data-v="suivi">Revoir les gommettes de mon MINI</button><button class="link" data-a="reset">Recommencer la démo</button>'; return h; }
+function vVerrou(){ return '<h1>Le reste du programme s\'ouvre avec ta réservation</h1><p class="lead">Tu viens de faire le repérage. Dans le programme, ton MINI choisit chaque jour son geste, tu choisis tes jours et on te le rappelle, et Sandy répond à une question par semaine.</p><div class="tint"><p class="small" style="color:var(--ink)">Chaque gommette retournée fait apparaître un petit visage un peu plus calme que le précédent, jusqu\'au dernier qui s\'endort au jour 21.</p><div class="mosaic" style="margin-top:12px">'+[1,4,7,11,15,18,21].map(function(d){ return '<div class="tile on">'+faceSvg(d)+'</div>'; }).join('')+'</div></div><div class="grow"></div><a class="btn" href="../programme#reserver" target="_top">Réserver ma place</a><button class="link" data-a="reset">Refaire le repérage</button>'; }
 function vGestes(){ return '<p class="kicker">Planche des gestes</p><h1>Les cinq bonshommes animés du programme du soir</h1><p class="lead">Chaque bonhomme montre à l\'enfant le geste qu\'il va faire.</p><div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr))">'+Object.keys(CARDS).map(function(k){ return '<div class="pick" style="background:'+CARDS[k].tint+'">'+IC[k]+'<b>'+CARDS[k].title+'</b></div>'; }).join('')+'</div><div class="grow"></div><button class="btn" data-a="reset">Revenir au début de la démo</button>'; }
-function render(){ var v={gestes:vGestes,accueil:vAccueil,quiz:vQuiz,resultat:vResultat,engagement:vEngagement,parcours:vParcours,grille:function(){return vGrille(1);},grille7:function(){return vGrille(7);},grille14:function(){return vGrille(14);},grille21:function(){return vGrille(21);},jour:vJour,suivi:vSuivi,question:vQuestion,bilan:vBilan}[S.screen];
+function render(){ var v={gestes:vGestes,accueil:vAccueil,quiz:vQuiz,resultat:vResultat,engagement:vEngagement,parcours:vParcours,grille:function(){return vGrille(1);},grille7:function(){return vGrille(7);},grille14:function(){return vGrille(14);},grille21:function(){return vGrille(21);},jour:vJour,suivi:vSuivi,question:vQuestion,bilan:vBilan,verrou:vVerrou}[S.screen];
   document.getElementById('app').innerHTML=v();
   var tabs=document.getElementById('tabs'), show=has(['jour','suivi','question','bilan','parcours'],S.screen); tabs.hidden=!show;
   if(show){ tabs.innerHTML=[['jour','Ce soir',IC.today],['suivi','Progression',IC.grid],['parcours','Parcours',IC.cards],['question','Question',IC.chat]].map(function(t){ return '<button data-a="tab" data-v="'+t[0]+'" class="'+(S.screen===t[0]?'on':'')+'">'+t[2]+'<span>'+t[1]+'</span></button>'; }).join(''); } }
@@ -348,7 +378,7 @@ function selfTest(){ var r=[], ok=function(n,c){ r.push((c?'OK   ':'FAIL ')+n); 
   act('pick','tournesol'); ok('bonhomme animé dans la carte choisie', html().indexOf('class="anim"')>0 && html().indexOf('class="fb"')>0);
   ok('carte choisie : geste de Sandy relié au réflexe', html().indexOf('comme pour se faire un câlin')>0 && html().indexOf('Le réflexe en jeu')>0 && html().indexOf('le système nerveux se calme enfin')>0 && html().indexOf('Lire son article')>0 && html().indexOf('data-a="done" disabled')<0);
   act('done'); ok('gommette à retourner proposée', S.pending===1 && html().indexOf('data-a="flip"')>0 && html().indexOf('tile on')<0);
-  act('flip',1);   ok('la gommette dévoile un morceau du tableau', html().indexOf('tile on')>0 && html().split('tile on').length===2);
+  act('flip',1);   ok('la gommette fait apparaître un petit visage', html().indexOf('class="face"')>0 && html().split('tile on').length===2 && html().indexOf('un peu plus calme')>0);
   ok('gommette collée', S.done[1]==='tournesol' && S.screen==='suivi' && html().indexOf('première gommette')>0);
   act('nextDay'); ok('jour 2 propose un autre jeu de cartes', S.day===2 && html().indexOf('Le poids doux')>0);
   act('tab','question'); ok('écran question', html().indexOf('Ta question')>0 && html().indexOf('semaines précédentes')>0);
@@ -357,11 +387,13 @@ function selfTest(){ var r=[], ok=function(n,c){ r.push((c?'OK   ':'FAIL ')+n); 
   act('g21',0); act('saveG21'); ok('bilan : 1 signe en moins', S.screen==='bilan' && html().indexOf('1 signe en moins')>0);
   S.grid21=[0,1,2]; render(); ok('bilan : rien n\'a bougé', html().indexOf('n\'a pas bougé')>0 && html().indexOf('Vers qui te tourner')>0);
   preset('suivi'); S.day=7; for(var d7=4; d7<=7; d7++) S.done[d7]='koala'; render(); ok('jour 7 : point d\'étape proposé', html().indexOf('Faire le point après 7 jours d\'activité')>0);
-  act('nextDay'); ok('grille du jour 7 ouverte', S.screen==='grille7' && html().indexOf('Jour 7')>0);
+  act('nextDay'); ok('grille du jour 7 ouverte', S.screen==='grille7' && html().indexOf('du jour 7')>0);
   act('g7',0); act('saveG7'); ok('point du jour 7 enregistré', S.saved7 && S.screen==='suivi' && html().indexOf('1 sur 6')>0);
   act('nextDay'); ok('jour 8 après le point', S.day===8 && S.screen==='jour');
   preset('suivi'); act('nextDay'); ok('carte du jour sans sauter de jour', S.day===4 && S.screen==='jour');
-  preset('bilan'); render(); act('tab','suivi'); ok('tableau complet à garder au jour 21', html().indexOf('est complet')>0 && html().indexOf('download=')>0 && html().split('tile on').length===22);
+  preset('bilan'); render(); act('tab','suivi'); ok('planche complète à garder au jour 21', html().indexOf('sont retournées')>0 && html().indexOf('les-gommettes-de-mon-mini.svg')>0 && html().split('tile on').length===22);
+  ok('le visage du jour 1 est hérissé et celui du jour 21 endormi', face(1).indexOf('polygon')>0 && face(21).indexOf('#FC3C80')>0 && face(1)!==face(21) && planche().split('<polygon').length===22);
+  APERCU=true; reset(); S.answers=[[0,2],[3],[0],[3],[0],[0]]; S.screen='resultat'; render(); act('toCommit'); ok('aperçu : la suite est verrouillée', S.screen==='verrou' && html().indexOf('programme#reserver')>0 && html().indexOf('target="_top"')>0); APERCU=false;
   preset('suivi'); render(); ok('suivi : soirs et semaine affichés', html().indexOf('Tes soirs : lun, mar, jeu, dim à 19 h 15')>0 && html().indexOf('3 sur 4')>0 && html().indexOf('4 sur 6')>0 && html().indexOf('BEGIN%3AVCALENDAR')>0 && html().indexOf('Il te reste 18 jours d\'activité, soit 5 semaines')>0);
   act('toCommit'); act('freq',5); act('commit'); ok('changer ses soirs revient au suivi', S.screen==='suivi' && S.freq===5);
   act('tab','parcours'); ok('onglet parcours', html().indexOf('Pipi au lit')>0 && html().indexOf('réflexe de Galant')<0 && html().indexOf('Des matins plus cool')>0 && html().indexOf('Repéré dans tes réponses')>0 && html().indexOf('En cours')>0);
@@ -370,9 +402,9 @@ function selfTest(){ var r=[], ok=function(n,c){ r.push((c?'OK   ':'FAIL ')+n); 
   reset(); S.answers=[[3],[0,1,2],[3],[3],[3],[1]]; S.screen='resultat'; render(); ok('réponses « devoirs » : on propose les devoirs', html().indexOf('commencer par les devoirs')>0 && html().indexOf('Des devoirs sans cris ni colère')<html().indexOf('Les autres parcours') && html().indexOf('Une soirée apaisée')>html().indexOf('Les autres parcours') && html().indexOf('Voir la suite avec le parcours du soir')>0);
   reset(); S.answers=[[3],[3],[3],[0,1,2],[3],[3]]; S.screen='resultat'; render(); ok('réponses « mouvement » : pas de parcours fantôme', html().indexOf('commencer par le soir')>0 && html().indexOf('undefined')<0);
   preset('bilan'); render(); ok('bilan : quatre grilles', html().indexOf('Jour 7')>0 && html().indexOf('Jour 14')>0);
-  ['accueil','quiz','resultat','grille','jour','suivi','question','engagement','parcours','grille7','grille14','grille21','bilan','gestes','tableau'].forEach(function(n){ preset(n); try{ render(); ok('rendu '+n, html().length>200 && html().indexOf('undefined')<0 && html().indexOf('NaN')<0); }catch(err){ ok('rendu '+n+' : '+err.message,false); } });
+  ['accueil','quiz','resultat','grille','jour','suivi','question','engagement','parcours','grille7','grille14','grille21','bilan','gestes','tableau','verrou'].forEach(function(n){ preset(n); try{ render(); ok('rendu '+n, html().length>200 && html().indexOf('undefined')<0 && html().indexOf('NaN')<0); }catch(err){ ok('rendu '+n+' : '+err.message,false); } });
   var fails=r.filter(function(x){return x.indexOf('FAIL')===0;}).length; document.title='SELFTEST '+(fails?'FAIL '+fails:'OK '+r.length); var pre=document.getElementById('selftest'); pre.hidden=false; pre.textContent=r.join('\n'); }
-(function(){ if(/[?&]f=b/.test(location.search)) document.documentElement.classList.add('fb-only'); var h=(location.hash||'').replace('#',''); if(h==='selftest'){ reset(); selfTest(); return; } if(h && h!=='accueil'){ preset(h); render(); } else { reset(); render(); } })();
+(function(){ if(/[?&]f=b/.test(location.search)) document.documentElement.classList.add('fb-only'); var h=(location.hash||'').replace('#',''); if(h==='selftest'){ reset(); selfTest(); return; } if(APERCU){ document.getElementById('banner').textContent='Aperçu : tu fais le repérage en 6 questions, rien n\'est enregistré ni envoyé.'; if(['quiz','resultat','devoirs'].indexOf(h)<0) h=''; } if(h && h!=='accueil'){ preset(h); render(); } else { reset(); render(); } })();
 </script>
 </body>
 </html>

@@ -46,7 +46,7 @@ const article = {
   <article class="article">
     <div class="wrap narrow">
       <header>
-        <p class="kicker"><a href={url('/blog')} style="text-decoration:none">Le blog</a></p>
+        <nav class="crumb" aria-label="Fil d'Ariane"><a href={url('/blog')}>Retour au blog</a></nav>
         <h1>{post.data.title}</h1>
         <div class="meta"><img src={pic('/img/sandy-avatar.png').src} alt="" width="44" height="44"><span><b style="color:var(--ink)">Sandy Stevens</b><br><time datetime={post.data.date.toISOString().slice(0, 10)}>{dateFr(post.data.date)}</time> · {minutes} min de lecture</span></div>
       </header>

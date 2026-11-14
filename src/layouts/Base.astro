@@ -16,8 +16,9 @@ interface Props {
   type?: 'website' | 'article';
   jsonld?: object[];
   noindex?: boolean;
+  chrome?: 'v1' | 'v2';    // v2 : en-tête et pied de page de la proposition de refonte
 }
-const { title, description, current = '', path, image = '/img/cabinet.jpg', type = 'website', jsonld = [], noindex = false } = Astro.props;
+const { title, description, current = '', path, image = '/img/cabinet.jpg', type = 'website', jsonld = [], noindex = false, chrome = 'v1' } = Astro.props;
 const canonical = PROD_URL + (path === '/' ? '/' : encodeURI(path));
 const ogImage = PROD_URL + image;
 
@@ -74,8 +75,20 @@ const nav = [
 {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)}></script>)}
 <style is:global>html,body{overflow-x:clip}</style>
 </head>
-<body class:list={[{ apercu: PREVIEW }]}>
+<body class:list={[{ apercu: PREVIEW, v2: chrome === 'v2' }]}>
 <a class="skip" href="#contenu">Aller au contenu</a>
+{chrome === 'v2' ? (
+<header class="v2-top">
+  <div class="container">
+    <a class="v2-brand" href={url('/')}><img src={pic('/img/logo.png').src} alt="" width="48" height="48"><span><b>L'ABC des réflexes</b><span>Sandy Stevens, Obernai</span></span></a>
+    <nav class="v2-nav" id="nav" aria-label="Navigation principale">
+      {nav.map(([href, label]) => <a href={url(href)}>{label}</a>)}
+      <a class="btn" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous</a>
+    </nav>
+    <button class="v2-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+) : (
 <header class="top">
   <div class="wrap">
     <a class="brand" href={url('/')}><img src={pic('/img/logo.png').src} alt="" width="52" height="52"><span><b>L'ABC des réflexes</b><span>Sandy Stevens · Obernai</span></span></a>
@@ -88,9 +101,24 @@ const nav = [
     </button>
   </div>
 </header>
+)}
 <main id="contenu">
   <slot />
 </main>
+{chrome === 'v2' ? (
+<footer class="v2-foot on-dark">
+  <div class="container">
+    <p class="closing">Tu peux réserver ta séance en ligne</p>
+    <p class="closing-line">Le premier rendez-vous est un bilan de 90 minutes : nous faisons connaissance, je teste tes réflexes et je te remets un compte-rendu.</p>
+    <div class="btns"><a class="btn" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous</a><a class="btn ghost-dark" href={'tel:' + TEL}>{TEL_AFFICHE}</a></div>
+    <nav class="links" aria-label="Liens du pied de page">
+      <a href={url('/#consultations')}>Consultations</a><a href={url('/#sandy')}>Qui suis-je</a><a href={url('/formations')}>Formations</a><a href={url('/blog')}>Blog</a><a href={url('/#contact')}>Contact</a><a href={'mailto:' + EMAIL}>{EMAIL}</a><a href={INSTA} target="_blank" rel="noopener">Instagram</a><a href={FACEBOOK} target="_blank" rel="noopener">Facebook</a><a href={LINKEDIN} target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="legal"><span>© {new Date().getFullYear()} L'ABC des réflexes, Sandy Stevens, praticienne et formatrice en réflexes archaïques à Obernai</span><a href={url('/mentions-legales')}>Mentions légales</a><a href={url('/politique-cookies')}>Cookies</a></p>
+  </div>
+</footer>
+<div class="bookbar"><a class="btn" href={RDV} target="_blank" rel="noopener">Prendre rendez-vous</a><a class="btn ghost tel" href={'tel:' + TEL} aria-label={'Appeler le ' + TEL_AFFICHE}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></a></div>
+) : (
 <footer>
   <div class="wrap">
     <div style="max-width:320px"><b>L'ABC des réflexes</b>Sandy Stevens, praticienne et formatrice en réflexes archaïques à Obernai, à 25 minutes de Strasbourg et 40 minutes de Colmar.</div>
@@ -100,8 +128,9 @@ const nav = [
     <p class="legal"><span>© {new Date().getFullYear()} L'ABC des réflexes</span><a href={url('/mentions-legales')}>Mentions légales</a><a href={url('/politique-cookies')}>Cookies</a></p>
   </div>
 </footer>
+)}
 <script is:inline>
-(function(){ var b=document.getElementById('burger'), n=document.getElementById('nav'); b.addEventListener('click',function(){ var o=n.classList.toggle('open'); b.setAttribute('aria-expanded',o); }); n.addEventListener('click',function(e){ if(e.target.tagName==='A') n.classList.remove('open'); }); })();
+(function(){ var b=document.getElementById('burger'), n=document.getElementById('nav'); if(!b||!n) return; b.addEventListener('click',function(){ var o=n.classList.toggle('open'); b.setAttribute('aria-expanded',o); }); n.addEventListener('click',function(e){ if(e.target.tagName==='A') n.classList.remove('open'); }); })();
 </script>
 </body>
 </html>
